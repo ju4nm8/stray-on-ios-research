@@ -4,7 +4,7 @@
 >
 > Este repositorio documenta un experimento personal de compatibilidad basado en [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). Es una bitácora técnica, no un port, instalador ni una afirmación de que el juego ya sea completamente jugable.
 
-**Hito verificado actual: la build original de macOS llega a la pantalla inicial de calibración de brillo en un iPhone 17 Pro Max.** Todavía no hemos demostrado que llegue al menú principal ni que permita jugar una partida.
+**Último hito verificado: Stray llega a la calibración de brillo, su interfaz se puede navegar con un mando PS4 DualShock 4 conectado y un intento posterior de cargar/reanudar una partida llega a renderizar una escena 3D; pero esa escena aparece severamente dañada y todavía no podemos confirmar gameplay funcional.**
 
 [English README](README.md) · [Historial técnico](docs/MILESTONES.md) · [Arquitectura](docs/ARCHITECTURE.md) · [Problemas pendientes](docs/KNOWN-ISSUES.md)
 
@@ -21,9 +21,12 @@ Esto **no** es un port nativo de Stray, una redistribución del juego, un bypass
 Entorno de prueba:
 - MacBook Air M4, 16 GB de memoria unificada.
 - iPhone 17 Pro Max.
-- El overlay de rendimiento mostró iOS 27.3 beta durante la grabación.
+- Los overlays mostraron iOS 27.3 beta durante las grabaciones.
 - Build para Mac de la generación Unreal Engine 4.27.
 - Metal en la GPU Apple del iPhone.
+- Para la prueba más reciente se conectó un mando PS4 DualShock 4 al iPhone.
+
+### Fase G — interfaz inicial
 
 Observaciones de fase G:
 - El lanzamiento funciona mediante `devicectl` cuando recibe la ruta del proyecto y `-basedir`.
@@ -35,14 +38,23 @@ Observaciones de fase G:
 - El overlay/log reporta alrededor de 59–62 FPS durante parte de esta sesión corta. No es un benchmark.
 - El proceso termina con código 0 después de pasar a segundo plano; no fue el crash anterior de validación Metal.
 
-Llegar a calibración **no** demuestra que el juego sea completamente jugable. Consulta [hitos](docs/MILESTONES.md).
+### Seguimiento — mando y primer intento de cargar una escena
+
+En una grabación posterior:
+- El usuario informa que un mando PS4 DualShock 4 conectado permitió avanzar más allá de la calibración de brillo y navegar por la interfaz.
+- La grabación muestra un menú de Stray con Resume, Settings y Quit, seguido de una transición a una vista 3D.
+- La escena 3D todavía no se representa correctamente: predominan superficies azules/lavadas y artefactos gráficos evidentes. No se distingue claramente al gato ni una escena jugable reconocible; por tanto, **esto todavía no demuestra gameplay funcional**.
+- El overlay muestra aproximadamente 19–31 FPS, unos 3.37–3.42 GB de memoria de aplicación y alrededor de 123–184 MB de memoria disponible. Son lecturas de una grabación corta, no un benchmark controlado ni un diagnóstico de presión de memoria.
+- La grabación está en vertical (1320 × 2868); no demuestra que se haya corregido la presentación horizontal ni la relación de aspecto.
+
+Más detalle: [notas del mando y primer intento de carga](docs/GAMEPAD-AND-FIRST-LOAD.md).
 
 ## Lo que falta
 
-1. Diagnosticar el cierre al abrir desde el icono de SpringBoard. La falta de argumentos es una hipótesis, no una causa confirmada.
-2. Corregir la presentación horizontal deformada investigando UIKit, `CAMetalLayer.drawableSize`, viewport de Unreal y rotación.
-3. Demostrar entrada de extremo a extremo. Se registran toques iniciales de UIKit, pero movimiento, cámara y acciones no están validados en Unreal.
-4. Navegar la interfaz, llegar al menú principal e intentar gameplay.
+1. Diagnosticar el cierre al abrir desde el icono de SpringBoard. La falta de argumentos es plausible, pero no está confirmada.
+2. Corregir la presentación y validar dimensiones tanto en vertical como en horizontal mediante UIKit, `CAMetalLayer.drawableSize`, viewport de Unreal y rotación.
+3. Diagnosticar la escena 3D dañada. Materiales, shaders, streaming de texturas, render targets, iluminación, cámara/frustum y sincronización de recursos son candidatos, no causas confirmadas.
+4. Demostrar gameplay real: personaje y mundo visibles, movimiento, cámara y acciones usando el mando.
 5. Probar estabilidad prolongada, temperatura, memoria, audio y ciclo segundo plano/primer plano.
 
 Consulta [problemas pendientes](docs/KNOWN-ISSUES.md) y [plan de pantalla/entrada](docs/DISPLAY-AND-INPUT.md).

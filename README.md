@@ -4,7 +4,7 @@
 >
 > This repository documents a personal compatibility experiment based on [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). It is a research log, not a game port, installer, or claim of full playability.
 
-**Current verified milestone: the original macOS build reaches Stray's initial brightness-calibration screen on an iPhone 17 Pro Max.** The app has not yet been demonstrated to reach the main menu or sustained gameplay.
+**Latest verified milestone: Stray reaches its initial brightness calibration, its UI can be navigated with a paired PS4 DualShock 4 controller, and a subsequent load/resume attempt renders a 3D scene — but that scene is visibly corrupted and gameplay is not yet confirmed.**
 
 [En español](README.es.md) · [Technical timeline](docs/MILESTONES.md) · [Architecture](docs/ARCHITECTURE.md) · [Known issues](docs/KNOWN-ISSUES.md)
 
@@ -21,11 +21,14 @@ This is **not** a native iOS port, a game redistribution, a DRM bypass, or proof
 Test environment:
 - MacBook Air M4, 16 GB unified memory.
 - iPhone 17 Pro Max.
-- iOS 27.3 beta was shown in the performance overlay during the recorded test.
+- iOS 27.3 beta was shown in the performance overlay during the recordings.
 - Unreal Engine 4.27-era Mac build.
 - Metal on the iPhone Apple GPU.
+- A PS4 DualShock 4 controller was paired to the iPhone for the latest navigation attempt.
 
-Observed in phase G:
+### Phase G — initial UI
+
+Observed in the phase-G run:
 - Launch succeeds through `devicectl` when supplied with the project path and `-basedir`.
 - The IOKit adapter exposes the GPU descriptor structure Unreal expects, based on the actual iPhone GPU.
 - Unreal passes the previously empty GPU-descriptor path.
@@ -35,14 +38,23 @@ Observed in phase G:
 - The overlay/log reports roughly 59–62 FPS during parts of this short run. This is not a benchmark.
 - The process exits with status 0 after the app transitions to the background; this was not the earlier Metal validation crash.
 
-Reaching calibration does **not** prove full playability. See [milestones](docs/MILESTONES.md).
+### Follow-up — controller navigation and first scene-load attempt
+
+In a later on-device recording:
+- The user reports that a paired PS4 DualShock 4 controller successfully navigated beyond the brightness-calibration screen and through the UI.
+- The recording shows a Stray menu with Resume, Settings and Quit, followed by a transition into a 3D rendered view.
+- The 3D view is not correct: it is dominated by blue/washed-out surfaces and obvious rendering artifacts. The cat and a recognizable playable scene are not clearly visible, so this is **not yet proof of working gameplay**.
+- The recording's performance overlay shows roughly 19–31 FPS during the captured attempt, around 3.37–3.42 GB of app memory, and approximately 123–184 MB of available memory. These are readings from a short overlay capture, not a controlled benchmark or memory-pressure diagnosis.
+- The recording is portrait (1320 × 2868); it does not demonstrate that landscape/aspect-ratio issues have been fixed.
+
+More detail: [gamepad and scene-load notes](docs/GAMEPAD-AND-FIRST-LOAD.md).
 
 ## What remains
 
-1. Diagnose direct SpringBoard icon launch (user reports immediate close); the missing-arguments explanation is plausible, not confirmed.
-2. Fix distorted landscape presentation by tracing UIKit, `CAMetalLayer.drawableSize`, Unreal viewport dimensions and rotation.
-3. Prove end-to-end input. UIKit touch-began events are logged, but movement, camera and action events have not been validated in Unreal.
-4. Navigate the original UI, reach the main menu and attempt gameplay.
+1. Diagnose direct SpringBoard icon launch (user reports immediate close); missing launch arguments are plausible, not confirmed.
+2. Fix distorted presentation and validate both portrait/landscape sizing by tracing UIKit, `CAMetalLayer.drawableSize`, Unreal viewport dimensions and rotation.
+3. Diagnose the corrupted 3D view: materials, shaders, texture streaming, render targets, lighting, camera/frustum and resource synchronization all remain candidates, not confirmed causes.
+4. Prove actual gameplay: visible character/world, movement, camera and action input using the controller.
 5. Test longer-run stability, thermal behavior, memory, audio and background/foreground lifecycle.
 
 See [known issues](docs/KNOWN-ISSUES.md) and [display/input investigation](docs/DISPLAY-AND-INPUT.md).
@@ -58,6 +70,7 @@ See [known issues](docs/KNOWN-ISSUES.md) and [display/input investigation](docs/
 - `docs/MILESTONES.md` — observed progress
 - `docs/METAL-COMPATIBILITY.md` — Managed/Shared investigation
 - `docs/DISPLAY-AND-INPUT.md` — orientation and input plan
+- `docs/GAMEPAD-AND-FIRST-LOAD.md` — DualShock 4 and first scene-load attempt
 - `docs/KNOWN-ISSUES.md` — verification matrix
 - `docs/REDDIT-DRAFT-EN.md` — English post draft
 - `docs/REDDIT-DRAFT-ES.md` — Spanish post draft

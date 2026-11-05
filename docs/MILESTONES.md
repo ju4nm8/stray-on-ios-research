@@ -42,6 +42,28 @@ The process ended with exit code 0 after the app transitioned to the background.
 - Direct SpringBoard icon launch reportedly closes immediately; the cause is unknown.
 - Long-session stability and performance are untested.
 
+## Follow-up experiment — DualShock 4 navigation and first scene-load attempt
+
+A later user-recorded test paired a PS4 DualShock 4 controller to the iPhone. The user reports that the controller allowed progression beyond brightness calibration and navigation through the game's UI.
+
+The recording begins on a Stray menu displaying Resume, Settings and Quit. After the user resumes/attempts to continue, the picture transitions through a dark loading-like interval and then displays a large blue/washed-out 3D view with obvious visual artifacts. There is no clearly identifiable cat character or fully recognizable playable scene in the supplied clip.
+
+The on-screen performance overlay during this short recording shows:
+- approximately 19–31 FPS across sampled moments;
+- app memory around 3.37–3.42 GB;
+- available memory around 123–184 MB;
+- a portrait capture resolution of 1320 × 2868.
+
+These are readings from the device overlay in one short recording, not a controlled benchmark, and they do not establish the cause of the rendering problem or memory behavior.
+
+### What this follow-up establishes — and what it does not
+
+- **Established by user report:** DualShock 4 input is sufficient to navigate past the brightness calibration and through at least some menus.
+- **Visible in the recording:** Stray's UI, a transition, and a rendered but severely corrupted-looking 3D view.
+- **Not established:** correct scene/material rendering, visible player character, actual movement through a level, camera control, or sustained gameplay.
+- **Not established:** that the earlier landscape/aspect-ratio issue is fixed; this recording is portrait.
+- The recording ends at the iOS Home Screen. It does not establish whether the app crashed or was intentionally backgrounded.
+
 ## Next investigation
 
-See [KNOWN-ISSUES.md](KNOWN-ISSUES.md) and [DISPLAY-AND-INPUT.md](DISPLAY-AND-INPUT.md).
+See [KNOWN-ISSUES.md](KNOWN-ISSUES.md), [DISPLAY-AND-INPUT.md](DISPLAY-AND-INPUT.md), and [GAMEPAD-AND-FIRST-LOAD.md](GAMEPAD-AND-FIRST-LOAD.md).
