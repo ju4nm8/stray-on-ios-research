@@ -2,86 +2,68 @@
 
 > Can the original Apple-silicon macOS build of **Stray** run on an iPhone?
 >
-> This repository documents a personal compatibility experiment based on [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). It is a research log, not a game port, installer, or claim of full playability.
+> I am documenting a personal compatibility experiment based on [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). This is an engineering log, not a native iOS port, installer or claim that the game is fully playable.
 
-**Latest experiment: Run 6 reaches a recognizable 3D tunnel environment with textured pipes, concrete structures, cables, vines, sky and atmospheric effects. The tunnel interior remains very dark, the cat is not clearly confirmed, and controller stick values are observed at the shim but actual in-game movement/actions are not yet verified.**
+**Latest update — 6 November 2026:** I can now open Stray directly from its iOS Home Screen icon. Run 6 also reached a recognizable 3D tunnel environment with textured pipes, concrete structures, cables, vegetation, visible sky and atmospheric effects. The tunnel interior remains very dark, and I have not yet verified the cat and complete gameplay. The earlier direct-icon launch problem is no longer current.
 
 [En español](README.es.md) · [Technical timeline](docs/MILESTONES.md) · [Architecture](docs/ARCHITECTURE.md) · [Known issues](docs/KNOWN-ISSUES.md)
 
 ---
 
-## What this is
+## What I am building
 
-This project records the work required to run a native ARM64 macOS game binary in an iOS app container using the compatibility framework and shims from the upstream project. The Stray executable itself remains the original macOS build; the work so far has concentrated on bundle conversion, macOS API compatibility, platform detection, resource paths, IOKit GPU discovery and Metal behavior.
+I am testing whether the original native ARM64 macOS build of Stray can run inside an iOS app container using the compatibility infrastructure and shims from the upstream project. The game executable remains the original macOS binary. My work has focused on bundle conversion, macOS API compatibility, resource paths, Unreal platform detection, IOKit GPU discovery, Metal behavior, rendering and input.
 
-This is **not** a native iOS port, a game redistribution, a DRM bypass, or proof that arbitrary Mac games can run on iOS.
+This is **not** a native iOS port, a redistribution of Stray, a DRM bypass or proof that arbitrary Mac games can run on iOS.
 
-## Current result
+## Current state
 
-Test environment:
+### Confirmed
+
+- I can launch Stray from its iOS Home Screen icon. I no longer consider direct icon launch a current blocker.
+- The app has reached the Stray menus and loaded into a 3D level on the physical iPhone 17 Pro Max.
+- Run 6 captures show a recognizable tunnel environment with textured pipes, concrete structures, cables/conduits, vegetation, sky and atmospheric effects.
+- The revised AppKit GPU-family shim was compiled, signed and installed before Run 4. Later runs progressed without the same UE4 texture-view fatal error in the supplied log excerpts. This is encouraging, although I have not established causality with a controlled A/B test.
+- In Run 6, VGC polling logs recorded non-zero analog stick axes. This confirms axis values reached the shim's polling path, not that Unreal applied them to movement or camera control.
+
+### Still unresolved
+
+- The tunnel interior is much darker than the exterior.
+- I have not clearly confirmed the cat in the latest captures.
+- I have not yet demonstrated complete character movement, camera control and action inputs in a sustained gameplay session.
+- Run 6 telemetry samples ranged around 38–56 FPS, with about 2.8 GB app memory, 5.3–5.4 GB available memory and a `fair` thermal state. These are short-run samples, not a benchmark.
+- Landscape captures exist, but I have not completed a deliberate verification of UIKit bounds, `CAMetalLayer.drawableSize`, Unreal viewport dimensions and rotation.
+- Long-session stability, audio and background/foreground behavior still need testing.
+
+## Test environment and method
+
 - MacBook Air M4, 16 GB unified memory.
 - iPhone 17 Pro Max.
-- iOS 27.3 beta was shown in the performance overlay during the recordings.
-- Unreal Engine 4.27-era Mac build.
-- Metal on the iPhone Apple GPU.
-- A PS4 DualShock 4 controller was paired to the iPhone for the latest navigation attempt.
+- The overlay in earlier recordings showed iOS 27.3 beta; I treat that as the OS shown during those captures, not as a verified statement about every later run.
+- Original Unreal Engine 4-era macOS build of Stray.
+- Metal on the iPhone's Apple GPU.
+- PS4 DualShock 4 paired during controller tests.
 
-### Phase G — initial UI
+I distinguish between code changes, builds, installations, runtime configuration experiments and results actually observed on the phone. FPS overlays and short captures are not treated as benchmarks or proof of full playability.
 
-Observed in the phase-G run:
-- Launch succeeds through `devicectl` when supplied with the project path and `-basedir`.
-- The IOKit adapter exposes the GPU descriptor structure Unreal expects, based on the actual iPhone GPU.
-- Unreal passes the previously empty GPU-descriptor path.
-- Targeted Metal hooks translate observed macOS `MTLStorageModeManaged` requests to iOS `Shared`.
-- Metal library loading succeeds in the observed log.
-- Stray displays its autosave warning and brightness-calibration UI.
-- The overlay/log reports roughly 59–62 FPS during parts of this short run. This is not a benchmark.
-- The process exits with status 0 after the app transitions to the background; this was not the earlier Metal validation crash.
+## Technical history
 
-### Follow-up — controller navigation and first scene-load attempt
+- `docs/MILESTONES.md` records the conversion, Metal storage-mode adaptation, initial UI, scene-rendering experiments and Run 6.
+- `docs/METAL-COMPATIBILITY.md` documents the Managed/Shared storage adaptation and the later GPU-family investigation.
+- `docs/RENDERING-FOLLOW-UP.md` records Runs 4–6 and the configuration changes.
+- `docs/DISPLAY-AND-INPUT.md` tracks viewport and controller work.
+- `docs/KNOWN-ISSUES.md` is the current verification matrix.
 
-In a later on-device recording:
-- The user reports that a paired PS4 DualShock 4 controller successfully navigated beyond the brightness-calibration screen and through the UI.
-- The recording shows a Stray menu with Resume, Settings and Quit, followed by a transition into a 3D rendered view.
-- The 3D view is not correct: it is dominated by blue/washed-out surfaces and obvious rendering artifacts. The cat and a recognizable playable scene are not clearly visible, so this is **not yet proof of working gameplay**.
-- The recording's performance overlay shows roughly 19–31 FPS during the captured attempt, around 3.37–3.42 GB of app memory, and approximately 123–184 MB of available memory. These are readings from a short overlay capture, not a controlled benchmark or memory-pressure diagnosis.
-- The recording is portrait (1320 × 2868); it does not demonstrate that landscape/aspect-ratio issues have been fixed.
+## What I will test next
 
-More detail: [gamepad and first scene-load notes](docs/GAMEPAD-AND-FIRST-LOAD.md), [rendering follow-up (Runs 4–6)](docs/RENDERING-FOLLOW-UP.md), and [Metal compatibility](docs/METAL-COMPATIBILITY.md).
+1. Improve tunnel lighting/exposure without breaking the scene that now renders.
+2. Capture an unambiguous view of the cat and confirm it remains visible during play.
+3. Verify DualShock 4 movement, camera and action bindings end-to-end in Unreal, not only at the shim polling layer.
+4. Recheck landscape layout and compare UIKit, Metal drawable and Unreal viewport dimensions.
+5. Run a longer session and record frame time, memory, thermal state, audio and app lifecycle behavior.
 
-## What remains
+## Upstream, attribution and distribution
 
-1. Diagnose direct SpringBoard icon launch (user reports immediate close); missing launch arguments are plausible, not confirmed.
-2. Fix distorted presentation and validate both portrait/landscape sizing by tracing UIKit, `CAMetalLayer.drawableSize`, Unreal viewport dimensions and rotation.
-3. Resolve the dark tunnel interior and verify complete scene rendering, especially the cat and ground; lighting/exposure, depth/culling, materials, shaders, streaming, camera/frustum and resource synchronization still need testing.
-4. Prove actual gameplay: visible character/world, movement, camera and action input using the controller.
-5. Test longer-run stability, thermal behavior, memory, audio and background/foreground lifecycle.
+This work builds on [zorrobyte/macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). See [UPSTREAM.md](UPSTREAM.md) and the upstream [MIT license](https://github.com/zorrobyte/macos-on-ios-public/blob/main/LICENSE). I do not claim authorship of the upstream compatibility framework.
 
-See [known issues](docs/KNOWN-ISSUES.md) and [display/input investigation](docs/DISPLAY-AND-INPUT.md).
-
-## Layout
-
-- `README.md` — English overview
-- `README.es.md` — resumen en español
-- `UPSTREAM.md` — attribution and license boundary
-- `PUBLISHING-SCOPE.md` — what must never be published
-- `CONTRIBUTING.md` — contribution guidelines
-- `docs/ARCHITECTURE.md` — system layers
-- `docs/MILESTONES.md` — observed progress
-- `docs/METAL-COMPATIBILITY.md` — Managed/Shared investigation
-- `docs/DISPLAY-AND-INPUT.md` — orientation and input plan
-- `docs/GAMEPAD-AND-FIRST-LOAD.md` — DualShock 4 and first scene-load attempt
-- `docs/RENDERING-FOLLOW-UP.md` — Runs 4/5 selective-rendering investigation
-- `docs/KNOWN-ISSUES.md` — verification matrix
-- `docs/REDDIT-DRAFT-EN.md` — English post draft
-- `docs/REDDIT-DRAFT-ES.md` — Spanish post draft
-
-## Upstream and attribution
-
-This work builds on [zorrobyte/macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). See [UPSTREAM.md](UPSTREAM.md) and the upstream [MIT license](https://github.com/zorrobyte/macos-on-ios-public/blob/main/LICENSE). This repository does not relicense upstream code or claim ownership of it.
-
-## Safety and distribution
-
-Use only game copies you legitimately own and devices/accounts you control. No Stray executable, PAKs, extracted assets, certificates, provisioning profiles, device identifiers or signed app packages belong here. Do not distribute converted copies of the game.
-
-See [PUBLISHING-SCOPE.md](PUBLISHING-SCOPE.md). This is an unofficial independent experiment, not affiliated with or endorsed by Annapurna Interactive, BlueTwelve Studio, Apple or the upstream maintainer.
+I do not publish Stray's executable, PAK files, extracted assets, converted app bundles, signing material, provisioning profiles, device identifiers or private logs. This is an unofficial independent experiment, not affiliated with or endorsed by Annapurna Interactive, BlueTwelve Studio, Apple or the upstream maintainer.
