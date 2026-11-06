@@ -1,33 +1,39 @@
-# Metal compatibility: macOS Managed storage on iOS
+# Metal compatibility: macOS Managed storage and GPU-family handling
 
-## Observed failure
+I document two separate Metal compatibility investigations here: the original `MTLStorageModeManaged` failure and a later GPU-family/texture-view issue. I do not treat either workaround as universally correct for every resource type or game.
 
-During phase F3, Unreal attempted to create a 3D texture while initializing system textures. The descriptor was assigned `MTLStorageModeManaged` (numeric value 1). The device rejected this mode in `validateWithDevice:`. The observed validation message listed Shared (0), Private (2), and Memoryless (3) as accepted modes.
+## Failure 1 — Managed storage on iOS
 
-## Why the first hooks did not solve it
+During Phase F3, Unreal attempted to create a 3D texture while initializing system textures. The descriptor used `MTLStorageModeManaged` (numeric value 1), and the iPhone rejected that storage mode in `validateWithDevice:`. The validation message listed Shared (0), Private (2) and Memoryless (3) as accepted modes.
 
-The earlier hooks targeted abstract descriptor types. Metal uses concrete runtime implementations such as `MTLTextureDescriptorInternal`, and Unreal's mtlpp wrapper caches method implementations. Intercepting the concrete runtime class was necessary for the calls observed in this build.
+## Why my first hooks did not solve it
+
+My earlier hooks targeted abstract descriptor types. Metal used concrete runtime implementations such as `MTLTextureDescriptorInternal`, and Unreal's mtlpp wrapper cached method implementations. I therefore had to intercept the concrete runtime classes used by the observed calls.
 
 ## Phase-G adaptation
 
-The shim added targeted hooks for concrete texture and heap descriptor classes, device resource creation and relevant buffer/blit operations. Requests whose storage mode is Managed were translated to Shared while preserving other storage modes.
+I added targeted hooks for concrete texture and heap descriptor classes, device resource creation and relevant buffer/blit operations. For the requests I observed using Managed storage, the shim translated the mode to Shared while preserving other storage modes.
 
-The phase-G log confirms texture conversions and calls to a no-op `synchronizeTexture` path, followed by continued rendering and initial game UI.
+The Phase-G log confirms Managed-to-Shared conversions and calls to a no-op `synchronizeTexture` path, followed by continued rendering and the initial Stray interface.
 
-## Important caveat
+## Failure 2 — GPU-family selection and texture views
 
-Managed and Shared are not universally interchangeable across all resource usage patterns or platforms. This result only demonstrates that the observed initialization/rendering path progressed with these adaptations. It does not prove that all CPU/GPU synchronization, resource heaps, readbacks, streaming or later gameplay workloads are correct. Do not broadly force every texture or buffer into Shared.
+In a later Run 3 attempt, UE4 entered a fatal-error loop after Metal rejected a texture view. The source texture was reported as `RGBA8Unorm_sRGB`, while the requested view format was `R8Unorm`. I traced the investigation to UE4's `ToSRGBFormat` path and the shim's `supportsFamily:` interception.
+
+I had tested broad Apple GPU-family suppression and forced Mac-family responses. That approach changed UE4's format-selection behavior and was not safe to treat as a proven fix.
+
+I then revised `ShimSupportsFamily`: I stopped force-claiming `MTLGPUFamilyMac1`, explicitly claimed `MTLGPUFamilyMac2` and allowed the real Metal implementation to answer other GPU-family queries. I compiled, signed and installed the revised `libShim_AppKit.dylib` before Run 4. Runs 4–6 progressed into the level without the same texture-view fatal error appearing in the supplied log excerpts.
+
+This is consistent with the revision mitigating that specific fatal path, but I have not run a controlled A/B test. It does not prove that every texture format or GPU-family feature check is correct.
+
+## Important limitations
+
+- Managed and Shared are not universally interchangeable across every resource usage pattern or platform.
+- My storage-mode result only demonstrates that the observed initialization/rendering path progressed with these adaptations.
+- I have not proven correctness for all CPU/GPU synchronization, resource heaps, readbacks, streaming or later gameplay workloads.
+- I keep the hooks narrowly scoped; I do not force every texture or buffer into Shared.
+- I keep the storage-mode adaptation separate from the GPU-family/texture-view adaptation because they address different observed failures.
 
 ## Current state
 
-The phase-G run no longer shows the earlier `invalid storageMode (1)` validation failure. More extensive gameplay and long-duration tests are required.
-
-## GPU-family and texture-view follow-up
-
-A later Run 3 attempt ended in a UE4 fatal error after a Metal texture-view validation failure: the source texture was reported as `RGBA8Unorm_sRGB`, while the requested view was `R8Unorm`. The investigation traced the call path to UE4's `ToSRGBFormat` logic and the shim's `supportsFamily:` interception. Earlier experiments that suppressed broad Apple GPU-family ranges and forced Mac-family responses changed UE4's format-selection path and were not safe to treat as a proven fix.
-
-The shim was then revised: it stopped force-claiming `MTLGPUFamilyMac1`, explicitly claimed `MTLGPUFamilyMac2`, and allowed the real Metal implementation to answer other family queries. The revised `libShim_AppKit.dylib` was compiled, signed, and installed on the iPhone before Run 4. Runs 4–6 subsequently progressed into the level without the same texture-view fatal error appearing in the supplied excerpts.
-
-This is encouraging evidence that the revised family reporting mitigated the specific fatal path, but the transcript does not show a controlled A/B test, and it does not prove all texture formats or GPU-family feature checks are correct. Keep this hook narrowly scoped and validate additional texture/view formats before generalizing the result.
-
-This issue is distinct from the earlier `MTLStorageModeManaged` → `Shared` adaptation. Both compatibility changes are required in the current observed path, but their correctness across all gameplay workloads remains unproven.
+The Phase-G run no longer showed the earlier `invalid storageMode (1)` validation failure. The revised GPU-family hook was installed before Run 4, and the same texture-view fatal error does not appear in the supplied Run 4–6 excerpts. I still need broader gameplay and long-duration tests before claiming that Metal compatibility is complete.
