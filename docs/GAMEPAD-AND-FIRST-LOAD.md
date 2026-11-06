@@ -54,3 +54,11 @@ I have also since confirmed that I can open Stray directly from its iOS Home Scr
 4. Capture a clear frame showing the cat in the level.
 5. Monitor memory, frame time, thermal state and app lifecycle during a longer session.
 6. Keep the Metal compatibility hooks unchanged unless new evidence identifies a specific fault.
+
+## Current manual gameplay confirmation — 6 November 2026
+
+I have now manually confirmed that the gameplay controls respond correctly in the current iPhone build. I can run, jump, meow and trigger other actions, and the game continues progressing through its sequence even though the cat is not visible in the rendered image.
+
+This corrects the earlier test status above: the older VGC log samples were insufficient on their own to prove the controls, but my direct in-game test now confirms the actions work. I no longer consider input mapping a current blocker. I should preserve the working control path and avoid changing it while investigating rendering.
+
+The remaining issue is visual: the cat's mesh is missing from the image, other game objects are still absent or incomplete, and lighting/exposure remains poor. See [RENDERING-FOLLOW-UP.md](RENDERING-FOLLOW-UP.md) for the Run 9 configuration test.
