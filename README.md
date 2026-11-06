@@ -4,7 +4,7 @@
 >
 > This repository documents a personal compatibility experiment based on [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). It is a research log, not a game port, installer, or claim of full playability.
 
-**Latest verified milestone: Stray reaches its initial brightness calibration, its UI can be navigated with a paired PS4 DualShock 4 controller, and a subsequent load/resume attempt renders a 3D scene — but that scene is visibly corrupted and gameplay is not yet confirmed.**
+**Latest experiment: Stray reaches its menus and enters a 3D level on the iPhone. Runs 4/5 render selected textured pipework and structural geometry, but most of the scene remains black and the cat/ground/walls are not clearly visible in the latest captures. Gameplay is not yet verified.**
 
 [En español](README.es.md) · [Technical timeline](docs/MILESTONES.md) · [Architecture](docs/ARCHITECTURE.md) · [Known issues](docs/KNOWN-ISSUES.md)
 
@@ -47,7 +47,7 @@ In a later on-device recording:
 - The recording's performance overlay shows roughly 19–31 FPS during the captured attempt, around 3.37–3.42 GB of app memory, and approximately 123–184 MB of available memory. These are readings from a short overlay capture, not a controlled benchmark or memory-pressure diagnosis.
 - The recording is portrait (1320 × 2868); it does not demonstrate that landscape/aspect-ratio issues have been fixed.
 
-More detail: [gamepad and scene-load notes](docs/GAMEPAD-AND-FIRST-LOAD.md).
+More detail: [gamepad and first scene-load notes](docs/GAMEPAD-AND-FIRST-LOAD.md) and the [latest rendering follow-up](docs/RENDERING-FOLLOW-UP.md).
 
 ## What remains
 
@@ -71,6 +71,7 @@ See [known issues](docs/KNOWN-ISSUES.md) and [display/input investigation](docs/
 - `docs/METAL-COMPATIBILITY.md` — Managed/Shared investigation
 - `docs/DISPLAY-AND-INPUT.md` — orientation and input plan
 - `docs/GAMEPAD-AND-FIRST-LOAD.md` — DualShock 4 and first scene-load attempt
+- `docs/RENDERING-FOLLOW-UP.md` — Runs 4/5 selective-rendering investigation
 - `docs/KNOWN-ISSUES.md` — verification matrix
 - `docs/REDDIT-DRAFT-EN.md` — English post draft
 - `docs/REDDIT-DRAFT-ES.md` — Spanish post draft
