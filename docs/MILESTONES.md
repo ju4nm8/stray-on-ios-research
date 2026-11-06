@@ -67,3 +67,35 @@ These are readings from the device overlay in one short recording, not a control
 ## Next investigation
 
 See [KNOWN-ISSUES.md](KNOWN-ISSUES.md), [DISPLAY-AND-INPUT.md](DISPLAY-AND-INPUT.md), and [GAMEPAD-AND-FIRST-LOAD.md](GAMEPAD-AND-FIRST-LOAD.md).
+
+## Rendering follow-up — Runs 4 and 5 (5 November 2026)
+
+The next on-device iterations reached the level again, but the scene remained only partially visible.
+
+### Run 4 — selective geometry
+
+A physical-device screenshot (2868 × 1320) was captured after entering the level. The visible image contained textured pipework and related environmental geometry against a largely black background. The cat, ground and surrounding walls were not clearly visible in that capture.
+
+This is evidence that some scene objects and their materials can be drawn; it is not evidence that the full level or its lighting/rendering path is correct.
+
+### Run 5 — runtime Early Z experiment
+
+For the next attempt, the runtime `Engine.ini` configuration was changed to set `r.EarlyZPass=2`. The updated configuration was copied to the installed app's data container, and Stray was relaunched. The app reached the level again, including an autosave notification, but the subsequent capture still showed only selected pipe/structural elements against a predominantly black scene. This single test did **not** restore the missing environment.
+
+The Run 5 log also records:
+- the four observed core project PAK chunks (`pakchunk0` and the `_s1`, `_s2`, `_s3` variants) opening successfully;
+- repeated Metal render-encoder creation and command buffers completing successfully during the sampled interval;
+- one telemetry sample around 54 FPS, about 2.67 GB app memory, about 5.52 GB available memory, one reported controller, and nominal thermal state.
+
+These are observations from a short run, not a benchmark. The memory sample does not indicate an obvious memory shortage at that moment. Successful PAK opens do not prove that every required asset was found, loaded, or rendered.
+
+### Interpretation and limits
+
+- The Metal rendering path is active; this is not a complete failure to submit/render frames.
+- Some 3D geometry and textured surfaces are visible.
+- The latest Run 4/5 captures do not show the cat or a complete recognizable environment.
+- Setting `r.EarlyZPass=2` did not visibly resolve the problem in Run 5. This does not prove that Early Z is irrelevant; it only means this isolated runtime change was insufficient.
+- No root cause has been established. Lighting/exposure, depth/prepass behavior, culling/LOD, mesh type, material permutations, camera/frustum and scene streaming remain hypotheses to test, not diagnoses.
+- This iteration changed a runtime configuration file; the transcript does not show a new source-code fix being compiled and installed during Runs 4/5.
+
+See [rendering follow-up notes](RENDERING-FOLLOW-UP.md) for the test sequence and next discriminating checks.
