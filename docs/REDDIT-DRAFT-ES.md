@@ -1,21 +1,20 @@
 # Borrador para Reddit — r/macgaming
 
-**Título:** Conseguí que la build original de Stray para macOS llegue a la calibración de brillo en un iPhone 17 Pro Max
+**Título:** Ya puedo abrir la build original de Stray para macOS desde el icono de iOS en un iPhone 17 Pro Max
 
-Estoy experimentando con el trabajo de compatibilidad macOS-en-iOS de [zorrobyte/macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public), probándolo con la build original de Stray para macOS Apple Silicon.
+Estoy experimentando con el trabajo de compatibilidad macOS-en-iOS de [zorrobyte/macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public), usando la build original de Stray para macOS Apple Silicon.
 
-Después de trabajar en rutas del bundle y recursos, detección de plataforma Mac de Unreal, el descriptor de GPU mediante IOKit y una diferencia entre los modos de almacenamiento Metal de macOS e iOS, conseguí que el juego renderice el aviso de autosave y la interfaz de calibración de brillo en un iPhone 17 Pro Max.
+He trabajado en las rutas del bundle y los recursos, la detección de plataforma Mac de Unreal, el descubrimiento de GPU mediante IOKit y varios problemas de compatibilidad con Metal. Ahora puedo abrir Stray directamente desde su icono en la pantalla de inicio de iOS y llegar a un túnel 3D reconocible en mi iPhone 17 Pro Max.
 
-Algunas observaciones:
-- Unreal llega a la interfaz inicial de Stray.
-- El log de fase G muestra carga de una biblioteca Metal y conversiones de descriptores de texturas de Managed a Shared.
-- El overlay/log reportó alrededor de 59–62 FPS durante parte de una sesión corta.
-- La presentación horizontal está deformada.
-- UIKit recibe eventos táctiles, pero la entrada funcional dentro del gameplay no está demostrada.
-- Abrir desde el icono de SpringBoard se cierra; el lanzamiento exitoso utilizó argumentos desde Terminal.
+El resultado todavía está incompleto:
+- El túnel se ve, con tuberías texturizadas, estructuras de concreto, cables, vegetación, cielo y efectos atmosféricos.
+- El interior del túnel sigue demasiado oscuro.
+- Todavía no he confirmado claramente al gato en las capturas más recientes.
+- Mis logs de VGC muestran que los valores de los sticks llegan al shim, pero aún no he verificado el movimiento del personaje, la cámara ni los botones de acción dentro de Unreal.
+- Las muestras cortas de Run 6 variaron aproximadamente entre 38 y 56 FPS. No son resultados de benchmark.
 
-Para ser claro: **todavía no es jugable**, no es un port de iOS y no estoy distribuyendo el juego ni sus recursos. Estoy documentando el trabajo de compatibilidad y los problemas pendientes.
+Esto **no significa que Stray ya sea completamente jugable**, no es un port nativo de iOS y no estoy distribuyendo el juego ni sus recursos. Estoy documentando el trabajo de compatibilidad y los problemas de ingeniería que todavía faltan por resolver.
 
 Bitácora: https://github.com/ju4nm8/stray-on-ios-research
 
-Me interesan opiniones de gente que conozca el Metal RHI de Unreal para Mac, el tamaño de vistas UIKit/CAMetalLayer o la integración de controles.
+Me interesan opiniones de personas que conozcan el Metal RHI de Unreal para Mac, el tamaño de vistas UIKit/CAMetalLayer, las variantes de shaders o la integración de controles mediante GameController.
