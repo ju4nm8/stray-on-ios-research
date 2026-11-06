@@ -99,3 +99,18 @@ These are observations from a short run, not a benchmark. The memory sample does
 - This iteration changed a runtime configuration file; the transcript does not show a new source-code fix being compiled and installed during Runs 4/5.
 
 See [rendering follow-up notes](RENDERING-FOLLOW-UP.md) for the test sequence and next discriminating checks.
+## Run 6 — improved tunnel rendering and input telemetry (5 November 2026)
+
+After Runs 4/5, the runtime configuration was simplified in `Engine_clean.ini`: most earlier renderer overrides were removed so UE4 could use its normal defaults, with a small number of occlusion-related settings retained. The file was copied to the installed app's data container. The revised AppKit runtime shim used for this run had already been compiled, signed and installed in the Run 3 iteration; Run 6 itself was a configuration test, not a new code build.
+
+Run 6 screenshots (2868 × 1320) showed a more recognizable tunnel environment: tunnel opening and sky/atmospheric effects, concrete walls, pipes, a valve wheel, cables/conduits, vines and textured pipework with rust/moss detail. The interior remained very dark. The cat was not clearly identified in the screenshot descriptions.
+
+The VGC polling log reports one controller and non-zero analog stick axes during user input, while sampled `buttonsMask` values remained `0x0000`. This proves axis values reached the polling path, not that character movement, camera response or button actions worked in-game.
+
+Telemetry samples ranged around 38–56 FPS, with about 2.8 GB app memory, 5.3–5.4 GB available memory and a `fair` thermal state. These are short-run samples, not a benchmark. The last visible task status in the transcript remained running, so long-session stability is not established.
+
+The updated GPU-family hook had been revised after the Run 3 texture-view fatal error, built, signed and installed before Run 4. It no longer force-claims Mac1 and explicitly claims Mac2 while forwarding other queries to Metal. The later excerpts do not show recurrence of the same fatal error, but no controlled A/B test proves causality.
+
+Run 6 is a meaningful visual improvement over Runs 4/5, but full gameplay remains unverified: the cat is not clearly visible, the effect of analog input on the character is not proven, and the tunnel interior remains too dark.
+
+See [RENDERING-FOLLOW-UP.md](RENDERING-FOLLOW-UP.md) for screenshots, configuration context and detailed limitations.
