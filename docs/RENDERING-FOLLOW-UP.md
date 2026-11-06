@@ -105,3 +105,20 @@ The evidence narrows the problem to the skeletal/dynamic-mesh rendering path whi
 - Cat visibility remains unverified; the first Phase J1 screenshot was initially read as showing the cat/backpack, but later captures did not corroborate that reading.
 - Controller HUD visibility and a single button-mask transition are not proof of working gameplay controls.
 - The transcript ends during the Run 8 investigation with a task still running and an Antigravity out-of-credits indicator. There is no final end-to-end gameplay result in this log.
+
+
+## Run 9 — Early Z, stencil dithering and subsurface test
+
+I created `Engine_run9.ini` to test a combined renderer configuration: `r.EarlyZPass=1`, stencil-for-LOD-dither changes, subsurface scattering quality and GPU skin-cache-related settings. I copied the file into the app data container and relaunched the existing installed build. No new source-code build is recorded for this run.
+
+The log showed Metal render encoders and completed command buffers. One short telemetry sample reported about 62 FPS, 1426 MB app memory, 6766 MB available memory, one controller and nominal thermal state. This is not a sustained benchmark.
+
+I saved a landscape screenshot at 2868 × 1320 using `devicectl`. The later macOS `screencapture` attempt failed with “could not create image from display.” I tried converting the saved image to BMP and inspecting it with a simple pixel/ASCII script, but the transcript ends before a reliable diagnosis or a controlled visual comparison is recorded.
+
+## Manual gameplay and current rendering state — 6 November 2026
+
+I manually confirmed that the gameplay controls work: I can run, jump, meow and trigger other actions, and continue progressing through the game's sequence even though the cat is not visible in the rendered image. Input/gameplay response is therefore not the current blocker. I should preserve the existing control implementation unless a reproducible input regression appears.
+
+The remaining problem is visual completeness. The cat mesh is absent from the image, a substantial amount of scene content is missing or incorrectly rendered, and lighting/exposure problems remain obvious. Rendering has improved incrementally between runs, but the scene is still visually poor compared with the intended game.
+
+The Run 9 configuration did not produce a documented, verified fix before the transcript snapshot. Antigravity's final state in the supplied record shows the Run 9 launch/log command still running and an “out of credits” indicator. The next work should focus on isolating the missing mesh/asset rendering and lighting defects, not re-testing controls that already work.
