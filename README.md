@@ -4,7 +4,7 @@
 >
 > This repository documents a personal compatibility experiment based on [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). It is a research log, not a game port, installer, or claim of full playability.
 
-**Latest experiment: Stray reaches its menus and enters a 3D level on the iPhone. Runs 4/5 render selected textured pipework and structural geometry, but most of the scene remains black and the cat/ground/walls are not clearly visible in the latest captures. Gameplay is not yet verified.**
+**Latest experiment: Run 6 reaches a recognizable 3D tunnel environment with textured pipes, concrete structures, cables, vines, sky and atmospheric effects. The tunnel interior remains very dark, the cat is not clearly confirmed, and controller stick values are observed at the shim but actual in-game movement/actions are not yet verified.**
 
 [En español](README.es.md) · [Technical timeline](docs/MILESTONES.md) · [Architecture](docs/ARCHITECTURE.md) · [Known issues](docs/KNOWN-ISSUES.md)
 
@@ -47,13 +47,13 @@ In a later on-device recording:
 - The recording's performance overlay shows roughly 19–31 FPS during the captured attempt, around 3.37–3.42 GB of app memory, and approximately 123–184 MB of available memory. These are readings from a short overlay capture, not a controlled benchmark or memory-pressure diagnosis.
 - The recording is portrait (1320 × 2868); it does not demonstrate that landscape/aspect-ratio issues have been fixed.
 
-More detail: [gamepad and first scene-load notes](docs/GAMEPAD-AND-FIRST-LOAD.md) and the [latest rendering follow-up](docs/RENDERING-FOLLOW-UP.md).
+More detail: [gamepad and first scene-load notes](docs/GAMEPAD-AND-FIRST-LOAD.md), [rendering follow-up (Runs 4–6)](docs/RENDERING-FOLLOW-UP.md), and [Metal compatibility](docs/METAL-COMPATIBILITY.md).
 
 ## What remains
 
 1. Diagnose direct SpringBoard icon launch (user reports immediate close); missing launch arguments are plausible, not confirmed.
 2. Fix distorted presentation and validate both portrait/landscape sizing by tracing UIKit, `CAMetalLayer.drawableSize`, Unreal viewport dimensions and rotation.
-3. Diagnose the corrupted 3D view: materials, shaders, texture streaming, render targets, lighting, camera/frustum and resource synchronization all remain candidates, not confirmed causes.
+3. Resolve the dark tunnel interior and verify complete scene rendering, especially the cat and ground; lighting/exposure, depth/culling, materials, shaders, streaming, camera/frustum and resource synchronization still need testing.
 4. Prove actual gameplay: visible character/world, movement, camera and action input using the controller.
 5. Test longer-run stability, thermal behavior, memory, audio and background/foreground lifecycle.
 
