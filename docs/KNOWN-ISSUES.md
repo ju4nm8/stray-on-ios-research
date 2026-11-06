@@ -1,30 +1,36 @@
 # Known issues and verification status
 
+I update this matrix when I have new evidence from the physical iPhone. I keep successful launch, correct rendering, working controls and long-session stability as separate claims.
+
 | Item | Current observation | Status |
 |---|---|---|
-| Direct icon launch | User reports immediate close from SpringBoard | Not diagnosed |
-| Landscape presentation | Image/UI visibly stretched in earlier capture | Issue confirmed; root cause unknown |
-| Portrait presentation | Latest recording is 1320 × 2868 portrait | Observed; correctness not assessed |
-| UIKit touch input | Phase-G log contains touch-began entries | Receipt confirmed; gameplay mapping unverified |
-| PS4 DualShock 4 | One controller reported; Run 6 VGC logs show non-zero left/right stick axes, but sampled `buttonsMask` is `0x0000` | Menu navigation reported working; axis values reach polling, in-game movement/camera response and button actions not verified |
-| 3D scene rendering | Run 6 captures show a more recognizable tunnel: textured pipes, concrete structure, cables/conduits, vines, sky and atmospheric effects; tunnel interior remains very dark and cat is not clearly identified | Material visual improvement; lighting and complete scene correctness still unresolved |
-| Main menu | Latest recording shows Resume / Settings / Quit | Menu visible; exact game state not independently established |
-| Gameplay | Run 6 shows a recognizable tunnel environment and non-zero controller stick axes at the shim; cat visibility and actual movement/action response are not demonstrated | Not verified |
-| Performance | Earlier controller recording showed roughly 19–31 FPS; Run 5 sampled about 54 FPS; Run 6 samples varied around 38–56 FPS | Short, non-comparable samples only; not benchmarked |
-| Memory | Earlier controller capture showed app around 3.37–3.42 GB and 123–184 MB available; Run 5 about 2.67 GB / 5.52 GB available; Run 6 about 2.8 GB / 5.3–5.4 GB available | Varies by run; no memory-pressure diagnosis from these samples |
-| Metal rendering/storage | Phase-G hooks translate observed Managed requests to Shared; revised GPU-family hook was built/signed/installed before Run 4; later Runs 4–6 progress without the same texture-view fatal in the supplied excerpts | Rendering path active; hook is a plausible mitigation, but no controlled A/B proof |
-| Audio | No structured test recorded | Not tested |
-| Long-session stability | Short recordings only | Not tested |
-| Background/foreground | Earlier app transitioned to background and process ended with status 0; latest clip ends at Home Screen | No crash cause established |
+| Direct icon launch | I successfully opened Stray directly from its iOS Home Screen icon on 6 November 2026. | **Confirmed working** in the current setup; long-session stability is a separate test. |
+| Command-line launch | Earlier successful launches supplied the project path and `-basedir`. | Historical launch method; no longer the only working entry point. |
+| Landscape presentation | Earlier captures showed stretched/compressed UI. Run 4–6 screenshots are landscape (2868 × 1320), but I have not completed a deliberate geometry/aspect-ratio verification. | Historical distortion observed; current correctness not fully verified. |
+| Portrait presentation | An earlier controller recording was captured at 1320 × 2868. | Observed; not a current target-mode validation. |
+| UIKit touch input | Phase-G logs contain touch-began entries. | Receipt confirmed; gameplay mapping not verified. |
+| PS4 DualShock 4 | I navigated the menus with the controller. Run 6 VGC logs show non-zero stick axes, while sampled `buttonsMask` values are `0x0000`. | Menu navigation confirmed; in-game movement, camera response and action buttons not yet confirmed. |
+| 3D scene rendering | Run 6 captures show a recognizable tunnel with textured pipes, concrete structures, cables/conduits, vines, sky and atmospheric effects. The interior remains very dark. | Major visual improvement; lighting and complete scene correctness remain unresolved. |
+| Cat visibility | I have not clearly identified the cat in the latest screenshot descriptions. | Not verified. |
+| Main menu | Earlier captures show Resume / Settings / Quit. | Menu reached in earlier tests. |
+| Gameplay | I can reach a 3D level, but I have not yet demonstrated the visible cat moving and responding to camera/action controls through a complete gameplay segment. | Not yet verified. |
+| Performance | Run 5 sampled about 54 FPS; Run 6 samples varied around 38–56 FPS. | Short, non-comparable samples only; not benchmarked. |
+| Memory | Run 6 samples showed about 2.8 GB app memory and 5.3–5.4 GB available memory. Earlier tests differed. | Varies by run; no memory-pressure diagnosis from these samples. |
+| Metal rendering/storage | Phase-G hooks translate observed Managed requests to Shared. The revised GPU-family hook was built/signed/installed before Run 4; Runs 4–6 progressed without the same texture-view fatal error in the supplied excerpts. | Rendering path active; the exact causal effect of the family hook is not proven by a controlled A/B test. |
+| Audio | I have not completed a structured audio test. | Not tested. |
+| Long-session stability | The available runs are short, and the Run 6 transcript ended while logging was still running. | Not tested. |
+| Background/foreground | An earlier run ended after moving to the background; the latest icon-launch confirmation does not include a lifecycle test. | Not verified. |
 
-Update this file only when new evidence exists. Include device/OS version, steps, redacted logs and whether a result is implemented, built, installed or verified on-device.
+## Configuration history
 
-## Latest rendering experiment
+- Run 5 tested `r.EarlyZPass=2`; the visible scene remained mostly black.
+- Run 6 used `Engine_clean.ini`, removing most experimental renderer overrides and restoring more of UE4's normal renderer defaults.
+- The revised `ShimSupportsFamily` implementation was compiled, signed and installed before Run 4. Later logs do not show the same Run 3 texture-view fatal error, but I have not established causality with an A/B test.
 
-Run 5 tested runtime `r.EarlyZPass=2` after copying the updated configuration to the installed app's data container. The level loaded to the same broad visual failure: only selected pipe/structural elements were apparent against a mostly black scene. The test did not establish Early Z as the root cause or eliminate it as a contributing factor. See [RENDERING-FOLLOW-UP.md](RENDERING-FOLLOW-UP.md).
+## Next verification steps
 
-## Run 6 update
-
-Run 6 deployed a cleaner `Engine_clean.ini` configuration intended to remove most experimental renderer overrides and restore UE4 defaults. Captures show a substantially more recognizable tunnel environment, with the interior still very dark. VGC logs show non-zero analog stick axes but a zero sampled button mask; input effect on character/camera is not proven. FPS samples ranged around 38–56 with a `fair` thermal state. See [RENDERING-FOLLOW-UP.md](RENDERING-FOLLOW-UP.md).
-
-The revised GPU-family shim was compiled, signed and installed before Run 4. The Run 3 texture-view fatal error does not recur in the excerpts for Runs 4–6, but causality is not proven by an isolated test.
+1. Improve tunnel exposure/lighting while preserving the geometry now visible.
+2. Capture a frame where the cat is clearly visible.
+3. Record stick axes and button transitions alongside visible character/camera response.
+4. Validate UIKit bounds, `CAMetalLayer.drawableSize`, Unreal viewport and rotation in landscape.
+5. Run a longer test and collect frame-time, memory, thermal, audio and lifecycle evidence.
