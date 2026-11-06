@@ -4,7 +4,7 @@
 >
 > I am documenting a personal compatibility experiment based on [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). This is an engineering log, not a native iOS port, installer or claim that the game is fully playable.
 
-**Latest update — 6 November 2026:** I can now open Stray directly from its iOS Home Screen icon. Run 6 also reached a recognizable 3D tunnel environment with textured pipes, concrete structures, cables, vegetation, visible sky and atmospheric effects. The tunnel interior remains very dark, and I have not yet verified the cat and complete gameplay. The earlier direct-icon launch problem is no longer current.
+**Latest update — 6 November 2026:** I can open Stray directly from its iOS Home Screen icon. In the latest Antigravity session, the app was re-signed, installed and launched on the physical iPhone; Metal command buffers completed and screenshots showed a live 3D level. Runs 7–8 still did not clearly show the cat. The current blocker is skeletal-character rendering, not app launch or basic static-scene rendering.
 
 [En español](README.es.md) · [Technical timeline](docs/MILESTONES.md) · [Architecture](docs/ARCHITECTURE.md) · [Known issues](docs/KNOWN-ISSUES.md)
 
@@ -22,6 +22,8 @@ This is **not** a native iOS port, a redistribution of Stray, a DRM bypass or pr
 
 - I can launch Stray from its iOS Home Screen icon. I no longer consider direct icon launch a current blocker.
 - The app has reached the Stray menus and loaded into a 3D level on the physical iPhone 17 Pro Max.
+- In the latest session, Metal render encoders and command buffers were active on-device; the Run 8 log sampled about 40 FPS, 3.0 GB app memory, 5.2 GB available memory and nominal thermal state. This is a short sample, not a benchmark.
+- Run 7 showed a detailed courtyard/tunnel environment and a brief controller button-mask transition (`0x0001`); this does not prove a working in-game action.
 - Run 6 captures show a recognizable tunnel environment with textured pipes, concrete structures, cables/conduits, vegetation, sky and atmospheric effects.
 - The revised AppKit GPU-family shim was compiled, signed and installed before Run 4. Later runs progressed without the same UE4 texture-view fatal error in the supplied log excerpts. This is encouraging, although I have not established causality with a controlled A/B test.
 - In Run 6, VGC polling logs recorded non-zero analog stick axes. This confirms axis values reached the shim's polling path, not that Unreal applied them to movement or camera control.
@@ -29,7 +31,8 @@ This is **not** a native iOS port, a redistribution of Stray, a DRM bypass or pr
 ### Still unresolved
 
 - The tunnel interior is much darker than the exterior.
-- I have not clearly confirmed the cat in the latest captures.
+- I have not confirmed the cat's skeletal mesh in the latest captures. The first Phase J1 screenshot was initially interpreted as showing the cat/backpack, but later captures and deeper review did not corroborate that interpretation; I therefore keep cat visibility unverified.
+- The latest investigation points toward a failure specific to skeletal meshes (and possibly the attached GFur component) while static level geometry renders. GPU skinning, material/shading and dynamic scene-proxy behavior are still hypotheses, not a proven root cause.
 - I have not yet demonstrated complete character movement, camera control and action inputs in a sustained gameplay session.
 - Run 6 telemetry samples ranged around 38–56 FPS, with about 2.8 GB app memory, 5.3–5.4 GB available memory and a `fair` thermal state. These are short-run samples, not a benchmark.
 - Landscape captures exist, but I have not completed a deliberate verification of UIKit bounds, `CAMetalLayer.drawableSize`, Unreal viewport dimensions and rotation.
@@ -56,9 +59,9 @@ I distinguish between code changes, builds, installations, runtime configuration
 
 ## What I will test next
 
-1. Improve tunnel lighting/exposure without breaking the scene that now renders.
-2. Capture an unambiguous view of the cat and confirm it remains visible during play.
-3. Verify DualShock 4 movement, camera and action bindings end-to-end in Unreal, not only at the shim polling layer.
+1. Resolve skeletal-mesh rendering and make the cat clearly visible; validate any GFur fallback separately.
+2. Improve tunnel lighting/exposure without regressing static geometry.
+3. Verify DualShock 4 movement, camera and action bindings end-to-end in Unreal, not only from button-mask or axis logs.
 4. Recheck landscape layout and compare UIKit, Metal drawable and Unreal viewport dimensions.
 5. Run a longer session and record frame time, memory, thermal state, audio and app lifecycle behavior.
 
