@@ -1,47 +1,56 @@
 # Gamepad navigation and first scene-load attempt
 
-## What the user tested
+I keep this note as the record of my first controller-assisted attempt to move from Stray's menus into a 3D level. Runs 4–6 and the later direct-icon launch update supersede some of the early visual/launch limitations described below.
 
-The user paired a PS4 DualShock 4 controller with the iPhone and reports that this made it possible to proceed beyond Stray's brightness-calibration screen and navigate the UI.
+## Earlier controller-assisted recording
 
-The supplied 28-second screen recording:
-- is captured at 1320 × 2868 in portrait orientation;
-- begins on a Stray menu showing Resume, Settings and Quit;
-- shows a transition through a dark interval;
-- then shows a rendered 3D view dominated by blue/washed-out surfaces and visible artifacts;
-- ends at the iOS Home Screen.
+I paired a PS4 DualShock 4 with the iPhone and used it to proceed beyond Stray's brightness-calibration screen and navigate the UI.
 
-The recording does not establish whether the app was intentionally backgrounded or crashed at the end.
+My 28-second recording:
+- was captured at 1320 × 2868 in portrait orientation;
+- began on a Stray menu showing Resume, Settings and Quit;
+- showed a transition through a dark interval;
+- then showed a 3D view dominated by blue/washed-out surfaces and visible artifacts;
+- ended at the iOS Home Screen.
 
-## Performance overlay observations
+That recording alone did not establish whether I intentionally backgrounded the app or whether it crashed at the end.
 
-Across sampled moments in this short recording, the overlay reports approximately:
+## Performance overlay in that earlier recording
+
+Across sampled moments, the overlay showed approximately:
 - 19–31 FPS;
 - 3.37–3.42 GB app memory;
 - 123–184 MB available memory.
 
-These values are transcribed from the device overlay and should not be treated as a controlled benchmark or a definitive memory-pressure diagnosis. The available-memory figures are low enough to warrant careful monitoring during subsequent scene loading.
+These were short overlay readings, not a controlled benchmark or a definitive memory-pressure diagnosis. The low available-memory figures made it important to monitor memory during subsequent scene loading.
 
-## What this proves
+## What I established at that stage
 
-- A physical DualShock 4 was used successfully for menu navigation, according to the user.
-- The app progresses beyond the brightness-calibration UI.
-- The rendering path presents a 3D-looking image after the menu/transition, rather than only the earlier calibration UI.
+- I could use a paired physical DualShock 4 to navigate the menus.
+- I could progress beyond the brightness-calibration UI.
+- The rendering path produced a 3D-looking image after the menu transition.
 
-## What it does not prove
+## What that early recording did not establish
 
-- The 3D scene is correctly loaded or rendered.
-- The cat character is visible and controllable.
-- Movement, camera and action inputs work during gameplay.
-- The app is stable under a longer session.
-- Landscape rendering or aspect ratio is fixed.
+- correct 3D scene rendering;
+- a clearly visible and controllable cat;
+- movement, camera and action inputs during gameplay;
+- long-session stability;
+- correct landscape rendering or aspect ratio.
+
+## What later tests changed
+
+Run 6 improved the visible scene substantially: I captured a recognizable tunnel environment with textured pipework, concrete structure, cables/conduits, vines, sky and atmospheric effects. The interior remained dark, and the cat was not clearly identified in the available screenshot descriptions.
+
+Run 6 VGC polling logs recorded non-zero left/right stick axes, proving that analog values reached the shim polling path. However, sampled `buttonsMask` values remained `0x0000`, and I have not yet demonstrated the resulting character movement, camera response or action bindings inside Unreal.
+
+I have also since confirmed that I can open Stray directly from its iOS Home Screen icon. The earlier direct-launch failure is no longer current.
 
 ## Next tests
 
-1. Capture a fresh console log for the same controller-assisted run.
-2. Confirm the app process termination reason when leaving the game.
-3. Record controller connection state and GameController callbacks.
-4. Identify which menu actions are received and whether Unreal reports a connected controller.
-5. Inspect the first scene's shader libraries, pipeline state creation, material permutations, texture streaming, render targets, depth and post-processing.
-6. Monitor memory and frame time continuously while entering the scene.
-7. Keep the current Metal compatibility hooks unchanged until the new rendering evidence identifies a specific fault.
+1. Capture a fresh controller-assisted session and match the input log to visible movement on screen.
+2. Verify the controller's face buttons, triggers, sticks and D-pad individually.
+3. Confirm that Unreal recognizes the controller and that the game applies the values to the intended actions.
+4. Capture a clear frame showing the cat in the level.
+5. Monitor memory, frame time, thermal state and app lifecycle during a longer session.
+6. Keep the Metal compatibility hooks unchanged unless new evidence identifies a specific fault.
