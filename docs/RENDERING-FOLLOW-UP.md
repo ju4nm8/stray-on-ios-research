@@ -76,3 +76,32 @@ I have since successfully opened Stray directly from its iOS Home Screen icon. T
 5. Run a longer session and record frame time, memory, thermal state, audio and app lifecycle behavior.
 
 See [KNOWN-ISSUES.md](KNOWN-ISSUES.md), [METAL-COMPATIBILITY.md](METAL-COMPATIBILITY.md) and [DISPLAY-AND-INPUT.md](DISPLAY-AND-INPUT.md).
+
+## Runs 7–8 and Phase J follow-up — 5 November 2026
+
+### Run 7 — 3D level and input polling
+
+Run 7 captures showed a rainy courtyard and a more detailed tunnel/corridor with pipes, textured walls, rust/moss detail and interaction prompts. The level's static geometry was clearly present, but the cat's skeletal mesh was not clearly visible in the reviewed gameplay captures.
+
+A short VGC polling sample changed from `buttonsMask=0x0000` to `buttonsMask=0x0001`. This is evidence that a button bit reached the shim polling path; it is not proof that Unreal performed the associated action. The screenshot HUD reported roughly 59 FPS, but that single sample does not establish sustained performance.
+
+### Run 8 — GPU skin-cache configuration experiment
+
+I created `Engine_run8.ini` with GPU skin-cache-related renderer settings and copied it into the installed app's data container as `Library/Preferences/Stray/MacNoEditor/Engine.ini`. I relaunched the existing app without a documented new source-code build.
+
+The log showed Metal render-encoder creation and completed command buffers. A telemetry sample reported approximately 40 FPS, 3025 MB app memory, 5167 MB available memory and nominal thermal state. The screenshot showed static industrial geometry (including a prominent orange pipe, concrete structures, vegetation and fog), but did not clearly show the cat.
+
+**Result:** the Run 8 configuration did not verify that the cat or other skeletal meshes had been restored.
+
+### Skeletal-mesh investigation
+
+I inspected the original PAK contents and found the cat mesh/material assets, relevant map references and GFur plugin metadata. I also inspected symbols and code paths associated with `USkeletalMeshComponent`, `FSkeletalMeshSceneProxy`, `UGFurComponent` and `FFurSceneProxy`.
+
+The evidence narrows the problem to the skeletal/dynamic-mesh rendering path while static geometry renders. GPU skinning configuration, masked/subsurface material behavior and GFur are candidates for controlled tests. I have not isolated a definitive cause or implemented a verified rendering fix.
+
+### Phase J status
+
+- Metal continues rendering a live 3D level on the iPhone.
+- Cat visibility remains unverified; the first Phase J1 screenshot was initially read as showing the cat/backpack, but later captures did not corroborate that reading.
+- Controller HUD visibility and a single button-mask transition are not proof of working gameplay controls.
+- The transcript ends during the Run 8 investigation with a task still running and an Antigravity out-of-credits indicator. There is no final end-to-end gameplay result in this log.
