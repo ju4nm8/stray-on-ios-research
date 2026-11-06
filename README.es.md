@@ -4,7 +4,7 @@
 >
 > Este repositorio documenta un experimento personal de compatibilidad basado en [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). Es una bitácora técnica, no un port, instalador ni una afirmación de que el juego ya sea completamente jugable.
 
-**Último experimento: Stray llega a los menús y entra en un nivel 3D en el iPhone. Las pruebas 4/5 renderizan algunas tuberías y estructuras con textura, pero la mayor parte de la escena sigue negra y en las capturas más recientes no se distinguen claramente el gato, el suelo ni las paredes. El gameplay todavía no está verificado.**
+**Último experimento: Run 6 alcanza un túnel 3D reconocible, con tuberías texturizadas, estructuras de concreto, cables, vegetación, cielo y efectos atmosféricos. El interior del túnel sigue demasiado oscuro, el gato no está claramente confirmado y, aunque los valores de los sticks llegan al shim, todavía no se ha verificado el movimiento ni las acciones dentro del juego.**
 
 [English README](README.md) · [Historial técnico](docs/MILESTONES.md) · [Arquitectura](docs/ARCHITECTURE.md) · [Problemas pendientes](docs/KNOWN-ISSUES.md)
 
@@ -47,13 +47,13 @@ En una grabación posterior:
 - El overlay muestra aproximadamente 19–31 FPS, unos 3.37–3.42 GB de memoria de aplicación y alrededor de 123–184 MB de memoria disponible. Son lecturas de una grabación corta, no un benchmark controlado ni un diagnóstico de presión de memoria.
 - La grabación está en vertical (1320 × 2868); no demuestra que se haya corregido la presentación horizontal ni la relación de aspecto.
 
-Más detalle: [notas del mando y primer intento de carga](docs/GAMEPAD-AND-FIRST-LOAD.md) y el [seguimiento más reciente del renderizado](docs/RENDERING-FOLLOW-UP.md).
+Más detalle: [notas del mando y primer intento de carga](docs/GAMEPAD-AND-FIRST-LOAD.md), [seguimiento del renderizado (Runs 4–6)](docs/RENDERING-FOLLOW-UP.md) y [compatibilidad con Metal](docs/METAL-COMPATIBILITY.md).
 
 ## Lo que falta
 
 1. Diagnosticar el cierre al abrir desde el icono de SpringBoard. La falta de argumentos es plausible, pero no está confirmada.
 2. Corregir la presentación y validar dimensiones tanto en vertical como en horizontal mediante UIKit, `CAMetalLayer.drawableSize`, viewport de Unreal y rotación.
-3. Diagnosticar la escena 3D dañada. Materiales, shaders, streaming de texturas, render targets, iluminación, cámara/frustum y sincronización de recursos son candidatos, no causas confirmadas.
+3. Resolver la oscuridad del interior y verificar que se renderice toda la escena, especialmente el gato y el suelo; iluminación/exposición, profundidad/culling, materiales, shaders, streaming y cámara/frustum siguen pendientes de prueba.
 4. Demostrar gameplay real: personaje y mundo visibles, movimiento, cámara y acciones usando el mando.
 5. Probar estabilidad prolongada, temperatura, memoria, audio y ciclo segundo plano/primer plano.
 
