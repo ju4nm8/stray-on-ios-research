@@ -2,65 +2,68 @@
 
 > ¿Es posible ejecutar la build original de **Stray para macOS Apple Silicon** en un iPhone?
 >
-> Este repositorio documenta un experimento personal de compatibilidad basado en [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). Es una bitácora técnica, no un port, instalador ni una afirmación de que el juego ya sea completamente jugable.
+> Estoy documentando un experimento personal de compatibilidad basado en [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). Esta es una bitácora de ingeniería, no un port nativo de iOS, un instalador ni una afirmación de que el juego ya sea completamente jugable.
 
-**Último experimento: Run 6 alcanza un túnel 3D reconocible, con tuberías texturizadas, estructuras de concreto, cables, vegetación, cielo y efectos atmosféricos. El interior del túnel sigue demasiado oscuro, el gato no está claramente confirmado y, aunque los valores de los sticks llegan al shim, todavía no se ha verificado el movimiento ni las acciones dentro del juego.**
+**Última actualización — 6 de noviembre de 2026:** Ya puedo abrir Stray directamente desde su icono en la pantalla de inicio de iOS. En Run 6 también conseguí llegar a un túnel 3D reconocible, con tuberías texturizadas, estructuras de concreto, cables, vegetación, cielo y efectos atmosféricos. El interior sigue demasiado oscuro y todavía no he verificado claramente al gato ni el gameplay completo. El problema anterior de apertura desde el icono ya no está vigente.
 
 [English README](README.md) · [Historial técnico](docs/MILESTONES.md) · [Arquitectura](docs/ARCHITECTURE.md) · [Problemas pendientes](docs/KNOWN-ISSUES.md)
 
 ---
 
-## ¿Qué estamos haciendo?
+## Qué estoy haciendo
 
-Este proyecto registra el trabajo necesario para ejecutar un binario nativo ARM64 de macOS dentro de un contenedor de aplicación iOS, utilizando la infraestructura de compatibilidad y los shims del proyecto upstream. El ejecutable de Stray sigue siendo la build original de macOS; el trabajo se ha concentrado en la conversión del bundle, compatibilidad con APIs de macOS, detección de plataforma, rutas de recursos, descubrimiento de GPU mediante IOKit y diferencias de Metal.
+Estoy probando si la build original ARM64 de macOS de Stray puede ejecutarse dentro de un contenedor de aplicación iOS mediante la infraestructura de compatibilidad y los shims del proyecto upstream. El ejecutable sigue siendo el binario original de macOS. Mi trabajo se ha centrado en la conversión del bundle, la compatibilidad con APIs de macOS, las rutas de recursos, la detección de plataforma de Unreal, el descubrimiento de GPU mediante IOKit, Metal, el renderizado y la entrada.
 
-Esto **no** es un port nativo de Stray, una redistribución del juego, un bypass de DRM ni una prueba de que cualquier juego de Mac pueda ejecutarse en iOS.
+Esto **no** es un port nativo de iOS, una redistribución de Stray, un bypass de DRM ni una prueba de que cualquier juego de Mac pueda ejecutarse en iOS.
 
-## Resultado actual
+## Estado actual
 
-Entorno de prueba:
+### Lo que ya he comprobado
+
+- Ya puedo abrir Stray directamente desde su icono en la pantalla de inicio de iOS. La apertura directa ya no es un bloqueo actual.
+- La aplicación ha llegado a los menús de Stray y ha cargado un nivel 3D en el iPhone 17 Pro Max físico.
+- Las capturas de Run 6 muestran un túnel reconocible, con tuberías texturizadas, estructuras de concreto, cables/conducciones, vegetación, cielo y efectos atmosféricos.
+- El shim de GPU Family de AppKit se compiló, firmó e instaló antes de Run 4. En las ejecuciones posteriores no aparece el mismo error fatal de texture view de UE4 en los fragmentos de log disponibles. Es una señal positiva, aunque todavía no he demostrado la causalidad con una prueba A/B controlada.
+- En Run 6, los logs de VGC registraron valores no nulos en los sticks analógicos. Esto confirma que los valores llegan a la ruta de polling del shim, pero no demuestra que Unreal los aplique al movimiento o a la cámara.
+
+### Lo que sigue pendiente
+
+- El interior del túnel se ve mucho más oscuro que el exterior.
+- No he confirmado claramente la presencia del gato en las capturas más recientes.
+- Todavía no he demostrado movimiento completo del personaje, control de cámara y acciones durante una sesión de gameplay sostenida.
+- Las muestras de Run 6 variaron aproximadamente entre 38 y 56 FPS, con unos 2,8 GB de memoria de app, 5,3–5,4 GB disponibles y estado térmico `fair`. Son muestras cortas, no un benchmark.
+- Tengo capturas en horizontal, pero aún debo verificar de forma deliberada los límites de UIKit, `CAMetalLayer.drawableSize`, las dimensiones del viewport de Unreal y la rotación.
+- Faltan pruebas de estabilidad prolongada, audio y ciclo de segundo plano/primer plano.
+
+## Entorno y método de pruebas
+
 - MacBook Air M4, 16 GB de memoria unificada.
 - iPhone 17 Pro Max.
-- Los overlays mostraron iOS 27.3 beta durante las grabaciones.
-- Build para Mac de la generación Unreal Engine 4.27.
-- Metal en la GPU Apple del iPhone.
-- Para la prueba más reciente se conectó un mando PS4 DualShock 4 al iPhone.
+- En grabaciones anteriores, el overlay mostraba iOS 27.3 beta; lo registro como la versión que aparecía durante esas capturas, no como confirmación de la versión de todas las pruebas posteriores.
+- Build original de Stray para macOS, basada en Unreal Engine 4.
+- Metal sobre la GPU Apple del iPhone.
+- Mando PS4 DualShock 4 conectado durante las pruebas de control.
 
-### Fase G — interfaz inicial
+Distingo entre cambios de código, compilaciones, instalaciones, experimentos de configuración y resultados comprobados realmente en el teléfono. No trato los FPS del overlay ni las capturas cortas como benchmarks o como prueba de que el juego ya sea completamente jugable.
 
-Observaciones de fase G:
-- El lanzamiento funciona mediante `devicectl` cuando recibe la ruta del proyecto y `-basedir`.
-- El adaptador IOKit expone la estructura de descriptor de GPU que Unreal espera, basada en la GPU real del iPhone.
-- Unreal supera el camino anterior con la lista de descriptores vacía.
-- Hooks específicos de Metal traducen solicitudes observadas de `MTLStorageModeManaged` de macOS a `Shared` de iOS.
-- La carga de una biblioteca Metal aparece como correcta en el log.
-- Stray muestra el aviso de autosave y la interfaz de calibración de brillo.
-- El overlay/log reporta alrededor de 59–62 FPS durante parte de esta sesión corta. No es un benchmark.
-- El proceso termina con código 0 después de pasar a segundo plano; no fue el crash anterior de validación Metal.
+## Historial técnico
 
-### Seguimiento — mando y primer intento de cargar una escena
+- `docs/MILESTONES.md` registra la conversión, la adaptación de almacenamiento de Metal, la interfaz inicial y las pruebas de renderizado hasta Run 6.
+- `docs/METAL-COMPATIBILITY.md` documenta la adaptación Managed/Shared y la investigación posterior de GPU Family.
+- `docs/RENDERING-FOLLOW-UP.md` recoge Runs 4–6 y los cambios de configuración.
+- `docs/DISPLAY-AND-INPUT.md` registra el trabajo de viewport y controles.
+- `docs/KNOWN-ISSUES.md` contiene la matriz de verificación actual.
 
-En una grabación posterior:
-- El usuario informa que un mando PS4 DualShock 4 conectado permitió avanzar más allá de la calibración de brillo y navegar por la interfaz.
-- La grabación muestra un menú de Stray con Resume, Settings y Quit, seguido de una transición a una vista 3D.
-- La escena 3D todavía no se representa correctamente: predominan superficies azules/lavadas y artefactos gráficos evidentes. No se distingue claramente al gato ni una escena jugable reconocible; por tanto, **esto todavía no demuestra gameplay funcional**.
-- El overlay muestra aproximadamente 19–31 FPS, unos 3.37–3.42 GB de memoria de aplicación y alrededor de 123–184 MB de memoria disponible. Son lecturas de una grabación corta, no un benchmark controlado ni un diagnóstico de presión de memoria.
-- La grabación está en vertical (1320 × 2868); no demuestra que se haya corregido la presentación horizontal ni la relación de aspecto.
+## Próximas pruebas
 
-Más detalle: [notas del mando y primer intento de carga](docs/GAMEPAD-AND-FIRST-LOAD.md), [seguimiento del renderizado (Runs 4–6)](docs/RENDERING-FOLLOW-UP.md) y [compatibilidad con Metal](docs/METAL-COMPATIBILITY.md).
+1. Mejorar la iluminación/exposición del túnel sin romper la escena que ya se renderiza.
+2. Capturar claramente al gato y comprobar que siga visible durante el juego.
+3. Verificar movimiento, cámara y acciones del DualShock 4 de extremo a extremo en Unreal, no solamente en el polling del shim.
+4. Revisar la presentación horizontal y comparar las dimensiones de UIKit, el drawable de Metal y el viewport de Unreal.
+5. Hacer una sesión más larga y registrar frame time, memoria, temperatura, audio y ciclo de vida de la aplicación.
 
-## Lo que falta
+## Proyecto upstream, atribución y distribución
 
-1. Diagnosticar el cierre al abrir desde el icono de SpringBoard. La falta de argumentos es plausible, pero no está confirmada.
-2. Corregir la presentación y validar dimensiones tanto en vertical como en horizontal mediante UIKit, `CAMetalLayer.drawableSize`, viewport de Unreal y rotación.
-3. Resolver la oscuridad del interior y verificar que se renderice toda la escena, especialmente el gato y el suelo; iluminación/exposición, profundidad/culling, materiales, shaders, streaming y cámara/frustum siguen pendientes de prueba.
-4. Demostrar gameplay real: personaje y mundo visibles, movimiento, cámara y acciones usando el mando.
-5. Probar estabilidad prolongada, temperatura, memoria, audio y ciclo segundo plano/primer plano.
+Este trabajo se basa en [zorrobyte/macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). Consulta [UPSTREAM.md](UPSTREAM.md) y la [licencia MIT original](https://github.com/zorrobyte/macos-on-ios-public/blob/main/LICENSE). No reclamo la autoría de la infraestructura de compatibilidad upstream.
 
-Consulta [problemas pendientes](docs/KNOWN-ISSUES.md) y [plan de pantalla/entrada](docs/DISPLAY-AND-INPUT.md).
-
-## Atribución y distribución
-
-Este trabajo se basa en [zorrobyte/macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). Consulta [UPSTREAM.md](UPSTREAM.md) y su [licencia MIT original](https://github.com/zorrobyte/macos-on-ios-public/blob/main/LICENSE). Esta bitácora no relicencia código upstream ni reclama su autoría.
-
-No subas ejecutables de Stray, PAK, recursos extraídos, certificados, perfiles de aprovisionamiento, identificadores del dispositivo ni paquetes de la aplicación convertida. Este experimento es independiente y no está afiliado ni respaldado por Annapurna Interactive, BlueTwelve Studio o Apple.
+No publico el ejecutable de Stray, archivos PAK, recursos extraídos, bundles convertidos, material de firma, perfiles de aprovisionamiento, identificadores del dispositivo ni logs privados. Este es un experimento independiente y no está afiliado ni respaldado por Annapurna Interactive, BlueTwelve Studio, Apple ni el mantenedor del proyecto upstream.
