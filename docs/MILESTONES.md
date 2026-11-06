@@ -114,3 +114,29 @@ For Run 8, I created `Engine_run8.ini` with GPU skin-cache-related settings and 
 - The transcript ends during the Run 8 investigation with an active command/task and an Antigravity “out of credits” indicator. There is no final successful gameplay verification in this record.
 
 The next technical priority is to isolate and fix skeletal-mesh rendering before spending more time tuning unrelated visual settings.
+
+
+## Run 9 — Early Z, stencil dithering and subsurface configuration
+
+After reviewing the missing-cat evidence, I created `Engine_run9.ini` to test a combination of renderer settings: `r.EarlyZPass=1`, disabled stencil-for-LOD-dither behavior, enabled subsurface scattering quality and GPU skin-cache-related settings. I copied the file into the installed app's data container and relaunched the existing app. This was a runtime configuration experiment, not a new source-code build.
+
+The Run 9 log showed Metal render-encoder creation and completed command buffers. A short sample at 20:03:33 showed approximately 62 FPS, 1426 MB app memory, 6766 MB available memory, one controller and nominal thermal state. This is a single brief sample, not a benchmark.
+
+I captured a landscape screenshot with `devicectl` at 2868 × 1320. The later attempt to use macOS `screencapture` failed because the Mac could not create an image from the display. I converted the saved screenshot to BMP and attempted a basic pixel/ASCII inspection because Pillow and PyObjC were unavailable, but the transcript ends before a reliable visual diagnosis or a controlled comparison is completed.
+
+### Manual gameplay confirmation — 6 November 2026
+
+I manually confirmed that the gameplay controls work correctly despite the invisible cat mesh. I can run, jump, meow and trigger other actions, and the game continues progressing through its sequence. The absence of the cat in the rendered image is therefore a visual-rendering problem, not evidence that the player logic or controls are inactive.
+
+The current visual state is still incomplete: substantial level content is missing or incorrectly rendered, the cat is not visible, and lighting/exposure defects remain obvious. Visual rendering has improved incrementally, but it is not yet complete.
+
+### Run 9 conclusion
+
+- Direct icon launch remains working in my setup.
+- Gameplay input and in-game action response are confirmed by my manual test; input is no longer an active blocker.
+- Game progression continues even with the cat's mesh invisible.
+- Metal remains active; Run 9 recorded one short sample near 62 FPS.
+- The scene still lacks a substantial amount of visual content and has significant lighting/rendering defects.
+- The current task snapshot ends while the Run 9 launch/log command is still running and Antigravity reports no credits remaining. No final verified visual fix is recorded.
+
+The next priority is rendering completeness: the cat mesh, missing dynamic/static assets, materials and lighting. I should preserve the existing working input path and avoid changing it without evidence of a regression.
