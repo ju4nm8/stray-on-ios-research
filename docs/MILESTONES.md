@@ -83,3 +83,34 @@ Run 6 telemetry samples ranged around 38–56 FPS, with about 2.8 GB app memory,
 I can open Stray from its iOS icon and reach a recognizable 3D tunnel environment. The next priorities are to correct the dark interior, clearly capture the cat, verify controller movement/camera/actions inside Unreal, check landscape viewport sizing and complete a longer stability test.
 
 See [KNOWN-ISSUES.md](KNOWN-ISSUES.md), [DISPLAY-AND-INPUT.md](DISPLAY-AND-INPUT.md), [GAMEPAD-AND-FIRST-LOAD.md](GAMEPAD-AND-FIRST-LOAD.md), [RENDERING-FOLLOW-UP.md](RENDERING-FOLLOW-UP.md) and [METAL-COMPATIBILITY.md](METAL-COMPATIBILITY.md).
+
+## Phase J — on-device launch, live scene and skeletal-mesh investigation
+
+### Phase J1 — re-sign, install and render verification
+
+I reviewed the Phase I.2 handoff and existing AppKit runtime hook. The non-blocking window-activation implementation was already present in the working tree, and the packaged AppKit dylib contained the corresponding activation symbol. The transcript does not show a new implementation of that deadlock fix during this pass.
+
+I re-signed the existing app bundle and its embedded frameworks. An initial verification attempt reported a sealed-resource mismatch; I repeated the signing sequence with the frameworks signed before the outer app bundle. The final bundle verification reported a valid signature, and `devicectl` installed the app successfully on the connected iPhone 17 Pro Max.
+
+I launched the installed app and observed Metal library loading, render-encoder creation, drawable presentation and completed command buffers. The Run J1 screenshot sequence showed an active 3D level and the in-game touch HUD. The first screenshot was initially interpreted as showing the cat and B-12 backpack, but later captures and subsequent inspection did not corroborate that reading: the cat is not clearly identifiable in the later scene captures. One subsequent screenshot was black with an iOS notification over the HUD. I therefore do not treat the initial visual interpretation as proof that the cat rendered.
+
+The transcript records a screenshot HUD sample around 42.85 FPS and later log samples near 58 FPS. These are separate short observations, not a stable 60-FPS benchmark. The session used `devicectl device capture screenshot`; I do not see evidence that the requested QuickTime display plus macOS `screencapture` workflow was completed.
+
+### Runs 7–8 — renderer configuration and skeletal-mesh diagnosis
+
+Run 7 produced screenshots of a rainy courtyard and a more detailed tunnel/corridor with pipes, wall textures, rust, moss and interaction prompts. Static environment geometry was rendering, but the cat's skeletal mesh remained absent in the reviewed gameplay captures. A brief VGC log sample showed `buttonsMask=0x0001`; this confirms a bit transition at the shim polling layer, not that a corresponding action worked in-game.
+
+I inspected the packaged `DefaultEngine.ini`, the four project PAK archives, relevant map entries and cat assets. The cat mesh and related material assets exist in the original PAK data, so the evidence does not point to a missing source asset. I then inspected Unreal symbols and structures associated with skeletal meshes and GFur, including `USkeletalMeshComponent`, `FSkeletalMeshSceneProxy`, `UGFurComponent` and `FFurSceneProxy`. The working hypothesis narrowed to the skeletal/dynamic-mesh rendering path on Metal; possible contributors include GPU skinning configuration, masked/subsurface materials and GFur dependencies. None is yet confirmed as the root cause.
+
+For Run 8, I created `Engine_run8.ini` with GPU skin-cache-related settings and copied it into the app's data container at `Library/Preferences/Stray/MacNoEditor/Engine.ini`. I relaunched the existing installed app; the log showed continued Metal rendering and a sample around 40 FPS, 3025 MB app memory, 5167 MB available memory and nominal thermal state. The Run 8 screenshot showed an industrial scene with an orange pipe, concrete structures, vegetation and fog, but did not clearly show the cat. This test did not resolve or prove the skeletal-mesh issue.
+
+### Phase J conclusion
+
+- Direct icon launch remains separately confirmed by my 6 November update.
+- The existing Phase I.2 non-blocking activation code was inspected; this session re-signed and installed the existing bundle rather than documenting a new source implementation of that fix.
+- Metal rendering and static 3D level geometry are active on the physical iPhone.
+- Cat visibility and skeletal-mesh rendering remain unverified/unsuccessful in the later captures.
+- Controller input is not yet proven end-to-end. A button-mask transition or visible HUD is not equivalent to verified movement, camera response or action execution.
+- The transcript ends during the Run 8 investigation with an active command/task and an Antigravity “out of credits” indicator. There is no final successful gameplay verification in this record.
+
+The next technical priority is to isolate and fix skeletal-mesh rendering before spending more time tuning unrelated visual settings.
