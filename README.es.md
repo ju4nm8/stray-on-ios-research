@@ -4,7 +4,7 @@
 >
 > Este repositorio documenta un experimento personal de compatibilidad basado en [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). Es una bitácora técnica, no un port, instalador ni una afirmación de que el juego ya sea completamente jugable.
 
-**Último hito verificado: Stray llega a la calibración de brillo, su interfaz se puede navegar con un mando PS4 DualShock 4 conectado y un intento posterior de cargar/reanudar una partida llega a renderizar una escena 3D; pero esa escena aparece severamente dañada y todavía no podemos confirmar gameplay funcional.**
+**Último experimento: Stray llega a los menús y entra en un nivel 3D en el iPhone. Las pruebas 4/5 renderizan algunas tuberías y estructuras con textura, pero la mayor parte de la escena sigue negra y en las capturas más recientes no se distinguen claramente el gato, el suelo ni las paredes. El gameplay todavía no está verificado.**
 
 [English README](README.md) · [Historial técnico](docs/MILESTONES.md) · [Arquitectura](docs/ARCHITECTURE.md) · [Problemas pendientes](docs/KNOWN-ISSUES.md)
 
@@ -47,7 +47,7 @@ En una grabación posterior:
 - El overlay muestra aproximadamente 19–31 FPS, unos 3.37–3.42 GB de memoria de aplicación y alrededor de 123–184 MB de memoria disponible. Son lecturas de una grabación corta, no un benchmark controlado ni un diagnóstico de presión de memoria.
 - La grabación está en vertical (1320 × 2868); no demuestra que se haya corregido la presentación horizontal ni la relación de aspecto.
 
-Más detalle: [notas del mando y primer intento de carga](docs/GAMEPAD-AND-FIRST-LOAD.md).
+Más detalle: [notas del mando y primer intento de carga](docs/GAMEPAD-AND-FIRST-LOAD.md) y el [seguimiento más reciente del renderizado](docs/RENDERING-FOLLOW-UP.md).
 
 ## Lo que falta
 
