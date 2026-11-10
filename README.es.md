@@ -2,69 +2,82 @@
 
 > ¿Es posible ejecutar la build original de **Stray para macOS Apple Silicon** en un iPhone?
 >
-> Estoy documentando un experimento personal de compatibilidad basado en [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). Esta es una bitácora de ingeniería, no un port nativo de iOS, un instalador ni una afirmación de que el juego ya sea completamente jugable.
+> Estoy documentando un experimento personal de compatibilidad basado en [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). Esto es una bitácora de ingeniería, no un port nativo de iOS, un instalador ni una afirmación de que el juego esté completo o sea totalmente jugable.
 
-**Última actualización — 6 de noviembre de 2026:** Ya puedo abrir Stray directamente desde su icono en iOS y avanzar dentro del juego. Comprobé manualmente que los controles responden correctamente: puedo correr, saltar, maullar y continuar con la secuencia aunque el gato no aparezca visualmente. Run 9 probó una nueva configuración gráfica y registró una muestra breve de unos 62 FPS, pero siguen faltando recursos del escenario y hay errores importantes de iluminación/renderizado. El bloqueo principal es la integridad visual: el gato invisible y otros elementos que todavía no se dibujan correctamente, no la entrada.
+**Última actualización — 9 de noviembre de 2026:** Ya puedo abrir Stray directamente desde el icono de iOS y llegar a un nivel 3D en mi iPhone 17 Pro Max. También comprobé manualmente que responden acciones del juego: puedo correr, saltar, maullar y seguir avanzando aunque el gato no aparezca visualmente. Las pruebas cortas más recientes (Runs 16–17) registraron medianas de aproximadamente 52–53 FPS durante unos 94 segundos, con estado térmico nominal según los logs. Son resultados alentadores, pero no un benchmark de rendimiento sostenido. El resultado visual todavía está lejos de estar completo: el gato, partes del escenario y algunos materiales faltan o se renderizan incorrectamente, y la iluminación/exposición siguen dando problemas.
 
-[English README](README.md) · [Historial técnico](docs/MILESTONES.md) · [Arquitectura](docs/ARCHITECTURE.md) · [Problemas pendientes](docs/KNOWN-ISSUES.md)
+[English README](README.md) · [Historial técnico](docs/MILESTONES.md) · [Arquitectura](docs/ARCHITECTURE.md) · [Problemas conocidos](docs/KNOWN-ISSUES.md)
 
 ---
 
-## Qué estoy haciendo
+## Qué estoy intentando hacer
 
-Estoy probando si la build original ARM64 de macOS de Stray puede ejecutarse dentro de un contenedor de aplicación iOS mediante la infraestructura de compatibilidad y los shims del proyecto upstream. El ejecutable sigue siendo el binario original de macOS. Mi trabajo se ha centrado en la conversión del bundle, la compatibilidad con APIs de macOS, las rutas de recursos, la detección de plataforma de Unreal, el descubrimiento de GPU mediante IOKit, Metal, el renderizado y la entrada.
+Estoy probando si la build ARM64 original de macOS de Stray puede ejecutarse dentro de un contenedor de aplicación iOS usando la infraestructura de compatibilidad y los shims del proyecto upstream. El ejecutable sigue siendo el binario original de macOS. Mi trabajo incluye conversión del bundle, compatibilidad con APIs de macOS, rutas de recursos, detección de plataforma de Unreal, descubrimiento de GPU mediante IOKit, Metal, renderizado y entrada.
 
-Esto **no** es un port nativo de iOS, una redistribución de Stray, un bypass de DRM ni una prueba de que cualquier juego de Mac pueda ejecutarse en iOS.
+Esto **no** es un port nativo de iOS, una redistribución de Stray, un bypass de DRM ni una prueba de que cualquier juego de Mac pueda ejecutarse en iOS. Es un experimento de compatibilidad que sigue sin terminar.
 
 ## Estado actual
 
-### Lo que ya he comprobado
+### Lo que he comprobado
 
-- Ya puedo abrir Stray directamente desde su icono en la pantalla de inicio de iOS. La apertura directa ya no es un bloqueo actual.
-- La aplicación ha llegado a los menús de Stray y ha cargado un nivel 3D en el iPhone 17 Pro Max físico.
-- En Run 9 desplegué `Engine_run9.ini` en el contenedor de datos de la app y volví a abrir la build instalada. Metal siguió renderizando; una muestra breve del log registró unos 62 FPS, 1,43 GB de memoria de app, 6,77 GB disponibles y estado térmico nominal. Es una muestra puntual, no un benchmark ni una prueba de 60 FPS sostenidos.
-- Comprobé manualmente que los controles sí funcionan dentro del juego: correr, saltar, maullar y otras acciones responden, y puedo seguir avanzando por la partida aunque el mesh visual del gato no aparezca.
-- La captura de Run 9 se obtuvo con `devicectl`. El intento alternativo con `screencapture` de macOS falló porque no pudo crear una imagen desde la pantalla.
-- Las capturas de Run 6 muestran un túnel reconocible, con tuberías texturizadas, estructuras de concreto, cables/conducciones, vegetación, cielo y efectos atmosféricos.
-- El shim de GPU Family de AppKit se compiló, firmó e instaló antes de Run 4. En las ejecuciones posteriores no aparece el mismo error fatal de texture view de UE4 en los fragmentos de log disponibles. Es una señal positiva, aunque todavía no he demostrado la causalidad con una prueba A/B controlada.
-- En Run 6, los logs de VGC registraron valores no nulos en los sticks analógicos. Esto confirma que los valores llegan a la ruta de polling del shim, pero no demuestra que Unreal los aplique al movimiento o a la cámara.
+- Stray abre directamente desde su icono en la pantalla de inicio de mi iPhone 17 Pro Max físico.
+- El juego llega a los menús y carga un nivel 3D.
+- Probé manualmente acciones dentro del juego: correr, saltar, maullar y continuar la secuencia responden aunque el mesh visual del gato no aparezca.
+- Se renderizan partes estáticas del entorno. Capturas anteriores muestran secciones de un túnel/patio con tuberías, estructuras de concreto, cables, vegetación, cielo y efectos atmosféricos.
+- Runs 16 y 17 registraron medianas de aproximadamente 52 y 53 FPS, respectivamente, durante unos 94 segundos. Los logs reportan estado térmico nominal en esas muestras. Esto no demuestra rendimiento sostenido, frame pacing ni estabilidad en sesiones largas.
+- Los archivos PAK originales del proyecto pudieron abrirse en los logs de las pruebas recientes. Eso confirma que el proceso pudo acceder a los archivos, pero no demuestra que todos los recursos se hayan cargado o renderizado correctamente.
+- El shim de GPU Family de AppKit se compiló, firmó e instaló antes de Run 4. Las ejecuciones posteriores avanzaron sin el mismo error fatal de texture view de UE4 en los fragmentos de log disponibles. Es una señal positiva, pero no he demostrado la causalidad con una prueba A/B controlada.
 
-### Lo que sigue pendiente
+### Lo que sigue fallando o no está claro
 
-- La escena sigue teniendo errores importantes de iluminación/exposición, zonas demasiado oscuras o desiguales y renderizado incompleto de objetos del entorno.
-- El gato sigue sin aparecer en las capturas, aunque sus acciones dentro del juego sí responden. El renderizado del mesh esquelético continúa sin resolverse.
-- La investigación apunta a la ruta de meshes esqueléticos/dinámicos; materiales enmascarados, stencil/LOD dithering, Early Z, skinning y GFur son hipótesis de trabajo. Ninguna es todavía una causa raíz demostrada.
-- Todavía falta buena parte del contenido visual del nivel o se dibuja incorrectamente. La calidad mejora entre ejecuciones, pero aún es pobre.
-- Las muestras de Run 6 variaron aproximadamente entre 38 y 56 FPS, con unos 2,8 GB de memoria de app, 5,3–5,4 GB disponibles y estado térmico `fair`. Son muestras cortas, no un benchmark.
-- Tengo capturas en horizontal, pero aún debo verificar de forma deliberada los límites de UIKit, `CAMetalLayer.drawableSize`, las dimensiones del viewport de Unreal y la rotación.
-- Faltan pruebas de estabilidad prolongada, audio y ciclo de segundo plano/primer plano.
+- **El gato es invisible.** Las acciones del juego responden, pero su mesh visual no aparece en las capturas.
+- Falta una cantidad importante de geometría y contenido visual del nivel, o se renderiza incorrectamente.
+- Hay materiales y texturas incompletos, ausentes o mostrados de forma incorrecta en partes de la escena.
+- La iluminación y la exposición son inconsistentes; algunas zonas están demasiado oscuras o se ven mal.
+- El renderizado de meshes esqueléticos/dinámicos es una de las principales sospechas, pero todavía no he aislado la causa raíz.
+- Falta verificar deliberadamente el viewport horizontal y la relación entre los límites de UIKit, `CAMetalLayer.drawableSize` y el viewport de Unreal.
+- Todavía no he probado de forma adecuada la estabilidad en sesiones largas, el audio ni el ciclo de segundo plano/primer plano.
+- Los FPS más recientes son observaciones de pruebas cortas. No deben interpretarse como prueba de una experiencia estable entre 50 y 60 FPS.
 
-## Entorno y método de pruebas
+## Posibles causas que estoy investigando
+
+Son hipótesis, no diagnósticos confirmados:
+
+- La creación del scene proxy o la ruta de renderizado de meshes esqueléticos de Unreal en esta implementación de Metal.
+- GPU skinning y comportamiento del skin cache.
+- Materiales masked, subsurface u otras variantes de materiales/shaders que podrían comportarse distinto en la GPU del iPhone.
+- Stencil y LOD dithering, Early Z/profundidad y decisiones de visibilidad/culling.
+- GFur u otras rutas de geometría dinámica/plugins.
+- Reporte de capacidades de Metal o compatibilidad de formatos y texture views.
+- Streaming de recursos, formatos de textura, selección de mipmaps o rutas de carga.
+- Iluminación, exposición, sombras y postprocesado que quizá no se adapten bien a este entorno.
+- Desajustes entre el tamaño del viewport/drawable o la orientación.
+
+Durante la inspección encontré el mesh del gato y recursos relacionados dentro de los datos originales del juego, así que la ausencia del archivo fuente no es por ahora la explicación principal. Eso tampoco demuestra que el juego esté cargando y enlazando esos recursos correctamente en tiempo de ejecución.
+
+## Entorno de pruebas
 
 - MacBook Air M4, 16 GB de memoria unificada.
 - iPhone 17 Pro Max.
-- En grabaciones anteriores, el overlay mostraba iOS 27.3 beta; lo registro como la versión que aparecía durante esas capturas, no como confirmación de la versión de todas las pruebas posteriores.
-- Build original de Stray para macOS, basada en Unreal Engine 4.
+- Build original de Stray para macOS Apple Silicon, basada en Unreal Engine 4.
 - Metal sobre la GPU Apple del iPhone.
-- Mando PS4 DualShock 4 conectado durante las pruebas de control.
+- Capa de compatibilidad: [zorrobyte/macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public).
 
-Distingo entre cambios de código, compilaciones, instalaciones, experimentos de configuración y resultados comprobados realmente en el teléfono. No trato los FPS del overlay ni las capturas cortas como benchmarks o como prueba de que el juego ya sea completamente jugable.
+Intento separar los cambios de código, compilaciones, instalaciones, experimentos de configuración y resultados que realmente observé en el teléfono. Los logs cortos, los FPS del overlay y la apertura correcta de los PAK no son prueba de renderizado completo ni de que el juego ya sea jugable.
 
-## Historial técnico
+## En qué me vendría bien ayuda
 
-- `docs/MILESTONES.md` registra la conversión, la adaptación de almacenamiento de Metal, la interfaz inicial y las pruebas de renderizado hasta Run 9.
-- `docs/METAL-COMPATIBILITY.md` documenta la adaptación Managed/Shared y la investigación posterior de GPU Family.
-- `docs/RENDERING-FOLLOW-UP.md` recoge Runs 4–9 y los cambios de configuración.
-- `docs/DISPLAY-AND-INPUT.md` registra el trabajo de viewport y controles.
-- `docs/KNOWN-ISSUES.md` contiene la matriz de verificación actual.
+Me interesa recibir aportes de personas que conozcan el Metal RHI de Unreal Engine, el renderizado de skeletal meshes, GPU skinning, variantes de materiales/shaders, capacidades de Metal, resource streaming o el tamaño de UIKit/CAMetalLayer/viewport.
 
-## Próximas pruebas
+En concreto, busco ideas para entender por qué se renderiza geometría estática del entorno mientras el mesh esquelético del gato y partes del escenario no aparecen. También serían útiles propuestas de pruebas pequeñas y controladas o instrumentación que ayude a acotar el problema.
 
-1. Corregir el mesh invisible del gato y recuperar el resto de la geometría/materiales que faltan.
-2. Corregir iluminación, exposición, sombras y demás defectos visuales sin perder lo que ya se renderiza.
-3. Conservar los controles que ya funcionan; volver a investigar la entrada solamente si aparece una regresión reproducible.
-4. Revisar la presentación horizontal y comparar las dimensiones de UIKit, el drawable de Metal y el viewport de Unreal.
-5. Probar estabilidad, frame pacing, audio y ciclo de vida en sesiones largas cuando el renderizado esté más completo.
+## Notas del proyecto
+
+- [Historial técnico](docs/MILESTONES.md)
+- [Pruebas de renderizado](docs/RENDERING-FOLLOW-UP.md)
+- [Problemas conocidos y matriz de verificación](docs/KNOWN-ISSUES.md)
+- [Notas de compatibilidad con Metal](docs/METAL-COMPATIBILITY.md)
+- [Arquitectura](docs/ARCHITECTURE.md)
 
 ## Proyecto upstream, atribución y distribución
 
