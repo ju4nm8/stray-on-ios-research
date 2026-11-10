@@ -1,20 +1,25 @@
 # Borrador para Reddit — r/macgaming
 
-**Título:** Ya puedo abrir la build original de Stray para macOS desde el icono de iOS en un iPhone 17 Pro Max
+**Título: ¿Alguien ha investigado cómo ejecutar la versión de macOS de Stray en un iPhone? Estoy atascado con el renderizado**
 
-Estoy experimentando con el trabajo de compatibilidad macOS-en-iOS de [zorrobyte/macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public), usando la build original de Stray para macOS Apple Silicon.
+Hola. Estoy trabajando en un experimento para ver si la versión original de Stray para macOS Apple Silicon puede ejecutarse en un iPhone, usando [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public) como base de compatibilidad.
 
-He trabajado en las rutas del bundle y los recursos, la detección de plataforma Mac de Unreal, el descubrimiento de GPU mediante IOKit y varios problemas de compatibilidad con Metal. Ahora puedo abrir Stray directamente desde su icono en la pantalla de inicio de iOS y llegar a un túnel 3D reconocible en mi iPhone 17 Pro Max.
+Ya conseguí que abra desde la pantalla de inicio de iOS y llegue a un nivel 3D real en mi iPhone 17 Pro Max. También puedo correr, saltar, maullar y seguir avanzando, pero la parte visual sigue bastante rota.
 
-El resultado todavía está incompleto:
-- El túnel se ve, con tuberías texturizadas, estructuras de concreto, cables, vegetación, cielo y efectos atmosféricos.
-- El interior del túnel sigue demasiado oscuro.
-- Todavía no he confirmado claramente al gato en las capturas más recientes.
-- Mis logs de VGC muestran que los valores de los sticks llegan al shim, pero aún no he verificado el movimiento del personaje, la cámara ni los botones de acción dentro de Unreal.
-- Las muestras cortas de Run 6 variaron aproximadamente entre 38 y 56 FPS. No son resultados de benchmark.
+Estos son los problemas principales:
 
-Esto **no significa que Stray ya sea completamente jugable**, no es un port nativo de iOS y no estoy distribuyendo el juego ni sus recursos. Estoy documentando el trabajo de compatibilidad y los problemas de ingeniería que todavía faltan por resolver.
+- El gato es invisible, aunque sus acciones sí responden dentro del juego.
+- No aparecen partes del mapa ni algunos elementos del entorno.
+- Faltan texturas y materiales o se muestran de forma incorrecta.
+- La iluminación y la exposición son inconsistentes; algunas zonas quedan demasiado oscuras.
+- Todavía no sé si el problema está principalmente en los skeletal meshes/skin cache de UE4, en la compatibilidad con Metal, en los shaders/materiales, en el resource streaming, en GFur o en otra parte.
 
-Bitácora: https://github.com/ju4nm8/stray-on-ios-research
+Hay zonas donde sí se renderiza la geometría estática del escenario, así que intento entender por qué esa parte funciona mientras el gato y otros elementos no. He estado revisando la ruta de skeletal meshes de Unreal, GPU skinning, materiales masked, stencil/LOD dithering, Early Z y compatibilidad de formatos/capacidades de Metal, pero todavía no tengo una causa confirmada.
 
-Me interesan opiniones de personas que conozcan el Metal RHI de Unreal para Mac, el tamaño de vistas UIKit/CAMetalLayer, las variantes de shaders o la integración de controles mediante GameController.
+Como referencia, las pruebas cortas más recientes dieron unos 52–53 FPS de mediana durante aproximadamente 94 segundos. Son solo datos de telemetría de sesiones cortas; el juego está lejos de estar completo y no estoy diciendo que ya sea totalmente jugable.
+
+Agradecería mucho ideas de gente que conozca el Metal RHI de Unreal Engine, el renderizado de skeletal meshes, GPU skinning, variantes de shaders o manejo de recursos en iOS/Metal. Incluso una sugerencia para aislar el problema sería de mucha ayuda.
+
+Notas y registros del proyecto: https://github.com/ju4nm8/stray-on-ios-research
+
+Es un experimento personal de compatibilidad que todavía está en desarrollo, no un port nativo de iOS. No estoy compartiendo archivos ni recursos del juego.
