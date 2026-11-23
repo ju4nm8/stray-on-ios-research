@@ -1,117 +1,74 @@
 # Stray iOS — Development Roadmap
 
-This roadmap defines the structured implementation stages for running the original macOS (Apple Silicon, ARM64) version of **Stray** on iOS (specifically targeting the iPhone 17 Pro Max, iOS 27.3) using compatibility shims.
+This roadmap tracks the independent effort to run the original macOS ARM64 version of Stray (Unreal Engine 4) inside an iOS app on a physical iPhone using compatibility shims.
 
-The project operates under a strict, evidence-based engineering methodology: **no stage is marked as complete without reproducible, verified logs or artifacts from the physical target device.**
+**Current state (2026-11-23):** the app launches, displays UI/menus, and recognizes a DualShock 4. The Stray title/menu 3D scene and gameplay world are not visibly rendered. Landscape orientation currently produces a stretched image. This is not a completed or playable port.
 
----
+No stage is complete without reproducible evidence from the physical device.
 
-## Development Stages Overview
+## Stages
 
-```mermaid
-flowchart TD
-    S1["Stage 1: Process Stability & Launch"] --> S2["Stage 2: Unreal Engine Initialization"]
-    S2 --> S3["Stage 3: Metal & RHI Initialization"]
-    S3 --> S4["Stage 4: First Screen Rendering"]
-    S4 --> S5["Stage 5: Scene Geometry & Character Representation"]
-    S5 --> S6["Stage 6: Materials, Textures & Lighting"]
-    S6 --> S7["Stage 7: Audio Pipeline Recovery"]
-    S7 --> S8["Stage 8: Input Controls & Gameplay Handling"]
-    S8 --> S9["Stage 9: Performance, Thermals & Long-Session Stability"]
-    
-    style S1 fill:#f96,stroke:#333,stroke-width:2px
-    style S2 fill:#ff9,stroke:#333,stroke-width:2px
-    style S3 fill:#eee,stroke:#333
-    style S4 fill:#eee,stroke:#333
-    style S5 fill:#eee,stroke:#333
-    style S6 fill:#eee,stroke:#333
-    style S7 fill:#eee,stroke:#333
-    style S8 fill:#eee,stroke:#333
-    style S9 fill:#eee,stroke:#333
-```
+| Stage | Goal | Current status |
+|---|---|---|
+| 1 | App installation and process launch | Verified |
+| 2 | Reach usable UI and controller discovery | Partially verified |
+| 3 | Correct orientation, viewport, and drawable sizing | Blocked |
+| 4 | Render a complete 3D title/menu scene | Blocked — cat, Stray logo, and background not visible |
+| 5 | Render gameplay world, geometry, camera, and character | Blocked — world not visibly rendered |
+| 6 | Materials, textures, lighting, and post-processing | Unresolved; root cause not isolated |
+| 7 | Audio pipeline | Not verified |
+| 8 | Gameplay input, minimal touch controls, and controller mapping | Partially observed; implementation/testing incomplete |
+| 9 | Sustained performance, memory, and thermal stability | Not verified |
 
----
+## Stage 1 — Installation and launch
 
-## Detailed Stages
+The adapted app installs and launches on the physical iPhone 17 Pro Max. The latest reported exit code 9 was a manual user close, not a crash. Do not reuse old early-exit reports as the current state without checking their test date and build.
 
-### Stage 1: Application Launch & Process Stability (ACTIVE FOCUS)
-* **Goal:** Launch the application binary inside an iOS container on physical hardware, establish runtime hooks, and maintain the process alive without early termination.
-* **Current Status:** **IN PROGRESS (Blocked on early termination)**
-* **Verification Criteria:**
-  - [x] Application bundle installs successfully on iPhone via `devicectl`.
-  - [x] Code signature and provisioning profile trusted by iOS.
-  - [x] Process launches and executes initialization threads.
-  - [x] Filesystem case-sensitivity check bypassed without modal alert.
-  - [x] ICU internationalization resource discovery resolved.
-  - [x] Hardware identified as Apple Silicon Mac (`Mac16,12`).
-  - [ ] **Active Blocker:** Process currently terminates after ~3 seconds with exit code 1 (`_Exit(1)`).
+## Stage 2 — UI and controller discovery
 
-### Stage 2: Unreal Engine Initialization
-* **Goal:** Ensure `FEngineLoop::PreInit` and `FEngineLoop::Init` complete all engine subsystem initializations without triggering `RequestExit` or fatal errors.
-* **Current Status:** **IN PROGRESS**
-* **Verification Criteria:**
-  - [ ] `GuardedMain` does not return error code 1.
-  - [ ] `GIsRequestingExit` remains `0`.
-  - [ ] Module loading and plugin initialization complete cleanly.
-  - [ ] Engine configuration files (`BaseEngine.ini`, `DefaultEngine.ini`) correctly parsed from PAK or disk.
-  - [ ] Engine reaches `FEngineLoop::Tick`.
+UI/menu elements are visible and a DualShock 4 is recognized. Full button/axis input delivery to Unreal, controller reconnect/disconnect behavior, menu navigation, and gameplay actions still require verification.
 
-### Stage 3: Metal Graphics & RHI Initialization
-* **Goal:** Initialize `FMetalDynamicRHI`, establish the Metal command queue, select supported shader platform formats, and load the global shader cache.
-* **Current Status:** **NOT STARTED (Dependent on Stage 2)**
-* **Verification Criteria:**
-  - [ ] `GDynamicRHI` is successfully instantiated (`!= 0x0`).
-  - [ ] `GIsRHIInitialized` and `GIsMetalInitialized` transition to `1`.
-  - [ ] Shader platform selected matches cooked shaders (`SF_METAL_SM5`).
-  - [ ] Global shader cache (`GlobalShaderCache-SF_METAL_SM5.bin`) opens and loads without format mismatches.
-  - [ ] Metal storage modes translated properly (macOS Managed storage -> iOS Shared storage).
+## Stage 3 — Orientation and display geometry
 
-### Stage 4: First Screen Rendering Output
-* **Goal:** Present the first rendered frame from Unreal Engine through `CAMetalLayer` onto the iPhone display.
-* **Current Status:** **NOT STARTED**
-* **Verification Criteria:**
-  - [ ] Viewport correctly binds to the hosting `UIView` / `CAMetalLayer`.
-  - [ ] Framebuffer clears and first swapchain presentation succeeds.
-  - [ ] Visual verification of on-screen content (splash screen, loading screen, or initial menu).
-  - [ ] Landscape orientation and aspect ratio reconciled with device screen bounds.
+Goal: start in landscape and maintain correct aspect ratio without stretching.
 
-### Stage 5: Scene Geometry & Character Representation
-* **Goal:** Correctly render 3D world geometry, level static meshes, dynamic skeletal meshes, and the player character.
-* **Current Status:** **NOT STARTED**
-* **Verification Criteria:**
-  - [ ] Level streaming / map loading completes without crash.
-  - [ ] Static mesh scene proxies render correctly with valid depth/stencil.
-  - [ ] Skeletal mesh deformation and vertex skinning function on the Apple GPU.
-  - [ ] Player character mesh is clearly identifiable on screen.
+Investigate supported interface orientations, scene/window/view bounds, transition handling, Unreal viewport dimensions, CAMetalLayer drawable size, content scale, Metal viewport/scissor, and render-target sizes.
 
-### Stage 6: Textures, Materials & Lighting
-* **Goal:** Restore full texture streaming, material shaders, and correct lighting/exposure pipelines.
-* **Current Status:** **NOT STARTED**
-* **Verification Criteria:**
-  - [ ] Texture streaming loads mipmaps from PAK files without blank/black textures.
-  - [ ] Material permutations compile and bind appropriate Metal pipelines.
-  - [ ] Screen-space reflections, shadows, and post-processing exposure render naturally.
+Passing criteria: app launches in landscape; image is not stretched, squashed, or incorrectly cropped; layout and render dimensions agree; both landscape orientations work reliably.
 
-### Stage 7: Audio Pipeline Recovery
-* **Goal:** Re-route engine audio from macOS CoreAudio backends to iOS audio session frameworks.
-* **Current Status:** **NOT STARTED**
-* **Verification Criteria:**
-  - [ ] `AVAudioSession` initialized in playback category.
-  - [ ] Sound mixer output mapped to device speakers/headphones.
-  - [ ] Video playback audio (Bink 2) and in-game audio playback functional without stutter.
+## Stage 4 — First complete 3D title/menu scene
 
-### Stage 8: Input Controls & Gameplay Handling
-* **Goal:** Map touch screen inputs and external gamepads (MFi / PlayStation DualShock 4 / Xbox controllers) to engine input events.
-* **Current Status:** **NOT STARTED**
-* **Verification Criteria:**
-  - [ ] Touch interface overlay or touch gesture mapping routed to Unreal input system.
-  - [ ] Physical Bluetooth controller paired and recognized via `GCController`.
-  - [ ] Character navigation, camera control, and interaction actions verified.
+Goal: visibly render the expected Stray title/menu scene, including the cat, Stray logo, and background.
 
-### Stage 9: Performance, Thermals & Long-Session Stability
-* **Goal:** Optimize memory consumption, maintain smooth frame rates (target 40–60 FPS), and prevent thermal throttling during extended sessions.
-* **Current Status:** **NOT STARTED**
-* **Verification Criteria:**
-  - [ ] Memory footprint fits reliably within iOS container memory limits (`increased-memory-limit` entitlement).
-  - [ ] Continuous gameplay sessions exceeding 10 minutes without watchdog termination or crash.
-  - [ ] Thermal state maintains nominal or fair levels under sustained execution.
+Determine whether scene assets load, the world/camera are valid, draw calls are submitted, shaders/pipelines are valid, and the final render target contains the expected image. Passing requires visual confirmation on the physical device, not merely successful command-buffer completion.
+
+## Stage 5 — Gameplay world and character
+
+Goal: render the gameplay level, geometry, camera, and player character. Determine whether level loading completes, a valid camera is active, scene proxies and skeletal meshes submit draw calls, and geometry reaches the presented drawable.
+
+## Stage 6 — Materials, textures, lighting, and post-processing
+
+Goal: restore correct materials, texture streaming, lighting, exposure, tonemapping, and post-processing. Do not assume a black screen is a texture-only issue. First distinguish absent geometry/draw calls from shader, material, lighting, and final-composition failures.
+
+## Stage 7 — Audio
+
+Goal: verify audio session initialization, mixer output, and in-game audio. No current success claim.
+
+## Stage 8 — Input and touch controls
+
+Goal: complete DualShock 4 input mapping and a minimal configurable touch interface:
+- Virtual movement stick.
+- Camera drag area.
+- Jump.
+- Contextual interaction.
+- Small settings entry.
+
+Hide gameplay touch controls while a physical controller is connected. Restore them automatically after disconnect. Verify actual input delivery, not merely controller detection.
+
+## Stage 9 — Performance and thermals
+
+Measure sustained gameplay performance, memory use, thermal behavior, and stability only after visual rendering and controls work. Short FPS samples are not proof of sustained performance.
+
+## Community participation
+
+See [COMMUNITY-REVIEW.md](COMMUNITY-REVIEW.md) for specific review requests and publishing boundaries.

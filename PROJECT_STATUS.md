@@ -1,118 +1,68 @@
 # Project Status — Stray iOS Port Research
 
-> **Current Baseline:** 2026-11-23  
-> **Target Device:** iPhone 17 Pro Max (Apple Silicon, iOS 27.3)  
-> **Development Host:** MacBook Air M4, 16 GB Unified Memory  
-> **Original App:** Stray for macOS (ARM64, Unreal Engine 4 `Hk_project`, v1.5 / build 99)  
-> **App Identifier:** `com.ju4nm8.strayios`  
+**Status date:** 2026-11-23  
+**Target:** iPhone 17 Pro Max, iOS 27.3  
+**Host:** MacBook Air M4, 16 GB unified memory  
+**Original application:** Stray macOS ARM64, Unreal Engine 4  
+**Bundle ID:** com.ju4nm8.strayios
 
----
+## Executive summary
 
-## Executive Summary
+The adapted application now installs and launches on the physical iPhone. It displays UI and menus, and a DualShock 4 is recognized. This supersedes the older baseline that described an early process exit before any UI was displayed.
 
-> *Stray iOS is entering a new development cycle. The project is establishing a clean technical baseline and rebuilding its public roadmap around the current implementation goals.*
+The project is **not a completed port and is not yet visually playable**. The Stray title/menu 3D scene (cat with white eyes, Stray logo, expected background) is not visibly rendered. Starting the game does not produce a visibly rendered 3D world. The app initially appears in portrait and the image is severely stretched when rotated to landscape.
 
-The goal of this project is to run the original ARM64 macOS release of **Stray** on a physical iPhone 17 Pro Max using the compatibility layer derived from [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). 
+The latest reported exit code 9 was caused by the user manually closing the app, not by a crash.
 
-All reported milestones are backed by reproducible physical device logs captured under an automated host watchdog. Previous exploratory claims regarding in-game 3D rendering or character movement have been retired to `archive/previous-development/` in order to maintain absolute engineering rigor.
+## Evidence status
 
----
+| Observation | Status | What it proves |
+|---|---|---|
+| App installs and launches on iPhone 17 Pro Max | Verified by device test report | Adapted bundle can be installed and started |
+| UI and menus appear | Observed on device | Some UI/presentation path is active |
+| DualShock 4 recognized | Observed on device | Controller discovery is reached |
+| Metal library loading | Observed in logs | Metal-related library loading occurs |
+| Render encoder creation | Observed in logs | A render encoder is created |
+| Drawable presentation and completed command buffers | Observed in logs | Commands are submitted/completed and drawables presented |
+| Stray title/menu 3D assets | Not visibly rendered | No proof of successful scene rendering |
+| Gameplay world | Not visibly rendered | No proof of successful gameplay rendering |
+| Landscape layout | Broken | Orientation/aspect ratio requires correction |
+| Audio | Not verified | No conclusion |
+| Sustained 40–60 FPS | Not verified | Short HUD/log samples are not a benchmark |
 
-## Stage Status Matrix
+Metal activity is not equivalent to correct 3D rendering. A completed command buffer can still present a black or incomplete frame.
 
-| Stage | Milestone | Status | Verified Evidence |
-|---|---|---|---|
-| **Stage 1** | **Process Stability & Launch** | **BLOCKED** | Bundle installs and starts; terminates after ~3s (`_Exit(1)`). |
-| **Stage 2** | **Unreal Engine Initialization** | **IN PROGRESS** | Blocked inside `FEngineLoop::AppInit` / `PreInitPreStartupScreen`. |
-| **Stage 3** | **Metal & RHI Initialization** | **BLOCKED** | `GDynamicRHI == 0x0`, `GIsMetalInitialized == 0` at termination. |
-| **Stage 4** | **First Screen Rendering** | **NOT STARTED** | No frame presentation on display yet. |
-| **Stage 5** | **Scene Geometry & Character** | **NOT STARTED** | Requires working RHI and viewport presentation. |
-| **Stage 6** | **Materials, Textures & Lighting** | **NOT STARTED** | — |
-| **Stage 7** | **Audio Pipeline Recovery** | **NOT STARTED** | — |
-| **Stage 8** | **Input Controls & Gameplay** | **NOT STARTED** | — |
-| **Stage 9** | **Performance & Thermals** | **NOT STARTED** | — |
+## Current blockers
 
----
+### 1. Orientation and aspect ratio
 
-## Verified Technical Milestones (Passes)
+The app initially appears in portrait. Rotating to landscape results in a severely stretched image. Investigate supported interface orientations, scene/window/view geometry, Unreal viewport dimensions, CAMetalLayer drawable size, content scale, Metal viewport/scissor, and render-target sizing. Do not assume a single missing rotation callback is the cause without measurement.
 
-The following components have been implemented, tested, and verified on the physical iPhone 17 Pro Max:
+### 2. 3D scene rendering
 
-1. **Bundle Conversion & Codesigning:**
-   - Mach-O platform headers converted to iOS platform load commands (`minos 17.0`, `sdk 27.1`) via `vtool`.
-   - Dynamic library load paths (RPATHs) rewritten to reference internal framework shims.
-   - Code signed with Apple Developer Personal Team profile and deployed via `devicectl` (Exit Code 0).
+Neither the expected Stray title/menu scene nor the gameplay world is visibly rendered. Determine whether the failure is in level loading, active camera, viewport binding, scene draw submission, shader/pipeline creation, geometry buffers, material/texture binding, lighting/post-processing, or final presentation. Collect evidence that distinguishes these cases.
 
-2. **ICU Internationalization Discovery:**
-   - **Previous Blocker:** Unreal Engine crashed with fatal error `ICU data directory was not discovered` due to missing directory structure on disk.
-   - **Resolution:** Extracted 3,463 ICU resource files (22 MB) from `pakchunk0-MacNoEditor.pak` to the app container path `Documents/stray/StrayICU/icudt64l`.
-   - **Verification:** Configured shim redirect `Internationalization=Documents/stray/StrayICU`. Log verification confirmed **0** occurrences of the fatal error.
+### 3. Controller and touch input
 
-3. **Filesystem Case-Sensitivity Bypass:**
-   - **Previous Blocker:** Unreal Engine displayed a modal alert `Unreal Engine does not support running from case-sensitive file systems` and terminated via SIGABRT.
-   - **Resolution:** Implemented runtime hook on `NSURL getResourceValue:forKey:error:` and `resourceValuesForKeys:error:` intercepting `NSURLVolumeSupportsCaseSensitiveNamesKey` to return `NO` (simulating case-insensitive volume).
-   - **Verification:** Modal dialog eliminated completely across all subsequent runs.
+DualShock 4 recognition has been observed. Full gameplay input mapping is not yet verified. The desired touch layout is minimal and configurable: movement stick, camera drag area, jump, contextual interaction, and a small settings entry. Hide gameplay touch controls while a physical controller is connected and restore them when it disconnects.
 
-4. **Hardware & Platform Spoofing:**
-   - **Implementation:** Intercepted `sysctlbyname` for `hw.model` (returning `Mac16,12`) and `hw.machine` (returning `arm64`).
-   - **Verification:** Unreal Engine console logs confirm:
-     ```text
-     [UE4] Device Type: Mac16,12
-     [UE4] Matched Mac as MacGame
-     ```
+### 4. Audio and stability
 
-5. **Exit Forensics & Reentrancy-Safe Interception:**
-   - **Implementation:** Added interceptor for `_Exit` in `libShim_libSystem.dylib` with recursive guard (`gInHook`) and backtrace logging.
-   - **Verification:** Test runs cleanly report backtrace and global state rather than crashing silently.
+Audio has not been verified. Long-session performance, sustained frame rate, memory pressure, and thermal behavior have not been characterized.
 
----
+## Verified earlier compatibility work
 
-## Current Active Blocker (Investigation Priority)
+Earlier bring-up included Mach-O platform adaptation and iOS bundle deployment, ICU resource discovery redirection, filesystem case-sensitivity compatibility, hardware identification hooks, IOKit GPU discovery emulation, Metal-related shims, and runtime exit forensics. These do not prove that 3D rendering works. Verify implementation details against current source and latest device logs before changing code.
 
-During controlled test runs (latest verified: `test20_clean_uproject_plugins`), the process executes for approximately 3 seconds before terminating cleanly with **exit code 1**.
+## Current priorities
 
-### Diagnostic Evidence at Exit
+1. Correct landscape orientation and establish accurate view/drawable/viewport dimensions.
+2. Restore visible rendering of the Stray title/menu scene and gameplay world.
+3. Implement minimal touch controls and controller-aware visibility.
+4. Verify audio, performance, memory, and thermal stability.
 
-```text
-SHIM INTERCEPTED _Exit(1)! Backtrace (6 frames):
-  frame #0: libShim_libSystem.dylib     _Exit + 60
-  frame #1: Stray-Mac-Shipping          -[UE4AppDelegate runGameThread:] (0x100675f24)
-  frame #2: Stray-Mac-Shipping          -[FCocoaGameThread main] + 196
-  frame #3: Foundation                  _NSThread__start
-  frame #4: libsystem_pthread.dylib     _pthread_start + 136
-  frame #5: libsystem_pthread.dylib     thread_start + 8
+See [COMMUNITY-REVIEW.md](COMMUNITY-REVIEW.md) for the current observed state, concrete areas where outside reviewers can help, and safe publishing boundaries.
 
-SHIM UE STATE AT _Exit:
-  GIsRequestingExit = 1
-  GDynamicRHI = 0x0
-  GIsRHIInitialized = 0
-  GIsMetalInitialized = 0
-  GIsCriticalError = 0
-  GMaxRHIFeatureLevel = 3
-  GShaderPlatformForFeatureLevel = 49 (SP_NumPlatforms)
-  GErrorHist = "Fatal error!\n\n"
-```
+## Evidence policy
 
-### Forensic Analysis
-
-1. **Origin of `_Exit(1)`:** In `-[UE4AppDelegate runGameThread:]`, `GuardedMain` returns exit code `1`. The code checks `cbnz w0, 0x100675f20` and invokes `_Exit(1)`.
-2. **Failure inside `PlatformCreateDynamicRHI` / `FMetalDynamicRHI`:**
-   - When command-line arguments do not specify `-metalsm5` or configuration lacks `TargetedRHIs` during early parsing, feature level defaults to `4`.
-   - `FMetalDynamicRHI` selects shader platform 18 (`SP_METAL_MAC_ES3_1` / `"SF_METAL"`).
-   - Validation against project `TargetedRHIs` (`SF_METAL_SM5` = 16) fails with low-level fatal error:
-     `"Shader platform: SF_METAL was not cooked! Please enable this shader platform in the project's target settings."`
-   - This sets `GIsRequestingExit = 1` and leaves `GDynamicRHI = 0x0`.
-3. **Milestone 11 Shader Cache Lookup:**
-   - With `GShaderPlatformForFeatureLevel` unset (remaining at `49`), the engine attempts to resolve `GlobalShaderCache-None.bin` and exits.
-
-Active engineering work is focused on resolving this initialization chain so that `GDynamicRHI` is properly instantiated and `FEngineLoop` proceeds into its main tick loop.
-
----
-
-## What Is Explicitly Not Working Yet
-
-- **No visual rendering:** No frames or user interface have been displayed on the device screen.
-- **Engine initialization incomplete:** `FEngineLoop` has not reached tick execution.
-- **Audio pipeline unlinked:** CoreAudio/AudioMixer shims have not been tested.
-- **Input unmapped:** Gameplay controls and touch inputs are not currently active.
-- **Long-session stability:** Tests are restricted to 40-second watchdog windows.
+Separate observed facts, log-derived facts, static analysis, and hypotheses. Do not mark a milestone complete without reproducible evidence from the physical device. Do not describe the game as playable until the 3D world and required input paths work in a real session.
