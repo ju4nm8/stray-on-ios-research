@@ -1,0 +1,70 @@
+Archivo: <PROJECT_ROOT>/Stray.app/Contents/MacOS/Stray-Mac-Shipping
+Magic: 0xfeedfacf (Mach-O 64-bit)
+CPU type: 0x0100000c (arm64)
+CPU subtype: 0x00000000
+File type: 2
+Load commands: 62
+Flags: 0x00a18085
+Plataforma detectada: macOS
+Versión mínima OS: 12.0.0
+SDK de compilación: 14.0.0
+Entrypoint offset: N/A
+Firma de código: Sí
+
+Segmentos (5):
+  __PAGEZERO       vmaddr=0x000000000000 vmsize=0x100000000 fileoff=0x00000000 filesize=0x00000000
+  __TEXT           vmaddr=0x000100000000 vmsize=0x04744000 fileoff=0x00000000 filesize=0x04744000
+  __DATA_CONST     vmaddr=0x000104744000 vmsize=0x007d0000 fileoff=0x04744000 filesize=0x007d0000
+  __DATA           vmaddr=0x000104f14000 vmsize=0x0056c000 fileoff=0x04f14000 filesize=0x00230000
+  __LINKEDIT       vmaddr=0x000105480000 vmsize=0x048f0000 fileoff=0x05144000 filesize=0x048ec940
+
+Dependencias (26):
+  [IOS_COMPATIBLE  ] /usr/lib/libc++.1.dylib
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio
+  [MACOS_ONLY      ] /System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa
+  [MACOS_ONLY      ] /System/Library/Frameworks/Carbon.framework/Versions/A/Carbon
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/CoreHaptics.framework/Versions/A/CoreHaptics
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/Security.framework/Versions/A/Security
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/AVFoundation.framework/Versions/A/AVFoundation
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/CoreMedia.framework/Versions/A/CoreMedia
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/GameController.framework/Versions/A/GameController
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/QuartzCore.framework/Versions/A/QuartzCore
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/MediaToolbox.framework/Versions/A/MediaToolbox
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/AudioUnit.framework/Versions/A/AudioUnit
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/CoreImage.framework/Versions/A/CoreImage
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO
+  [MACOS_ONLY      ] /System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL
+  [IOS_COMPATIBLE  ] /usr/lib/libSystem.B.dylib
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/AVFAudio.framework/Versions/A/AVFAudio
+  [MACOS_ONLY      ] /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics
+  [UNKNOWN         ] /System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/Foundation.framework/Versions/C/Foundation
+  [MACOS_ONLY      ] /usr/lib/libobjc.A.dylib
+
+Dependencias débiles (14):
+  [BUNDLE_RELATIVE ] @rpath/libPhysX3.dylib
+  [BUNDLE_RELATIVE ] @rpath/libPhysX3Cooking.dylib
+  [BUNDLE_RELATIVE ] @rpath/libPhysX3Common.dylib
+  [BUNDLE_RELATIVE ] @rpath/libPxFoundation.dylib
+  [BUNDLE_RELATIVE ] @rpath/libPxPvdSDK.dylib
+  [BUNDLE_RELATIVE ] @rpath/libAPEX_Clothing.dylib
+  [BUNDLE_RELATIVE ] @rpath/libAPEX_Legacy.dylib
+  [BUNDLE_RELATIVE ] @rpath/libApexFramework.dylib
+  [BUNDLE_RELATIVE ] @rpath/libAPEX_Destructible.dylib
+  [BUNDLE_RELATIVE ] @rpath/libNvCloth.dylib
+  [BUNDLE_RELATIVE ] @rpath/libvorbis.dylib
+  [BUNDLE_RELATIVE ] @rpath/libogg.dylib
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/Metal.framework/Versions/A/Metal
+  [IOS_COMPATIBLE  ] /System/Library/Frameworks/MetalFX.framework/Versions/A/MetalFX
+
+RPATHs (5):
+  @loader_path/
+  @executable_path/
+  @loader_path/../UE4/Engine/Binaries/ThirdParty/PhysX3/Mac
+  @loader_path/../UE4/Engine/Binaries/ThirdParty/Vorbis/Mac
+  @loader_path/../UE4/Engine/Binaries/ThirdParty/Ogg/Mac

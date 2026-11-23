@@ -1,0 +1,7 @@
+Escaneando <PROJECT_ROOT>/Stray.app/Contents/MacOS/Stray-Mac-Shipping...
+  Tamaño: 161,679,680 bytes
+  Cadenas escaneadas: 81,747
+  ¿Tiene Metal?: Sí
+  Targets detectados:
+    macosx: 13 ocurrencias
+

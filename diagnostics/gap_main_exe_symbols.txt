@@ -1,0 +1,124 @@
+== work/Stray.app/Contents/MacOS/Stray-Mac-Shipping
+  no iOS library: /System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa
+  no iOS library: /System/Library/Frameworks/Carbon.framework/Versions/A/Carbon
+  no iOS library: /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit
+  no iOS library: /System/Library/Frameworks/AudioUnit.framework/Versions/A/AudioUnit
+  no iOS library: /System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL
+  no iOS library: /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit
+  109 imported symbols missing on iOS
+  [AppKit] 64
+      _NSAccessibilityAnnouncementKey
+      _NSAccessibilityAnnouncementRequestedNotification
+      _NSAccessibilityButtonRole
+      _NSAccessibilityCheckBoxRole
+      _NSAccessibilityComboBoxRole
+      _NSAccessibilityImageRole
+      _NSAccessibilityLayoutAreaRole
+      _NSAccessibilityLinkRole
+      _NSAccessibilityPostNotification
+      _NSAccessibilityPostNotificationWithUserInfo
+      _NSAccessibilityPriorityKey
+      _NSAccessibilityRoleDescription
+      _NSAccessibilitySecureTextFieldSubrole
+      _NSAccessibilitySliderRole
+      _NSAccessibilityStaticTextRole
+      _NSAccessibilityTextFieldRole
+      _NSAccessibilityTextLinkSubrole
+      _NSAccessibilityUIElementDestroyedNotification
+      _NSAccessibilityUnknownRole
+      _NSAccessibilityValueChangedNotification
+      _NSAccessibilityWindowRole
+      _NSApp
+      _NSApplicationDidBecomeActiveNotification
+      _NSApplicationWillResignActiveNotification
+      _NSCalibratedRGBColorSpace
+      _NSEventTrackingRunLoopMode
+      _NSModalPanelRunLoopMode
+      _NSPasteboardTypeFileURL
+      _NSPasteboardTypeString
+      _NSRunInformationalAlertPanel
+      _NSViewBoundsDidChangeNotification
+      _NSViewFrameDidChangeNotification
+      _NSWindowDidEndLiveResizeNotification
+      _NSWindowDidEnterFullScreenNotification
+      _NSWindowDidExitFullScreenNotification
+      _NSWindowDidMoveNotification
+      _NSWindowDidResizeNotification
+      _NSWindowWillMoveNotification
+      _NSWindowWillStartLiveResizeNotification
+      _NSWorkspaceActiveSpaceDidChangeNotification
+      _NSWorkspaceSessionDidBecomeActiveNotification
+      _NSWorkspaceSessionDidResignActiveNotification
+      _OBJC_CLASS_$_NSAccessibilityElement
+      _OBJC_CLASS_$_NSAlert
+      _OBJC_CLASS_$_NSApplication
+      _OBJC_CLASS_$_NSBitmapImageRep
+      _OBJC_CLASS_$_NSCursor
+      _OBJC_CLASS_$_NSEvent
+      _OBJC_CLASS_$_NSImage
+      _OBJC_CLASS_$_NSMenu
+      _OBJC_CLASS_$_NSMenuItem
+      _OBJC_CLASS_$_NSPasteboard
+      _OBJC_CLASS_$_NSPasteboardItem
+      _OBJC_CLASS_$_NSScreen
+      _OBJC_CLASS_$_NSScrollView
+      _OBJC_CLASS_$_NSTextView
+      _OBJC_CLASS_$_NSView
+      _OBJC_CLASS_$_NSWindow
+      _OBJC_CLASS_$_NSWorkspace
+      _OBJC_METACLASS_$_NSAccessibilityElement
+      _OBJC_METACLASS_$_NSMenu
+      _OBJC_METACLASS_$_NSMenuItem
+      _OBJC_METACLASS_$_NSView
+      _OBJC_METACLASS_$_NSWindow
+  [CoreGraphics] 30
+      _CGAcquireDisplayFadeReservation
+      _CGAssociateMouseAndMouseCursorPosition
+      _CGCursorIsVisible
+      _CGDisplayBounds
+      _CGDisplayCopyAllDisplayModes
+      _CGDisplayCopyDisplayMode
+      _CGDisplayFade
+      _CGDisplayHideCursor
+      _CGDisplayModeGetHeight
+      _CGDisplayModeGetRefreshRate
+      _CGDisplayModeGetWidth
+      _CGDisplayModeIsUsableForDesktopGUI
+      _CGDisplayModeRelease
+      _CGDisplayModeRetain
+      _CGDisplayModelNumber
+      _CGDisplayPixelsHigh
+      _CGDisplayPixelsWide
+      _CGDisplayRegisterReconfigurationCallback
+      _CGDisplayRemoveReconfigurationCallback
+      _CGDisplayScreenSize
+      _CGDisplaySerialNumber
+      _CGDisplaySetDisplayMode
+      _CGDisplayShowCursor
+      _CGDisplayVendorNumber
+      _CGGetActiveDisplayList
+      _CGMainDisplayID
+      _CGReleaseDisplayFadeReservation
+      _CGSessionCopyCurrentDictionary
+      _CGWarpMouseCursorPosition
+      _kCGDisplayShowDuplicateLowResolutionModes
+  [CoreVideo] 6
+      _CVDisplayLinkCreateWithActiveCGDisplays
+      _CVDisplayLinkGetActualOutputVideoRefreshPeriod
+      _CVDisplayLinkGetCurrentCGDisplay
+      _CVDisplayLinkSetCurrentCGDisplay
+      _CVDisplayLinkSetOutputCallback
+      _CVDisplayLinkStart
+  [Carbon] 4
+      _LMGetKbdType
+      _TISCopyCurrentKeyboardLayoutInputSource
+      _TISGetInputSourceProperty
+      _kTISPropertyUnicodeKeyLayoutData
+  [IOKit] 3
+      _IODisplayCreateInfoDictionary
+      _KextManagerCopyLoadedKextInfo
+      _KextManagerCreateURLForBundleIdentifier
+  [CoreServices] 1
+      _UCKeyTranslate
+  [Foundation] 1
+      _OBJC_CLASS_$_NSAppleEventManager
