@@ -1,0 +1,61 @@
+Launched application with com.ju4nm8.strayios bundle identifier.
+Waiting for the application to terminate…
+2026-11-23 01:48:50.395 Stray-Mac-Shipping[5313:454434] SHIM NSURL volume hooks: getResourceValue=ok resourceValuesForKeys=ok
+2026-11-23 01:48:50.396 Stray-Mac-Shipping[5313:454434] SHIM bundle path -> /private/var/containers/Bundle/Application/F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Stray.app/Mac
+2026-11-23 01:48:50.396 Stray-Mac-Shipping[5313:454434] SHIM network blocked
+2026-11-23 01:48:50.552 Stray-Mac-Shipping[5313:454434] SHIM -[NSApplication run] -> UIApplicationMain
+2026-11-23 01:48:50.608 Stray-Mac-Shipping[5313:454434] SHIM missing file (stat): /preboot
+2026-11-23 01:48:50.674 Stray-Mac-Shipping[5313:454637] SHIM missing file (stat): /System/Library/AccessibilityBundles/popbundles.axbundlemap
+2026-11-23 01:48:50.684 Stray-Mac-Shipping[5313:454434] SHIM missing file (stat): /private/var/containers/Bundle/Application/F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Stray.app/Mac/Contents/Resources/ShimViewController.nib
+2026-11-23 01:48:50.684 Stray-Mac-Shipping[5313:454434] SHIM missing file (stat): /private/var/containers/Bundle/Application/F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Stray.app/Mac/Contents/Resources/ShimView.nib
+2026-11-23 01:48:50.692 Stray-Mac-Shipping[5313:454434] SHIM scene sceneWillEnterForeground (app state 2)
+2026-11-23 01:48:50.704 Stray-Mac-Shipping[5313:454434] SHIM GC controllers at startup (main thread): 0
+2026-11-23 01:48:50.705 Stray-Mac-Shipping[5313:454434] SHIM MISSING +[NSAppleEventManager sharedAppleEventManager]
+2026-11-23 01:48:50.706 Stray-Mac-Shipping[5313:454434] SHIM scene sceneDidBecomeActive (app state 1)
+2026-11-23 01:48:50.717 Stray-Mac-Shipping[5313:454646] SHIM chdir "/private/var/containers/Bundle/Application/F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Stray.app/Mac/" (as /private/var/containers/Bundle/Application/F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Stray.app/Mac/Contents/UE4/Hk_project/Binaries/Mac) -> 0
+2026-11-23 01:48:50.717 Stray-Mac-Shipping[5313:454646] SHIM chdir "/private/var/containers/Bundle/Application/F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Stray.app/Mac/" (as /private/var/containers/Bundle/Application/F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Stray.app/Mac/Contents/UE4/Hk_project/Binaries/Mac) -> 0
+2026-11-23 01:48:50.718 Stray-Mac-Shipping[5313:454646] SHIM chdir "/private/var/containers/Bundle/Application/F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Stray.app/Mac/" (as /private/var/containers/Bundle/Application/F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Stray.app/Mac/Contents/UE4/Hk_project/Binaries/Mac) -> 0
+2026-11-23 01:48:50.718 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /private/var/containers/Bundle/Application/F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Stray.app/Mac/../../../Engine/Binaries
+2026-11-23 01:48:50.718 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): ../../../../../../StrayEngine/Engine/Binaries
+2026-11-23 01:48:50.718 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /private/var/containers/Bundle/Application/Engine/Build/InstalledProjectBuild.txt
+2026-11-23 01:48:50.718 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /var/mobile/Containers/Data/Application/E02C0916-D525-4569-AFB3-56CC7D61ACAA/Library/Application Support/Stray//Cooked/MacNoEditor
+2026-11-23 01:48:50.735 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): ../../../Engine/Plugins
+2026-11-23 01:48:50.735 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): ../../../F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Plugins
+2026-11-23 01:48:50.735 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): ../../../F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Mods/
+2026-11-23 01:48:50.735 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /private/var/containers/Bundle/Application/Enterprise/Plugins/
+2026-11-23 01:48:50.735 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): ../../../F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/AssetRegistry.bin
+2026-11-23 01:48:50.736 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): ../../../F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Content/Internationalization
+2026-11-23 01:48:50.739 Stray-Mac-Shipping[5313:454646] SHIM missing file (open): ../../../Engine/Content/Internationalization/icudt64l/lang/en_US_POSIX.res
+2026-11-23 01:48:50.739 Stray-Mac-Shipping[5313:454646] SHIM missing file (open): ../../../Engine/Content/Internationalization/icudt64l/lang/en_US.res
+2026-11-23 01:48:50.741 Stray-Mac-Shipping[5313:454646] SHIM missing file (open): ../../../Engine/Content/Internationalization/icudt64l/region/en_US_POSIX.res
+2026-11-23 01:48:50.741 Stray-Mac-Shipping[5313:454646] SHIM missing file (open): ../../../Engine/Content/Internationalization/icudt64l/region/en_US.res
+2026-11-23 01:48:50.744 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Build/EpicInternal.txt
+2026-11-23 01:48:50.744 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): ../../../Engine/Build/PerforceBuild.txt
+2026-11-23 01:48:50.744 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /private/var/containers/Bundle/Application/Engine/Build/SourceDistribution.txt
+2026-11-23 01:48:50.755 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /private/var/containers/Bundle/Application/Engine/Build/InstalledBuild.txt
+2026-11-23 01:48:50.755 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /var/mobile/Containers/Data/Application/E02C0916-D525-4569-AFB3-56CC7D61ACAA/Library/Logs/Stray/CrashVideo.avi
+2026-11-23 01:48:50.756 Stray-Mac-Shipping[5313:454646] SHIM Sec StaticCodeCreateWithPath /private/var/containers/Bundle/Application/F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Stray.app/Mac -> -67028
+2026-11-23 01:48:50.756 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /usr/bin/xcode-select
+2026-11-23 01:48:50.756 Stray-Mac-Shipping[5313:454646] SHIM MISSING -[NSWorkspace fullPathForApplication:]
+2026-11-23 01:48:50.756 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): ../../../Engine/Binaries/Mac/CrashReportClient.app/Contents/MacOS/CrashReportClient
+2026-11-23 01:48:50.756 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): ../../../Engine/Binaries/Mac/CrashReportClient
+2026-11-23 01:48:50.756 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /var/log/system.log
+2026-11-23 01:48:50.756 Stray-Mac-Shipping[5313:454646] SHIM: file URL /private/var/containers/Bundle/Application/F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Stray.app/Mac/Contents/UE4/Hk_project/Binaries/Mac reported as case-insensitive
+2026-11-23 01:48:50.757 Stray-Mac-Shipping[5313:454646] SHIM chdir "/private/var/containers/Bundle/Application/F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Stray.app/Mac/" (as /private/var/containers/Bundle/Application/F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Stray.app/Mac/Contents/UE4/Hk_project/Binaries/Mac) -> 0
+2026-11-23 01:48:50.757 Stray-Mac-Shipping[5313:454646] [UE4] Looking for binary: ../../../F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Config/BinaryConfig.ini
+2026-11-23 01:48:50.757 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): ../../../F08E3E1B-2616-4D80-B0AC-74BCEFEF0EC3/Config/BinaryConfig.ini
+2026-11-23 01:48:50.757 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /var/mobile/Containers/Data/Application/E02C0916-D525-4569-AFB3-56CC7D61ACAA/Library/Application Support/UnrealEngine/4.27//Config/MacNoEditor/Manifest.ini
+2026-11-23 01:48:50.757 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /var/mobile/Containers/Data/Application/E02C0916-D525-4569-AFB3-56CC7D61ACAA/Library/Application Support/UnrealEngine/4.26/Saved/Config/MacNoEditor
+2026-11-23 01:48:50.757 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /var/mobile/Containers/Data/Application/E02C0916-D525-4569-AFB3-56CC7D61ACAA/Library/Application Support/UnrealEngine/4.25/Saved/Config/MacNoEditor
+2026-11-23 01:48:50.758 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /var/mobile/Containers/Data/Application/E02C0916-D525-4569-AFB3-56CC7D61ACAA/Library/Application Support/UnrealEngine/4.24/Saved/Config/MacNoEditor
+2026-11-23 01:48:50.758 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /var/mobile/Containers/Data/Application/E02C0916-D525-4569-AFB3-56CC7D61ACAA/Library/Application Support/UnrealEngine/4.23/Saved/Config/MacNoEditor
+2026-11-23 01:48:50.758 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /var/mobile/Containers/Data/Application/E02C0916-D525-4569-AFB3-56CC7D61ACAA/Library/Application Support/UnrealEngine/4.22/Saved/Config/MacNoEditor
+2026-11-23 01:48:50.758 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /var/mobile/Containers/Data/Application/E02C0916-D525-4569-AFB3-56CC7D61ACAA/Library/Application Support/UnrealEngine/4.21/Saved/Config/MacNoEditor
+2026-11-23 01:48:50.758 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /var/mobile/Containers/Data/Application/E02C0916-D525-4569-AFB3-56CC7D61ACAA/Library/Application Support/UnrealEngine/4.20/Saved/Config/MacNoEditor
+2026-11-23 01:48:50.759 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /var/mobile/Containers/Data/Application/E02C0916-D525-4569-AFB3-56CC7D61ACAA/Library/Application Support/UnrealEngine/4.19/Saved/Config/MacNoEditor
+2026-11-23 01:48:50.759 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /var/mobile/Containers/Data/Application/E02C0916-D525-4569-AFB3-56CC7D61ACAA/Library/Application Support/UnrealEngine/4.18/Saved/Config/MacNoEditor
+2026-11-23 01:48:50.759 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /var/mobile/Containers/Data/Application/E02C0916-D525-4569-AFB3-56CC7D61ACAA/Library/Application Support/UnrealEngine/4.17/Saved/Config/MacNoEditor
+2026-11-23 01:48:50.759 Stray-Mac-Shipping[5313:454646] SHIM missing file (stat): /var/mobile/Containers/Data/Application/E02C0916-D525-4569-AFB3-56CC7D61ACAA/Library/Application Support/UnrealEngine/4.16/Saved/Config/MacNoEditor
+2026-11-23 01:48:51.451 Stray-Mac-Shipping[5313:454602] SHIM STATS fps=0 cpu=19 mem=36 avail=3340 threads=35 controllers=0 loops=161 thermal=nominal
+2026-11-23 01:48:52.502 Stray-Mac-Shipping[5313:454602] SHIM STATS fps=0 cpu=2 mem=35 avail=3341 threads=35 controllers=0 loops=2 thermal=nominal
+The app terminated with the exit code 1.

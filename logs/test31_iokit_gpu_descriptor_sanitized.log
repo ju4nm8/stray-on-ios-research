@@ -1,0 +1,1108 @@
+Launched application with com.ju4nm8.strayios bundle identifier.
+Waiting for the application to terminate…
+2026-11-23 11:43:13.930 Stray-Mac-Shipping[9702:925328] SHIM NSURL volume hooks: getResourceValue=ok resourceValuesForKeys=ok
+2026-11-23 11:43:13.930 Stray-Mac-Shipping[9702:925328] SHIM bundle path -> /private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac
+2026-11-23 11:43:13.931 Stray-Mac-Shipping[9702:925328] SHIM network blocked
+2026-11-23 11:43:14.060 Stray-Mac-Shipping[9702:925328] SHIM AUTONOMOUS LAUNCH: updated GSavedCommandLine via FMemory::Realloc (prev=" -installed") -> " "../../../Hk_project/Hk_project.uproject" "-basedir=/private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac/Contents/UE4/Hk_project/Binaries/Mac" -SaveToUserDir -ResX=1536 -ResY=864 -sm5 -metalsm5 -metal" (ArrayNum=243 ptr=0x110b1ae00)
+2026-11-23 11:43:14.060 Stray-Mac-Shipping[9702:925328] SHIM: FOutputDeviceRedirector::Get() = 0x109dae490, registering ShimOutputDevice 0x10f2c7a08
+2026-11-23 11:43:14.060 Stray-Mac-Shipping[9702:925328] SHIM: ShimOutputDevice successfully hooked into Unreal Engine log pipeline!
+2026-11-23 11:43:14.060 Stray-Mac-Shipping[9702:925328] SHIM -[NSApplication run] -> UIApplicationMain (delegate=<UE4AppDelegate: 0x1160e43c0>)
+2026-11-23 11:43:14.110 Stray-Mac-Shipping[9702:925328] SHIM missing file (stat): /preboot
+2026-11-23 11:43:14.195 Stray-Mac-Shipping[9702:925376] SHIM missing file (stat): /System/Library/AccessibilityBundles/popbundles.axbundlemap
+2026-11-23 11:43:14.205 Stray-Mac-Shipping[9702:925328] SHIM missing file (stat): /private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac/Contents/Resources/ShimViewController.nib
+2026-11-23 11:43:14.205 Stray-Mac-Shipping[9702:925328] SHIM missing file (stat): /private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac/Contents/Resources/ShimView.nib
+2026-11-23 11:43:14.213 Stray-Mac-Shipping[9702:925328] SHIM scene sceneWillEnterForeground (app state 2)
+2026-11-23 11:43:14.232 Stray-Mac-Shipping[9702:925328] SHIM GC controllers at startup (main thread): 0
+2026-11-23 11:43:14.236 Stray-Mac-Shipping[9702:925328] SHIM GSavedCommandLine already complete (len=243): " "../../../Hk_project/Hk_project.uproject" "-basedir=/private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac/Contents/UE4/Hk_project/Binaries/Mac" -SaveToUserDir -ResX=1536 -ResY=864 -sm5 -metalsm5 -metal"
+2026-11-23 11:43:14.236 Stray-Mac-Shipping[9702:925328] SHIM MISSING +[NSAppleEventManager sharedAppleEventManager]
+2026-11-23 11:43:14.237 Stray-Mac-Shipping[9702:925328] SHIM scene sceneDidBecomeActive (app state 1)
+2026-11-23 11:43:14.249 Stray-Mac-Shipping[9702:925394] SHIM SYSCTL hw.model = Mac16,12
+2026-11-23 11:43:14.249 Stray-Mac-Shipping[9702:925394] SHIM SYSCTL hw.model = Mac16,12
+2026-11-23 11:43:14.249 Stray-Mac-Shipping[9702:925394] SHIM chdir "/private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac/" (as /private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac/Contents/UE4/Hk_project/Binaries/Mac) -> 0
+2026-11-23 11:43:14.249 Stray-Mac-Shipping[9702:925394] SHIM chdir "/private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac/" (as /private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac/Contents/UE4/Hk_project/Binaries/Mac) -> 0
+2026-11-23 11:43:14.250 Stray-Mac-Shipping[9702:925394] SHIM chdir "/private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac/" (as /private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac/Contents/UE4/Hk_project/Binaries/Mac) -> 0
+2026-11-23 11:43:14.250 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac/../../../Engine/Binaries
+2026-11-23 11:43:14.250 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../../../../StrayEngine/Engine/Binaries
+2026-11-23 11:43:14.250 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /private/var/containers/Bundle/Application/Engine/Build/InstalledProjectBuild.txt
+2026-11-23 11:43:14.250 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Content/Paks/global.utoc' -> redir='../../../Hk_project/Content/Paks/global.utoc' ret=-1 errno=2
+2026-11-23 11:43:14.250 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Content/Paks/global.utoc
+2026-11-23 11:43:14.251 Stray-Mac-Shipping[9702:925394] SHIM PROBE (open): orig='../../../Hk_project/Content/Paks/pakchunk0_s3-MacNoEditor.pak' -> redir='../../../Hk_project/Content/Paks/pakchunk0_s3-MacNoEditor.pak' ret=3 errno=2
+2026-11-23 11:43:14.251 Stray-Mac-Shipping[9702:925394] SHIM PROBE (open): orig='../../../Hk_project/Content/Paks/pakchunk0_s3-MacNoEditor.pak' -> redir='../../../Hk_project/Content/Paks/pakchunk0_s3-MacNoEditor.pak' ret=8 errno=2
+2026-11-23 11:43:14.251 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Content/Paks/pakchunk0_s3-MacNoEditor.pak' -> redir='../../../Hk_project/Content/Paks/pakchunk0_s3-MacNoEditor.pak' ret=0 errno=2
+2026-11-23 11:43:14.257 Stray-Mac-Shipping[9702:925394] SHIM PROBE (open): orig='../../../Hk_project/Content/Paks/pakchunk0_s2-MacNoEditor.pak' -> redir='../../../Hk_project/Content/Paks/pakchunk0_s2-MacNoEditor.pak' ret=3 errno=2
+2026-11-23 11:43:14.257 Stray-Mac-Shipping[9702:925394] SHIM PROBE (open): orig='../../../Hk_project/Content/Paks/pakchunk0_s2-MacNoEditor.pak' -> redir='../../../Hk_project/Content/Paks/pakchunk0_s2-MacNoEditor.pak' ret=9 errno=2
+2026-11-23 11:43:14.257 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Content/Paks/pakchunk0_s2-MacNoEditor.pak' -> redir='../../../Hk_project/Content/Paks/pakchunk0_s2-MacNoEditor.pak' ret=0 errno=2
+2026-11-23 11:43:14.258 Stray-Mac-Shipping[9702:925394] SHIM PROBE (open): orig='../../../Hk_project/Content/Paks/pakchunk0_s1-MacNoEditor.pak' -> redir='../../../Hk_project/Content/Paks/pakchunk0_s1-MacNoEditor.pak' ret=3 errno=2
+2026-11-23 11:43:14.258 Stray-Mac-Shipping[9702:925394] SHIM PROBE (open): orig='../../../Hk_project/Content/Paks/pakchunk0_s1-MacNoEditor.pak' -> redir='../../../Hk_project/Content/Paks/pakchunk0_s1-MacNoEditor.pak' ret=10 errno=2
+2026-11-23 11:43:14.258 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Content/Paks/pakchunk0_s1-MacNoEditor.pak' -> redir='../../../Hk_project/Content/Paks/pakchunk0_s1-MacNoEditor.pak' ret=0 errno=2
+2026-11-23 11:43:14.262 Stray-Mac-Shipping[9702:925394] SHIM PROBE (open): orig='../../../Hk_project/Content/Paks/pakchunk0-MacNoEditor.pak' -> redir='../../../Hk_project/Content/Paks/pakchunk0-MacNoEditor.pak' ret=3 errno=2
+2026-11-23 11:43:14.262 Stray-Mac-Shipping[9702:925394] SHIM PROBE (open): orig='../../../Hk_project/Content/Paks/pakchunk0-MacNoEditor.pak' -> redir='../../../Hk_project/Content/Paks/pakchunk0-MacNoEditor.pak' ret=11 errno=2
+2026-11-23 11:43:14.262 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Content/Paks/pakchunk0-MacNoEditor.pak' -> redir='../../../Hk_project/Content/Paks/pakchunk0-MacNoEditor.pak' ret=0 errno=2
+2026-11-23 11:43:14.268 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application Support/Stray//Cooked/MacNoEditor
+2026-11-23 11:43:14.269 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms
+2026-11-23 11:43:14.269 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config
+2026-11-23 11:43:14.269 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Layouts
+2026-11-23 11:43:14.269 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac
+2026-11-23 11:43:14.269 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms
+2026-11-23 11:43:14.285 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/
+2026-11-23 11:43:14.287 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Mods/
+2026-11-23 11:43:14.287 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /private/var/containers/Bundle/Application/Enterprise/Plugins/
+2026-11-23 11:43:14.289 Stray-Mac-Shipping[9702:925409] SHIM PROBE (open): orig='../../../Hk_project/Content/Paks/pakchunk0-MacNoEditor.pak' -> redir='../../../Hk_project/Content/Paks/pakchunk0-MacNoEditor.pak' ret=3 errno=0
+2026-11-23 11:43:14.292 Stray-Mac-Shipping[9702:925394] SHIM missing file (open): ../../../Hk_project/Content/Internationalization/icudt64l/lang/en_US_POSIX.res
+2026-11-23 11:43:14.293 Stray-Mac-Shipping[9702:925394] SHIM missing file (open): ../../../Hk_project/Content/Internationalization/icudt64l/lang/en_US.res
+2026-11-23 11:43:14.294 Stray-Mac-Shipping[9702:925394] SHIM missing file (open): ../../../Hk_project/Content/Internationalization/icudt64l/region/en_US_POSIX.res
+2026-11-23 11:43:14.295 Stray-Mac-Shipping[9702:925394] SHIM missing file (open): ../../../Hk_project/Content/Internationalization/icudt64l/region/en_US.res
+2026-11-23 11:43:14.300 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Build/EpicInternal.txt
+2026-11-23 11:43:14.300 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Build/PerforceBuild.txt
+2026-11-23 11:43:14.300 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /private/var/containers/Bundle/Application/Engine/Build/SourceDistribution.txt
+2026-11-23 11:43:14.301 Stray-Mac-Shipping[9702:925394] SHIM IOKit: IOServiceGetMatchingServices(AppleARMIODevice) -> iter=0x53484940
+2026-11-23 11:43:14.301 Stray-Mac-Shipping[9702:925394] SHIM IOKit: IOIteratorNext(sgxIter=0x53484940) -> entry=0x53484941
+2026-11-23 11:43:14.301 Stray-Mac-Shipping[9702:925394] SHIM IOKit: IORegistryEntryCreateCFProperties(SGX=0x53484941) -> device_type=sgx
+2026-11-23 11:43:14.301 Stray-Mac-Shipping[9702:925394] SHIM IOKit: IORegistryEntryGetChildIterator(SGX=0x53484941, plane=IOService) -> iter=0x53484942
+2026-11-23 11:43:14.301 Stray-Mac-Shipping[9702:925394] SHIM IOKit: IOIteratorNext(accelIter=0x53484942) -> child=0x53484943
+2026-11-23 11:43:14.301 Stray-Mac-Shipping[9702:925394] SHIM IOKit: IORegistryEntryCreateCFProperties(IOAccelerator=0x53484943) -> model=Apple A19 Pro GPU plugin=AGXMetalG18P
+2026-11-23 11:43:14.301 Stray-Mac-Shipping[9702:925394] SHIM IOKit: GPU descriptor initialized (model=Apple A19 Pro GPU, plugin=AGXMetalG18P, registryID=0x1000003a3, vendor=0x106b)
+2026-11-23 11:43:14.301 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /private/var/containers/Bundle/Application/Engine/Build/InstalledBuild.txt
+2026-11-23 11:43:14.301 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Logs/Stray/CrashVideo.avi
+2026-11-23 11:43:14.302 Stray-Mac-Shipping[9702:925394] SHIM Sec StaticCodeCreateWithPath /private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac -> -67028
+2026-11-23 11:43:14.303 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /usr/bin/xcode-select
+2026-11-23 11:43:14.303 Stray-Mac-Shipping[9702:925394] SHIM MISSING -[NSWorkspace fullPathForApplication:]
+2026-11-23 11:43:14.303 Stray-Mac-Shipping[9702:925394] SHIM SYSCTL hw.model = Mac16,12
+2026-11-23 11:43:14.303 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Binaries/Mac/CrashReportClient.app/Contents/MacOS/CrashReportClient
+2026-11-23 11:43:14.303 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Binaries/Mac/CrashReportClient
+2026-11-23 11:43:14.303 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/log/system.log
+2026-11-23 11:43:14.303 Stray-Mac-Shipping[9702:925394] SHIM: file URL /private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac/Contents/UE4/Hk_project/Binaries/Mac reported as case-insensitive
+2026-11-23 11:43:14.303 Stray-Mac-Shipping[9702:925394] SHIM chdir "/private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac/" (as /private/var/containers/Bundle/Application/8DAF83F9-C3BA-43ED-AE55-9C8F5DE1D10F/Stray.app/Mac/Contents/UE4/Hk_project/Binaries/Mac) -> 0
+2026-11-23 11:43:14.303 Stray-Mac-Shipping[9702:925394] [UE4] Looking for binary: ../../../Hk_project/Config/BinaryConfig.ini
+2026-11-23 11:43:14.303 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/BinaryConfig.ini
+2026-11-23 11:43:14.307 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Restricted/NotForLicensees/Config/BaseEngine.ini' -> redir='../../../Engine/Restricted/NotForLicensees/Config/BaseEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.307 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseEngine.ini
+2026-11-23 11:43:14.307 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Restricted/NoRedist/Config/BaseEngine.ini' -> redir='../../../Engine/Restricted/NoRedist/Config/BaseEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.307 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseEngine.ini
+2026-11-23 11:43:14.307 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacEngine.ini' -> redir='../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.307 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacEngine.ini
+2026-11-23 11:43:14.307 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacEngine.ini' -> redir='../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.307 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacEngine.ini
+2026-11-23 11:43:14.307 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Platforms/Mac/Config/BaseMacEngine.ini' -> redir='../../../Engine/Platforms/Mac/Config/BaseMacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.307 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacEngine.ini
+2026-11-23 11:43:14.307 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacEngine.ini' -> redir='../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.307 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacEngine.ini
+2026-11-23 11:43:14.307 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacEngine.ini' -> redir='../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.307 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacEngine.ini
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultEngine.ini
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultEngine.ini
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedEngine.ini
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedEngine.ini
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedEngine.ini
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Restricted/NotForLicensees/Config/Mac/MacEngine.ini' -> redir='../../../Engine/Restricted/NotForLicensees/Config/Mac/MacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacEngine.ini
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Restricted/NoRedist/Config/Mac/MacEngine.ini' -> redir='../../../Engine/Restricted/NoRedist/Config/Mac/MacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacEngine.ini
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Platforms/Mac/Config/MacEngine.ini' -> redir='../../../Engine/Platforms/Mac/Config/MacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacEngine.ini
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacEngine.ini' -> redir='../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacEngine.ini
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacEngine.ini' -> redir='../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacEngine.ini
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacEngine.ini' -> redir='../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacEngine.ini
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Restricted/NoRedist/Config/Mac/MacEngine.ini' -> redir='../../../Hk_project/Restricted/NoRedist/Config/Mac/MacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacEngine.ini
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Platforms/Mac/Config/MacEngine.ini' -> redir='../../../Hk_project/Platforms/Mac/Config/MacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.308 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacEngine.ini
+2026-11-23 11:43:14.309 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacEngine.ini' -> redir='../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.309 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacEngine.ini
+2026-11-23 11:43:14.309 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacEngine.ini' -> redir='../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.309 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacEngine.ini
+2026-11-23 11:43:14.309 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Config/Mac/GeneratedMacEngine.ini' -> redir='../../../Hk_project/Config/Mac/GeneratedMacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.310 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacEngine.ini
+2026-11-23 11:43:14.310 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacEngine.ini' -> redir='../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.310 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacEngine.ini
+2026-11-23 11:43:14.310 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacEngine.ini' -> redir='../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.310 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacEngine.ini
+2026-11-23 11:43:14.310 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Platforms/Mac/Config/GeneratedMacEngine.ini' -> redir='../../../Hk_project/Platforms/Mac/Config/GeneratedMacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.311 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacEngine.ini
+2026-11-23 11:43:14.311 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacEngine.ini' -> redir='../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.311 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacEngine.ini
+2026-11-23 11:43:14.311 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacEngine.ini' -> redir='../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacEngine.ini' ret=-1 errno=2
+2026-11-23 11:43:14.311 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacEngine.ini
+2026-11-23 11:43:14.311 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserEngine.ini
+2026-11-23 11:43:14.311 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserEngine.ini
+2026-11-23 11:43:14.311 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserEngine.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacGame.ini
+2026-11-23 11:43:14.313 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacGame.ini
+2026-11-23 11:43:14.314 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserGame.ini
+2026-11-23 11:43:14.314 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserGame.ini
+2026-11-23 11:43:14.314 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserGame.ini
+2026-11-23 11:43:14.314 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseInput.ini
+2026-11-23 11:43:14.314 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseInput.ini
+2026-11-23 11:43:14.314 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacInput.ini
+2026-11-23 11:43:14.314 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacInput.ini
+2026-11-23 11:43:14.314 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/MacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserInput.ini
+2026-11-23 11:43:14.315 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserInput.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/DefaultCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/MacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacCompat.ini
+2026-11-23 11:43:14.316 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacCompat.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserCompat.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserCompat.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserCompat.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/BaseLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/DefaultLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/MacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacLightmass.ini
+2026-11-23 11:43:14.317 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacLightmass.ini
+2026-11-23 11:43:14.318 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserLightmass.ini
+2026-11-23 11:43:14.318 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserLightmass.ini
+2026-11-23 11:43:14.318 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserLightmass.ini
+2026-11-23 11:43:14.318 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/Lightmass.ini
+2026-11-23 11:43:14.318 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseScalability.ini
+2026-11-23 11:43:14.318 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseScalability.ini
+2026-11-23 11:43:14.318 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacScalability.ini
+2026-11-23 11:43:14.318 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacScalability.ini
+2026-11-23 11:43:14.318 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacScalability.ini
+2026-11-23 11:43:14.318 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacScalability.ini
+2026-11-23 11:43:14.318 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacScalability.ini
+2026-11-23 11:43:14.318 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacScalability.ini
+2026-11-23 11:43:14.318 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserScalability.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseHardware.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseHardware.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacHardware.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacHardware.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacHardware.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacHardware.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacHardware.ini
+2026-11-23 11:43:14.319 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/DefaultHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/MacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserHardware.ini
+2026-11-23 11:43:14.320 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/DefaultRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/MacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserRuntimeOptions.ini
+2026-11-23 11:43:14.321 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserRuntimeOptions.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/DefaultInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/MacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserInstallBundle.ini
+2026-11-23 11:43:14.322 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/InstallBundle.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/DefaultDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/MacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacDeviceProfiles.ini
+2026-11-23 11:43:14.323 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacDeviceProfiles.ini
+2026-11-23 11:43:14.324 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserDeviceProfiles.ini
+2026-11-23 11:43:14.324 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserDeviceProfiles.ini
+2026-11-23 11:43:14.324 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserDeviceProfiles.ini
+2026-11-23 11:43:14.325 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/BaseGameplayTags.ini
+2026-11-23 11:43:14.325 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseGameplayTags.ini
+2026-11-23 11:43:14.325 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseGameplayTags.ini
+2026-11-23 11:43:14.325 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacGameplayTags.ini
+2026-11-23 11:43:14.325 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacGameplayTags.ini
+2026-11-23 11:43:14.325 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacGameplayTags.ini
+2026-11-23 11:43:14.325 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacGameplayTags.ini
+2026-11-23 11:43:14.325 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacGameplayTags.ini
+2026-11-23 11:43:14.325 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacGameplayTags.ini
+2026-11-23 11:43:14.325 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/DefaultGameplayTags.ini
+2026-11-23 11:43:14.325 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultGameplayTags.ini
+2026-11-23 11:43:14.325 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultGameplayTags.ini
+2026-11-23 11:43:14.325 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedGameplayTags.ini
+2026-11-23 11:43:14.325 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedGameplayTags.ini
+2026-11-23 11:43:14.325 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/MacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserGameplayTags.ini
+2026-11-23 11:43:14.326 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserGameplayTags.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/GameplayTags.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacGameUserSettings.ini
+2026-11-23 11:43:14.327 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserGameUserSettings.ini
+2026-11-23 11:43:14.328 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserGameUserSettings.ini
+2026-11-23 11:43:14.328 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserGameUserSettings.ini
+2026-11-23 11:43:14.331 Stray-Mac-Shipping[9702:925394] SHIM missing file (open): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/CrashReportClient/UE4CC-Mac-6B2A8B433446C691D0F61F8FE3688520/CrashReportClient.ini
+2026-11-23 11:43:14.331 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/ApexDestruction/Config/Base.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/ApexDestruction/Restricted/NotForLicensees/Config/BaseApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/ApexDestruction/Restricted/NoRedist/Config/BaseApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/ApexDestruction/Config/Mac/BaseMacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/ApexDestruction/Restricted/NotForLicensees/Config/Mac/BaseMacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/ApexDestruction/Restricted/NoRedist/Config/Mac/BaseMacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/ApexDestruction/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/ApexDestruction/Restricted/NoRedist/Platforms/Mac/Config/BaseMacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/DefaultApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/ApexDestruction/Config/Mac/MacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/ApexDestruction/Restricted/NotForLicensees/Config/Mac/MacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/ApexDestruction/Restricted/NoRedist/Config/Mac/MacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/ApexDestruction/Restricted/NotForLicensees/Platforms/Mac/Config/MacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/ApexDestruction/Restricted/NoRedist/Platforms/Mac/Config/MacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/MacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacApexDestruction.ini
+2026-11-23 11:43:14.332 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserApexDestruction.ini
+2026-11-23 11:43:14.333 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserApexDestruction.ini
+2026-11-23 11:43:14.333 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserApexDestruction.ini
+2026-11-23 11:43:14.333 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/ApexDestruction/Config
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/BaseApexDestruction.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/BaseVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/VictoryPlugin/Config/DefaultVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/VictoryPlugin/Config/GeneratedVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/VictoryPlugin/Config/Mac/MacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacVictoryBPLibrary.ini
+2026-11-23 11:43:14.334 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/VictoryPlugin/Config/Mac/GeneratedMacVictoryBPLibrary.ini
+2026-11-23 11:43:14.335 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacVictoryBPLibrary.ini
+2026-11-23 11:43:14.335 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacVictoryBPLibrary.ini
+2026-11-23 11:43:14.335 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacVictoryBPLibrary.ini
+2026-11-23 11:43:14.335 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacVictoryBPLibrary.ini
+2026-11-23 11:43:14.335 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacVictoryBPLibrary.ini
+2026-11-23 11:43:14.335 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserVictoryBPLibrary.ini
+2026-11-23 11:43:14.335 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserVictoryBPLibrary.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/VictoryPlugin/Config/UserVictoryBPLibrary.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/VictoryBPLibrary.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/VictoryPlugin/Config
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/BaseStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/UE_HierarchicalStateMachine/Config/DefaultStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/UE_HierarchicalStateMachine/Config/GeneratedStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/UE_HierarchicalStateMachine/Config/Mac/MacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/UE_HierarchicalStateMachine/Config/Mac/GeneratedMacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacStateMachine.ini
+2026-11-23 11:43:14.336 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacStateMachine.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserStateMachine.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserStateMachine.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/UE_HierarchicalStateMachine/Config/UserStateMachine.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/StateMachine.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/UE_HierarchicalStateMachine/Config
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/BaseScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/UE_ScreenLogger/Config/DefaultScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/UE_ScreenLogger/Config/GeneratedScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/UE_ScreenLogger/Config/Mac/MacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/UE_ScreenLogger/Config/Mac/GeneratedMacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacScreenLogger.ini
+2026-11-23 11:43:14.337 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserScreenLogger.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserScreenLogger.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/UE_ScreenLogger/Config/UserScreenLogger.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/ScreenLogger.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/UE_ScreenLogger/Config
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Plugins/UE_ScreenLogger/Content/Paks/MacNoEditor' -> redir='../../../Hk_project/Plugins/UE_ScreenLogger/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/UE_ScreenLogger/Content/Paks/MacNoEditor
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/BaseJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/JoyLibrary/Config/GeneratedJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/JoyLibrary/Config/Mac/MacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacJoyLibrary.ini
+2026-11-23 11:43:14.338 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/JoyLibrary/Config/Mac/GeneratedMacJoyLibrary.ini
+2026-11-23 11:43:14.339 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacJoyLibrary.ini
+2026-11-23 11:43:14.339 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacJoyLibrary.ini
+2026-11-23 11:43:14.339 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacJoyLibrary.ini
+2026-11-23 11:43:14.339 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacJoyLibrary.ini
+2026-11-23 11:43:14.339 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacJoyLibrary.ini
+2026-11-23 11:43:14.339 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserJoyLibrary.ini
+2026-11-23 11:43:14.339 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserJoyLibrary.ini
+2026-11-23 11:43:14.339 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/JoyLibrary/Config/UserJoyLibrary.ini
+2026-11-23 11:43:14.339 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/JoyLibrary/Config
+2026-11-23 11:43:14.339 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/DefaultJoyLibrary.ini
+2026-11-23 11:43:14.339 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Plugins/JoyLibrary/Content/Paks/MacNoEditor' -> redir='../../../Hk_project/Plugins/JoyLibrary/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.339 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/JoyLibrary/Content/Paks/MacNoEditor
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Config/Base.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Config/BaseSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Restricted/NotForLicensees/Config/BaseSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Restricted/NoRedist/Config/BaseSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Config/Mac/BaseMacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Restricted/NotForLicensees/Config/Mac/BaseMacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Restricted/NoRedist/Config/Mac/BaseMacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Restricted/NoRedist/Platforms/Mac/Config/BaseMacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/DefaultSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Config/Mac/MacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Restricted/NotForLicensees/Config/Mac/MacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Restricted/NoRedist/Config/Mac/MacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Restricted/NotForLicensees/Platforms/Mac/Config/MacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Restricted/NoRedist/Platforms/Mac/Config/MacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/MacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacSoundUtilities.ini
+2026-11-23 11:43:14.340 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserSoundUtilities.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserSoundUtilities.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserSoundUtilities.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/SoundUtilities.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Config
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/Runtime/SoundUtilities/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/Runtime/SoundUtilities/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundUtilities/Content/Paks/MacNoEditor
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/Synthesis/Config/Base.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/Synthesis/Restricted/NotForLicensees/Config/BaseSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/Synthesis/Restricted/NoRedist/Config/BaseSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/Synthesis/Config/Mac/BaseMacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/Synthesis/Restricted/NotForLicensees/Config/Mac/BaseMacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/Synthesis/Restricted/NoRedist/Config/Mac/BaseMacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/Synthesis/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/Synthesis/Restricted/NoRedist/Platforms/Mac/Config/BaseMacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/DefaultSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/Synthesis/Config/Mac/MacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/Synthesis/Restricted/NotForLicensees/Config/Mac/MacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/Synthesis/Restricted/NoRedist/Config/Mac/MacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/Synthesis/Restricted/NotForLicensees/Platforms/Mac/Config/MacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/Synthesis/Restricted/NoRedist/Platforms/Mac/Config/MacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/MacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacSynthesis.ini
+2026-11-23 11:43:14.341 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacSynthesis.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserSynthesis.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserSynthesis.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserSynthesis.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/Synthesis/Config
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/BaseSynthesis.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/Runtime/Synthesis/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/Runtime/Synthesis/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/Synthesis/Content/Paks/MacNoEditor
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Config/Base.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Config/BaseAudioSynesthesia.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Restricted/NotForLicensees/Config/BaseAudioSynesthesia.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Restricted/NoRedist/Config/BaseAudioSynesthesia.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Config/Mac/BaseMacAudioSynesthesia.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Restricted/NotForLicensees/Config/Mac/BaseMacAudioSynesthesia.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Restricted/NoRedist/Config/Mac/BaseMacAudioSynesthesia.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacAudioSynesthesia.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacAudioSynesthesia.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Restricted/NoRedist/Platforms/Mac/Config/BaseMacAudioSynesthesia.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/DefaultAudioSynesthesia.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultAudioSynesthesia.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultAudioSynesthesia.ini
+2026-11-23 11:43:14.342 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Config/Mac/MacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Restricted/NotForLicensees/Config/Mac/MacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Restricted/NoRedist/Config/Mac/MacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Restricted/NotForLicensees/Platforms/Mac/Config/MacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Restricted/NoRedist/Platforms/Mac/Config/MacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/MacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserAudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/AudioSynesthesia.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Config
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/Runtime/AudioSynesthesia/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/Runtime/AudioSynesthesia/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/AudioSynesthesia/Content/Paks/MacNoEditor
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundVisualizations/Config/Base.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundVisualizations/Config/BaseSoundVisualizations.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundVisualizations/Restricted/NotForLicensees/Config/BaseSoundVisualizations.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundVisualizations/Restricted/NoRedist/Config/BaseSoundVisualizations.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundVisualizations/Config/Mac/BaseMacSoundVisualizations.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundVisualizations/Restricted/NotForLicensees/Config/Mac/BaseMacSoundVisualizations.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundVisualizations/Restricted/NoRedist/Config/Mac/BaseMacSoundVisualizations.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacSoundVisualizations.ini
+2026-11-23 11:43:14.343 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundVisualizations/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundVisualizations/Restricted/NoRedist/Platforms/Mac/Config/BaseMacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/DefaultSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundVisualizations/Config/Mac/MacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundVisualizations/Restricted/NotForLicensees/Config/Mac/MacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundVisualizations/Restricted/NoRedist/Config/Mac/MacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundVisualizations/Restricted/NotForLicensees/Platforms/Mac/Config/MacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundVisualizations/Restricted/NoRedist/Platforms/Mac/Config/MacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/MacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserSoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/SoundVisualizations.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Runtime/SoundVisualizations/Config
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/BaseHK_Placer.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseHK_Placer.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseHK_Placer.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacHK_Placer.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacHK_Placer.ini
+2026-11-23 11:43:14.344 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/HK_Placer/Config/DefaultHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/HK_Placer/Config/GeneratedHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/HK_Placer/Config/Mac/MacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/HK_Placer/Config/Mac/GeneratedMacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/HK_Placer/Config/UserHK_Placer.ini
+2026-11-23 11:43:14.345 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/HK_Placer.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/HK_Placer/Config
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/BaseGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/GFurPRO/Config/DefaultGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/GFurPRO/Config/GeneratedGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/GFurPRO/Config/Mac/MacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/GFurPRO/Config/Mac/GeneratedMacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserGFur.ini
+2026-11-23 11:43:14.346 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/GFurPRO/Config/UserGFur.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/GFur.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/GFurPRO/Config
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Plugins/GFurPRO/Content/Paks/MacNoEditor' -> redir='../../../Hk_project/Plugins/GFurPRO/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/GFurPRO/Content/Paks/MacNoEditor
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Editor/EditorScriptingUtilities/Config/Base.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Editor/EditorScriptingUtilities/Restricted/NotForLicensees/Config/BaseEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Editor/EditorScriptingUtilities/Restricted/NoRedist/Config/BaseEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Editor/EditorScriptingUtilities/Config/Mac/BaseMacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Editor/EditorScriptingUtilities/Restricted/NotForLicensees/Config/Mac/BaseMacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Editor/EditorScriptingUtilities/Restricted/NoRedist/Config/Mac/BaseMacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Editor/EditorScriptingUtilities/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Editor/EditorScriptingUtilities/Restricted/NoRedist/Platforms/Mac/Config/BaseMacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/DefaultEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Editor/EditorScriptingUtilities/Config/Mac/MacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Editor/EditorScriptingUtilities/Restricted/NotForLicensees/Config/Mac/MacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Editor/EditorScriptingUtilities/Restricted/NoRedist/Config/Mac/MacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Editor/EditorScriptingUtilities/Restricted/NotForLicensees/Platforms/Mac/Config/MacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Editor/EditorScriptingUtilities/Restricted/NoRedist/Platforms/Mac/Config/MacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/MacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/Mac/GeneratedMacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacEditorScriptingUtilities.ini
+2026-11-23 11:43:14.347 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserEditorScriptingUtilities.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserEditorScriptingUtilities.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/UserEditorScriptingUtilities.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Editor/EditorScriptingUtilities/Config
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/BaseEditorScriptingUtilities.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/BasePrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BasePrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BasePrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/PrefabTool/Config/DefaultPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/PrefabTool/Config/GeneratedPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/PrefabTool/Config/Mac/MacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/PrefabTool/Config/Mac/GeneratedMacPrefabTool.ini
+2026-11-23 11:43:14.348 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacPrefabTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacPrefabTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacPrefabTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacPrefabTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacPrefabTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserPrefabTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserPrefabTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/PrefabTool/Config/UserPrefabTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/PrefabTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/PrefabTool/Config
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Plugins/PrefabTool/Content/Paks/MacNoEditor' -> redir='../../../Hk_project/Plugins/PrefabTool/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/PrefabTool/Content/Paks/MacNoEditor
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/BaseMeshTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/BaseMeshTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/BaseMeshTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/BaseMacMeshTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/BaseMacMeshTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/BaseMacMeshTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacMeshTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacMeshTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/BaseMacMeshTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/MeshTool/Config/DefaultMeshTool.ini
+2026-11-23 11:43:14.349 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/MeshTool/Config/GeneratedMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/GeneratedMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/GeneratedMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Config/Mac/MacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Config/Mac/MacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Config/Mac/MacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/MacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NotForLicensees/Platforms/Mac/Config/MacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Restricted/NoRedist/Platforms/Mac/Config/MacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/MeshTool/Config/Mac/MacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/MacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/MacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/MacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/MacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/MacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/MeshTool/Config/Mac/GeneratedMacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/Mac/GeneratedMacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/Mac/GeneratedMacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Platforms/Mac/Config/GeneratedMacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Platforms/Mac/Config/GeneratedMacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Platforms/Mac/Config/GeneratedMacMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Application SupportUnreal Engine/Engine/Config/UserMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Documents/Unreal Engine/Engine/Config/UserMeshTool.ini
+2026-11-23 11:43:14.350 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/MeshTool/Config/UserMeshTool.ini
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): /var/mobile/Containers/Data/Application/D0295453-C73B-4DC1-9C28-728F569AD340/Library/Preferences/Stray/MacNoEditor/MeshTool.ini
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/MeshTool/Config
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Plugins/MeshTool/Content/Paks/MacNoEditor' -> redir='../../../Hk_project/Plugins/MeshTool/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Plugins/MeshTool/Content/Paks/MacNoEditor
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Experimental/GeometryProcessing/Config/Base.ini
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Experimental/GeometryProcessing/Config/BaseGeometryProcessing.ini
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Experimental/GeometryProcessing/Restricted/NotForLicensees/Config/BaseGeometryProcessing.ini
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Experimental/GeometryProcessing/Restricted/NoRedist/Config/BaseGeometryProcessing.ini
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Experimental/GeometryProcessing/Config/Mac/BaseMacGeometryProcessing.ini
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Experimental/GeometryProcessing/Restricted/NotForLicensees/Config/Mac/BaseMacGeometryProcessing.ini
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Experimental/GeometryProcessing/Restricted/NoRedist/Config/Mac/BaseMacGeometryProcessing.ini
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Platforms/Mac/Config/BaseMacGeometryProcessing.ini
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Experimental/GeometryProcessing/Restricted/NotForLicensees/Platforms/Mac/Config/BaseMacGeometryProcessing.ini
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Engine/Plugins/Experimental/GeometryProcessing/Restricted/NoRedist/Platforms/Mac/Config/BaseMacGeometryProcessing.ini
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/DefaultGeometryProcessing.ini
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NotForLicensees/Config/DefaultGeometryProcessing.ini
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Restricted/NoRedist/Config/DefaultGeometryProcessing.ini
+2026-11-23 11:43:14.351 Stray-Mac-Shipping[9702:925394] SHIM missing file (stat): ../../../Hk_project/Config/GeneratedGeometryProcessing.ini
+2026-11-23 11:43:14.352 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/Experimental/GeometryProcessing/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/Experimental/GeometryProcessing/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.353 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/Experimental/PythonScriptPlugin/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/Experimental/PythonScriptPlugin/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.357 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/MetalFX4UE/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/MetalFX4UE/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.368 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/Developer/AnimationSharing/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/Developer/AnimationSharing/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.370 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Hk_project/Plugins/ToyoTool/Content/Paks/MacNoEditor' -> redir='../../../Hk_project/Plugins/ToyoTool/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.383 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/Editor/GeometryMode/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/Editor/GeometryMode/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.384 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/Editor/SpeedTreeImporter/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.385 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/Enterprise/DatasmithContent/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/Enterprise/DatasmithContent/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.392 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/Experimental/ChaosClothEditor/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/Experimental/ChaosClothEditor/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.396 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/Experimental/GeometryCollectionPlugin/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/Experimental/GeometryCollectionPlugin/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.397 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/Experimental/ChaosSolverPlugin/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/Experimental/ChaosSolverPlugin/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.398 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/Experimental/ChaosNiagara/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/Experimental/ChaosNiagara/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.399 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/FX/Niagara/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/FX/Niagara/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.402 Stray-Mac-Shipping[9702:925394] SHIM PROBE (stat): orig='../../../Engine/Plugins/Experimental/MotoSynth/Content/Paks/MacNoEditor' -> redir='../../../Engine/Plugins/Experimental/MotoSynth/Content/Paks/MacNoEditor' ret=-1 errno=2
+2026-11-23 11:43:14.434 Stray-Mac-Shipping[9702:925394] [UE4] Device Type: Mac16,12
+2026-11-23 11:43:14.436 Stray-Mac-Shipping[9702:925394] [UE4] Matched Mac as MacGame
+2026-11-23 11:43:15.036 Stray-Mac-Shipping[9702:925375] SHIM STATS fps=0 cpu=33 mem=91 avail=3285 threads=33 controllers=0 loops=172 thermal=nominal
+2026-11-23 11:43:16.031 Stray-Mac-Shipping[9702:925375] SHIM STATS fps=0 cpu=2 mem=91 avail=3285 threads=33 controllers=0 loops=9 thermal=nominal
+2026-11-23 11:43:17.034 Stray-Mac-Shipping[9702:925394] SHIM INTERCEPTED _Exit(1)! Backtrace (6 frames):
+2026-11-23 11:43:17.034 Stray-Mac-Shipping[9702:925394]   frame #0: 0   libShim_libSystem.dylib             0x000000010ed7a184 _Exit + 60
+2026-11-23 11:43:17.034 Stray-Mac-Shipping[9702:925394]   frame #1: 1   Stray-Mac-Shipping                  0x0000000105209f24 -[UE4AppDelegate applicationDidFinishLaunching:] + 0
+2026-11-23 11:43:17.034 Stray-Mac-Shipping[9702:925394]   frame #2: 2   Stray-Mac-Shipping                  0x0000000105ee3f4c -[FCocoaGameThread main] + 196
+2026-11-23 11:43:17.034 Stray-Mac-Shipping[9702:925394]   frame #3: 3   Foundation                          0x0000000199cfcfb8 658959FC-3327-3DEF-80CE-051D937E1FE6 + 2113464
+2026-11-23 11:43:17.034 Stray-Mac-Shipping[9702:925394]   frame #4: 4   libsystem_pthread.dylib             0x000000019955701c _pthread_start + 136
+2026-11-23 11:43:17.034 Stray-Mac-Shipping[9702:925394]   frame #5: 5   libsystem_pthread.dylib             0x000000019955391c thread_start + 8
+2026-11-23 11:43:17.034 Stray-Mac-Shipping[9702:925394] SHIM UE STATE AT _Exit: slide=0x4b94000 GIsRequestingExit=1 GMaxRHIFeatureLevel=3 GShaderPlatformForFeatureLevel=49 GMaxRHIShaderPlatform=0 GAppleMetalEnabled=1 GDynamicRHI=0x0 GIsRHIInitialized=0 GIsMetalInitialized=0 GIsCriticalError=0
+2026-11-23 11:43:17.034 Stray-Mac-Shipping[9702:925394] SHIM UE GErrorHist: "Fatal error!
+
+"
+2026-11-23 11:43:17.034 Stray-Mac-Shipping[9702:925394] SHIM UE GLog: pGLog=0x109dae490 numLines=0
+The app terminated with the exit code 1.
