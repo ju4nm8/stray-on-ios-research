@@ -1,0 +1,62 @@
+name: Technical review / debugging help
+description: Share a reproducible finding, code review, or debugging suggestion for the Stray iOS compatibility research.
+title: "[Technical review]: "
+labels:
+  - help wanted
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping. Please do not attach game assets, PAK files, executables, signing material, credentials, or private device data. This is an unfinished compatibility research project, not an official iOS port.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - UIKit orientation / aspect ratio / CAMetalLayer
+        - Unreal viewport / camera
+        - UE4 Metal RHI / shaders
+        - 3D geometry / skeletal meshes
+        - Textures / materials / lighting
+        - IOKit / GPU compatibility shim
+        - GameController / DualShock 4 / touch input
+        - Build / signing / deployment
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: finding
+    attributes:
+      label: Finding or proposed diagnosis
+      description: Separate observed facts from hypotheses. Include exact symbols, functions, and source references where possible.
+      placeholder: "Observed ...; this suggests ... because ..."
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Sanitized log excerpts, stack traces, screenshots of the app UI, or minimal code snippets. Remove private paths and identifiers.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Include device/OS, build state, exact steps, and whether the app was manually closed or crashed.
+    validations:
+      required: false
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested experiment or fix
+      description: Explain how to test the suggestion and what result would confirm or reject it.
+    validations:
+      required: false
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Publishing and rights
+      options:
+        - label: I have not attached proprietary game assets, PAK files, executables, signing credentials, or private personal/device data.
+          required: true
