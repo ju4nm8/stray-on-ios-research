@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Basic Bundle Information -->
+    <key>CFBundleIdentifier</key>
+    <string>com.example.strayios</string>
+    <key>CFBundleName</key>
+    <string>Stray</string>
+    <key>CFBundleDisplayName</key>
+    <string>Stray</string>
+    <key>CFBundleExecutable</key>
+    <string>Stray-Mac-Shipping</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.5</string>
+    <key>CFBundleVersion</key>
+    <string>99</string>
+
+    <!-- Platform and OS Target -->
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+    <key>MinimumOSVersion</key>
+    <string>17.0</string>
+    <key>UIDeviceFamily</key>
+    <array>
+        <integer>1</integer>
+        <integer>2</integer>
+    </array>
+
+    <!-- Display and Orientation -->
+    <key>UIRequiresFullScreen</key>
+    <true/>
+    <key>UIStatusBarHidden</key>
+    <true/>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+
+    <!-- macos-on-ios Shim Configuration -->
+    <!-- Working directory inside bundle where relative engine paths resolve -->
+    <key>SHIMWorkingDirectory</key>
+    <string>Contents/UE4/Hk_project/Binaries/Mac</string>
+
+    <!-- Path redirections to resolve engine assets outside sandbox or from app container -->
+    <key>SHIMPathRedirects</key>
+    <dict>
+        <!-- Redirect Internationalization/icudt64l to extracted ICU tree in Documents -->
+        <key>Internationalization</key>
+        <string>Documents/stray/StrayICU</string>
+    </dict>
+
+    <!-- Parent folder redirect for engine configs and writable user saves -->
+    <key>SHIMAppParentRedirect</key>
+    <string>Documents/stray</string>
+</dict>
+</plist>
