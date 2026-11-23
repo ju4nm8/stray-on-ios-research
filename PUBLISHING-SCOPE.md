@@ -1,28 +1,31 @@
-# Publishing scope and safety checklist
+# Publishing Scope & Safety Checklist
 
-I keep this repository as a public engineering notebook, not as a distribution channel for Stray.
+This repository serves as a public research notebook and engineering log documenting compatibility research. It is **not** a distribution channel for game files, compiled bundles, or proprietary software.
 
-## Material I never publish
+---
 
-- `Stray.app`, the Stray executable, IPA files or converted app bundles.
-- Game PAK archives, extracted textures, meshes, audio, fonts, shaders, cinematics or other game assets.
-- Apple signing certificates, private keys, provisioning profiles, entitlements containing sensitive capabilities or credentials.
-- Device UDIDs, personal filesystem paths, app-container UUIDs, account identifiers or unredacted crash reports.
-- Third-party source code unless its license and provenance permit redistribution.
+## Strict Non-Distribution Policy
 
-## How I prepare logs
+The following materials are **never** committed or published to this repository:
 
-Before publishing logs, I redact `/Users/<name>` and personal volume paths, device/app-container UUIDs, signing identity emails, Team IDs, UDIDs, provisioning details, private file locations and unrelated personal data. I retain enough technical context to explain the issue without exposing identifiers.
+1. **Proprietary Game Assets & Binaries:**
+   - The original `Stray.app` bundle, executable `Stray-Mac-Shipping`, or converted application bundles.
+   - Unreal Engine PAK archives (`pakchunk*.pak`), extracted textures, meshes, animations, audio files, cinematics (Bink 2 `.bk2`), or level geometry.
+2. **Security Credentials & Code Signing Material:**
+   - Apple Developer certificates, private keys, provisioning profiles, or sensitive entitlements.
+3. **Private Identifiers & Personal Data:**
+   - Physical device UDIDs, Apple Account emails, Personal Team IDs, local Mac user paths (`/Users/<username>/...`), or container UUIDs.
+4. **Third-Party Code:**
+   - Proprietary Unreal Engine source code or unlicensed third-party code.
 
-## Screenshots and video
+---
 
-I use original captures only when they do not reveal personal notifications, account details or more copyrighted game content than is necessary to document the compatibility experiment. I describe exactly which screen or scene I reached. I do not distribute extracted game assets.
+## Evidence-Based Claims Policy
 
-## Evidence-based claims
+To maintain scientific and technical credibility:
+- **No speculative success:** We do not claim a feature works based on compilation success or indirect hints.
+- **On-device verification:** All reported milestones must be backed by concrete physical device logs captured under the test harness.
+- **Clear stage delineation:** Launching the process, completing engine initialization, rendering graphics, and running gameplay are distinct technical stages. Passing one does not imply the others.
+- **Historical transparency:** Earlier unverified hypotheses and exploratory notes are archived in `archive/previous-development/` rather than deleted or rewritten.
 
-- I can document that I reached the brightness-calibration screen based on the Phase-G recording.
-- I can document the observed 59–62 FPS overlay/log samples during part of that short run, but I do not present them as a benchmark.
-- I can now document that I opened Stray directly from its iOS Home Screen icon.
-- I do not currently claim that Stray is fully playable, stable over long sessions, a native iOS port or that every Mac game can run on iOS.
-
-This is an unofficial independent experiment. I do not claim affiliation with or endorsement by the upstream maintainer, Apple, Annapurna Interactive or BlueTwelve Studio.
+This is an unofficial, independent research experiment. It is not affiliated with, sponsored by, or endorsed by Annapurna Interactive, BlueTwelve Studio, Epic Games, Apple, or the upstream maintainer.

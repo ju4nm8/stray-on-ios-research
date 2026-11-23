@@ -1,0 +1,25 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Build artifacts
+*.o
+*.a
+*.dylib
+*.framework
+tests/test_bridge
+
+# Generated outputs & local logs
+outputs/
+*.log
+*.tmp
+
+# Xcode / Swift
+*.xcodeproj/
+*.xcworkspace/
+build/
+DerivedData/
+
+# Local configuration overrides
+.env.local

@@ -1,22 +1,107 @@
-# Architecture notes
+# Architecture Overview — Stray iOS Compatibility Layer
 
-## Scope
+This document describes the engineering architecture used to execute the original ARM64 macOS release of **Stray** inside an iOS application container on physical Apple Silicon iPhone hardware.
 
-I run a native ARM64 macOS application bundle inside an iOS application container using the compatibility approach from the upstream macos-on-ios project. Stray remains the original macOS build; it is not a native iOS binary. iOS signing and platform restrictions still apply.
+---
 
-## Layers I have worked on
+## Architectural Stack
 
-1. **Converted bundle.** I place the macOS app tree in an iOS-compatible bundle layout. The conversion adjusts Mach-O platform metadata and load paths/RPATHs, then signs the app for my development device.
-2. **Framework compatibility.** I route macOS-only dependencies through shim dylibs and bridge AppKit behavior onto UIKit.
-3. **Resource discovery.** Unreal expects project-relative paths and Mac bundle resource locations. My working setup uses a project sidecar, ICU sidecar, path redirects and a runtime base directory.
-4. **Platform/GPU discovery.** The Mac build queries IOKit. My iOS adapter provides the registry structure Unreal expects using information from the iPhone's actual Metal device. The Phase-G log identifies an Apple A19 Pro GPU and `AGXMetalG18P`.
-5. **Metal adaptation.** I encountered macOS-only Managed storage requests and added targeted hooks to translate the observed requests to Shared on iOS. I later revised `supportsFamily:` handling after a texture-view format assertion. I document both paths and their limitations in [METAL-COMPATIBILITY.md](METAL-COMPATIBILITY.md).
-6. **Rendering and input.** I can now open Stray directly from its iOS icon and reach a recognizable tunnel environment. The Run 6 interior remains very dark, and I have not clearly confirmed the cat. VGC logs show non-zero analog stick axes reaching the polling layer, but I have not verified character movement, camera response or action buttons inside Unreal. I have also not completed the landscape viewport/aspect-ratio verification.
+```mermaid
+graph TD
+    subgraph OriginalGame["Original Game Assets & Binary (Unmodified)"]
+        MachO["Stray-Mac-Shipping (ARM64 macOS Mach-O)"]
+        PAKs["Game Archives (pakchunk0..3-MacNoEditor.pak)"]
+        Loose["Movies (Bink 2) & Audio"]
+    end
 
-## Launch behavior
+    subgraph BinaryAdaptation["Binary & Bundle Adaptation Layer"]
+        LoadCommands["vtool: LC_BUILD_VERSION (Platform 2 iOS)"]
+        RPATHs["install_name_tool: RPATH redirection"]
+        Codesign["codesign: Personal Team Profile + Entitlements"]
+    end
 
-Earlier successful command-line launches supplied the relative path to `Hk_project.uproject` and a `-basedir` pointing to `.../Hk_project/Binaries/Mac` inside the installed app. I have since successfully opened Stray directly from its iOS Home Screen icon, so command-line launch is no longer the only working entry point.
+    subgraph RuntimeShims["Runtime Compatibility Shims (Dylibs)"]
+        LibSystem["libShim_libSystem.dylib (POSIX, sysctl, paths, exit)"]
+        AppKit["libShim_AppKit.dylib (NSApplication -> UIKit bridge)"]
+        IOKit["libShim_IOKit.dylib (Metal GPU registry emulation)"]
+        CoreGraphics["libShim_CoreGraphics.dylib (Display modes)"]
+    end
 
-The app container UUID changes across installations. My runtime setup must discover the current container path rather than hard-code a previous UUID.
+    subgraph UnrealEngine["Unreal Engine 4 Adaptation (Hk_project)"]
+        CommandLine["GSavedCommandLine (-metalsm5, -basedir)"]
+        ResourceRedirect["Documents/stray/ (ICU, uproject sidecar)"]
+        MetalRHI["FMetalDynamicRHI (Shader Platform SF_METAL_SM5)"]
+    end
 
-A visible menu or rendered scene does not by itself prove that all assets, gameplay systems, save behavior, audio, input or later levels work.
+    subgraph HostWatchdog["Host Safety & Testing Harness"]
+        Watchdog["watchdog_stray.sh (40-90s auto-kill supervisor)"]
+        Devicectl["devicectl (Console streaming, process inspection)"]
+    end
+
+    OriginalGame --> BinaryAdaptation
+    BinaryAdaptation --> RuntimeShims
+    RuntimeShims --> UnrealEngine
+    HostWatchdog -.-> UnrealEngine
+```
+
+---
+
+## 1. Binary & Bundle Adaptation Layer
+
+Stray is built as a monolithic shipping executable (`Stray-Mac-Shipping`) linking against macOS system frameworks (AppKit, Cocoa, Carbon, IOKit, OpenGL, AudioUnit). 
+
+To execute on iOS without source code recompilation:
+- **Platform Header Adaptation:** The Mach-O load command `LC_BUILD_VERSION` is transformed from `PLATFORM_MACOS` (minOS 12.0) to `PLATFORM_IOS` (`minos 17.0`, `sdk 27.1`) using `vtool`.
+- **Dynamic Linking Redirection:** Library load commands targeting macOS system locations (`/System/Library/Frameworks/...`) are rewritten via `install_name_tool` to reference custom shim dynamic libraries bundled within `Frameworks/`.
+- **Security & Codesigning:** The application bundle is signed using a valid Apple Developer Personal Team identity. Embedded framework shims are signed first, followed by the outer application bundle.
+
+---
+
+## 2. Runtime Compatibility Shims
+
+The runtime shims intercept calls to macOS-specific APIs and translate them to compatible iOS behaviors:
+
+### A. libShim_libSystem.dylib
+- **Filesystem Path Redirection:** Intercepts `stat`, `open`, `access`, and `chdir` to redirect project-relative paths (`../../../Hk_project/...`) and engine assets to valid iOS container locations.
+- **Filesystem Case-Sensitivity Bypass:** Hooks `NSURL getResourceValue:forKey:error:` to report `NSURLVolumeSupportsCaseSensitiveNamesKey` as `NO`, preventing Unreal from aborting on case-sensitive APFS volumes.
+- **Hardware Spoofing:** Emulates `sysctlbyname` queries:
+  - `hw.model` returns `Mac16,12` (Mac mini M4).
+  - `hw.machine` returns `arm64`.
+  - `hw.memsize` returns total unified memory.
+- **Exit & Crash Forensics:** Intercepts `_Exit`, `_exit`, `exit`, and `abort` with reentrancy protection (`gInHook`) to log stack backtraces and dump global engine state before process shutdown.
+
+### B. libShim_AppKit.dylib
+- **Application Lifecycle:** Bridges `NSApplicationMain` to `UIApplicationMain`.
+- **Window & Viewport Management:** Creates a full-screen `UIWindow` containing a `CAMetalLayer`-backed `UIView` that masquerades as an `NSWindow` / `NSView` for Unreal's `FMetalView`.
+- **Command Line Injection:** Overrides `GSavedCommandLine` to inject mandatory launch parameters (`-metalsm5`, `-basedir`, project path).
+
+### C. libShim_IOKit.dylib
+- **GPU Registry Emulation:** Unreal's macOS platform layer queries IOKit (`IOServiceGetMatchingServices`) to discover GPU properties and VRAM limits. The shim emulates these registry entries by querying the actual `MTLDevice` on the iPhone.
+
+---
+
+## 3. Unreal Engine 4 Runtime Architecture
+
+Stray runs on a custom build of **Unreal Engine 4** (`Hk_project`). The engine initialization sequence consists of:
+
+1. **`main` / `NSApplicationMain`:** Enters `-[UE4AppDelegate applicationDidFinishLaunching:]`.
+2. **Game Thread Spawn:** `FCocoaGameThread` launches and invokes `-[UE4AppDelegate runGameThread:]`.
+3. **`GuardedMain`:**
+   - **`FEngineLoop::PreInit`:**
+     - Platform discovery and hardware classification.
+     - ICU data directory discovery (resolved via `Documents/stray/StrayICU`).
+     - Project descriptor parsing (`Hk_project.uproject`).
+     - Configuration system initialization (`BaseEngine.ini`, `DefaultEngine.ini`).
+     - Dynamic RHI creation (`PlatformCreateDynamicRHI` -> `FMetalDynamicRHI`).
+     - Global shader map compilation / cache loading (`GlobalShaderCache-SF_METAL_SM5.bin`).
+   - **`FEngineLoop::Init`:** Module loading, audio initialization, and level loading.
+   - **`FEngineLoop::Tick`:** Core simulation and rendering loop.
+
+---
+
+## 4. Host Safety & Testing Harness
+
+Because tests are conducted on a physical device, thermal management and battery health are strictly maintained:
+- **Independent Host Watchdog:** `tools/watchdog_stray.sh` spawns alongside each launch and forcibly terminates the process if execution exceeds the timeout (configured between 40s and 90s).
+- **Process Cleanup Verification:** Every test run verifies via `devicectl` that no zombie or suspended processes remain in memory.
+- **Inter-run Cooldown:** Testing guidelines mandate cooldown intervals between consecutive test launches.

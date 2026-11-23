@@ -1,86 +1,103 @@
-# Stray en iOS — bitácora de investigación
+# Stray en iOS — Investigación de Compatibilidad Técnica
 
-> ¿Es posible ejecutar la build original de **Stray para macOS Apple Silicon** en un iPhone?
->
-> Estoy documentando un experimento personal de compatibilidad basado en [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). Esto es una bitácora de ingeniería, no un port nativo de iOS, un instalador ni una afirmación de que el juego esté completo o sea totalmente jugable.
+> ¿Puede la versión original de **Stray** para macOS Apple Silicon ejecutarse en un iPhone físico?
+> 
+> *Stray iOS inicia un nuevo ciclo de desarrollo. El proyecto establece una línea base técnica limpia y reorganiza su hoja de ruta pública en torno a los objetivos actuales de implementación.*
 
-**Última actualización — 9 de noviembre de 2026:** Ya puedo abrir Stray directamente desde el icono de iOS y llegar a un nivel 3D en mi iPhone 17 Pro Max. También comprobé manualmente que responden acciones del juego: puedo correr, saltar, maullar y seguir avanzando aunque el gato no aparezca visualmente. Las pruebas cortas más recientes (Runs 16–17) registraron medianas de aproximadamente 52–53 FPS durante unos 94 segundos, con estado térmico nominal según los logs. Son resultados alentadores, pero no un benchmark de rendimiento sostenido. El resultado visual todavía está lejos de estar completo: el gato, partes del escenario y algunos materiales faltan o se renderizan incorrectamente, y la iluminación/exposición siguen dando problemas.
-
-[English README](README.md) · [Historial técnico](docs/MILESTONES.md) · [Arquitectura](docs/ARCHITECTURE.md) · [Problemas conocidos](docs/KNOWN-ISSUES.md)
+[Read in English](README.md) · [Estado del Proyecto](PROJECT_STATUS.md) · [Hoja de Ruta](ROADMAP.md) · [Arquitectura](docs/ARCHITECTURE.md) · [Bloqueos Actuales](docs/CURRENT_BLOCKERS.md)
 
 ---
 
-## Qué estoy intentando hacer
+## 1. Resumen y Alcance del Proyecto
 
-Estoy probando si la build ARM64 original de macOS de Stray puede ejecutarse dentro de un contenedor de aplicación iOS usando la infraestructura de compatibilidad y los shims del proyecto upstream. El ejecutable sigue siendo el binario original de macOS. Mi trabajo incluye conversión del bundle, compatibilidad con APIs de macOS, rutas de recursos, detección de plataforma de Unreal, descubrimiento de GPU mediante IOKit, Metal, renderizado y entrada.
+Este repositorio documenta un experimento técnico independiente para evaluar si la versión compilada para macOS ARM64 de **Stray** (desarrollada sobre Unreal Engine 4) puede ejecutarse dentro del contenedor de una aplicación de iOS en un iPhone 17 Pro Max físico, utilizando shims de compatibilidad en espacio de usuario derivados de [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public).
 
-Esto **no** es un port nativo de iOS, una redistribución de Stray, un bypass de DRM ni una prueba de que cualquier juego de Mac pueda ejecutarse en iOS. Es un experimento de compatibilidad que sigue sin terminar.
+El ejecutable del juego (`Stray-Mac-Shipping`) se mantiene como el binario Mach-O original de macOS. El trabajo utiliza adaptación de cabeceras de plataforma, reescritura de rutas de carga dinámica (RPATHs) y shims en tiempo de ejecución (puente AppKit -> UIKit, descubrimiento de GPU en IOKit, traducción de modos de almacenamiento Metal) para salvar las diferencias entre plataformas.
 
-## Estado actual
+> [!IMPORTANT]
+> **Investigación Exclusiva — Sin Distribución de Archivos del Juego:** Este repositorio contiene únicamente documentación, análisis de diagnóstico y código de shims. **No** distribuye ejecutables del juego, archivos PAK, texturas con derechos de autor, modelos 3D, pistas de audio ni certificados de firma.
 
-### Lo que he comprobado
+---
 
-- Stray abre directamente desde su icono en la pantalla de inicio de mi iPhone 17 Pro Max físico.
-- El juego llega a los menús y carga un nivel 3D.
-- Probé manualmente acciones dentro del juego: correr, saltar, maullar y continuar la secuencia responden aunque el mesh visual del gato no aparezca.
-- Se renderizan partes estáticas del entorno. Capturas anteriores muestran secciones de un túnel/patio con tuberías, estructuras de concreto, cables, vegetación, cielo y efectos atmosféricos.
-- Runs 16 y 17 registraron medianas de aproximadamente 52 y 53 FPS, respectivamente, durante unos 94 segundos. Los logs reportan estado térmico nominal en esas muestras. Esto no demuestra rendimiento sostenido, frame pacing ni estabilidad en sesiones largas.
-- Los archivos PAK originales del proyecto pudieron abrirse en los logs de las pruebas recientes. Eso confirma que el proceso pudo acceder a los archivos, pero no demuestra que todos los recursos se hayan cargado o renderizado correctamente.
-- El shim de GPU Family de AppKit se compiló, firmó e instaló antes de Run 4. Las ejecuciones posteriores avanzaron sin el mismo error fatal de texture view de UE4 en los fragmentos de log disponibles. Es una señal positiva, pero no he demostrado la causalidad con una prueba A/B controlada.
+## 2. Estado Técnico Actual
 
-### Lo que sigue fallando o no está claro
+```mermaid
+flowchart LR
+    A["Etapa 1: Arranque y Estabilidad"] --> B["Etapa 2: Init de UE4"]
+    B --> C["Etapa 3: RHI Metal"]
+    C --> D["Etapa 4: Primer Render"]
+    D --> E["Etapas 5-9: Gameplay y Ajustes"]
 
-- **El gato es invisible.** Las acciones del juego responden, pero su mesh visual no aparece en las capturas.
-- Falta una cantidad importante de geometría y contenido visual del nivel, o se renderiza incorrectamente.
-- Hay materiales y texturas incompletos, ausentes o mostrados de forma incorrecta en partes de la escena.
-- La iluminación y la exposición son inconsistentes; algunas zonas están demasiado oscuras o se ven mal.
-- El renderizado de meshes esqueléticos/dinámicos es una de las principales sospechas, pero todavía no he aislado la causa raíz.
-- Falta verificar deliberadamente el viewport horizontal y la relación entre los límites de UIKit, `CAMetalLayer.drawableSize` y el viewport de Unreal.
-- Todavía no he probado de forma adecuada la estabilidad en sesiones largas, el audio ni el ciclo de segundo plano/primer plano.
-- Los FPS más recientes son observaciones de pruebas cortas. No deben interpretarse como prueba de una experiencia estable entre 50 y 60 FPS.
+    style A fill:#ff9966,stroke:#333,stroke-width:2px
+    style B fill:#ffff99,stroke:#333,stroke-width:2px
+    style C fill:#eeeeee,stroke:#333
+    style D fill:#eeeeee,stroke:#333
+    style E fill:#eeeeee,stroke:#333
+```
 
-## Posibles causas que estoy investigando
+### Hechos Verificados (Confirmados en Dispositivo Físico)
+- **Dispositivo Objetivo:** iPhone 17 Pro Max, iOS 27.3, Apple Silicon.
+- **Conversión del Binario:** Comando de carga Mach-O adaptado a la plataforma iOS mediante `vtool`; firmado con perfil Personal Team e instalado mediante `devicectl` (Código de Salida 0).
+- **Sensibilidad a Mayúsculas/Minúsculas:** El cuadro de alerta modal bloqueante (*Unreal Engine does not support running from case-sensitive file systems*) queda neutralizado mediante un hook en `NSURL` que devuelve `NO` para `NSURLVolumeSupportsCaseSensitiveNamesKey`.
+- **Descubrimiento de Recursos ICU:** El fallo fatal `ICU data directory was not discovered` queda resuelto extrayendo los datos de recursos ICU (3.463 archivos) a `Documents/stray/StrayICU` junto con una redirección en el shim.
+- **Reconocimiento del Hardware:** Los hooks de `sysctl` que reportan `hw.model` como `Mac16,12` permiten a Unreal Engine reconocer la plataforma como `Device Type: Mac16,12` / `Matched Mac as MacGame`.
+- **Captura de Salida:** El hook interceptor de `_Exit` captura trazas de llamadas (backtrace) y estado global del motor antes de la salida del proceso.
 
-Son hipótesis, no diagnósticos confirmados:
+### Aspectos que Aún No Funcionan (Control de Realidad)
+- **Terminación Temprana:** El proceso finaliza ~3 segundos después del lanzamiento con código de salida 1 (`_Exit(1)` invocado desde `-[UE4AppDelegate runGameThread:]`).
+- **Sin Renderizado:** No se muestra ningún gráfico ni interfaz en la pantalla del dispositivo. El estado del motor al salir confirma `GDynamicRHI == 0x0`, `GIsRHIInitialized == 0` y `GIsMetalInitialized == 0`.
+- **Controles y Audio:** Los sistemas de audio y de entrada táctil/mando no se han inicializado ni alcanzado en esta fase.
 
-- La creación del scene proxy o la ruta de renderizado de meshes esqueléticos de Unreal en esta implementación de Metal.
-- GPU skinning y comportamiento del skin cache.
-- Materiales masked, subsurface u otras variantes de materiales/shaders que podrían comportarse distinto en la GPU del iPhone.
-- Stencil y LOD dithering, Early Z/profundidad y decisiones de visibilidad/culling.
-- GFur u otras rutas de geometría dinámica/plugins.
-- Reporte de capacidades de Metal o compatibilidad de formatos y texture views.
-- Streaming de recursos, formatos de textura, selección de mipmaps o rutas de carga.
-- Iluminación, exposición, sombras y postprocesado que quizá no se adapten bien a este entorno.
-- Desajustes entre el tamaño del viewport/drawable o la orientación.
+---
 
-Durante la inspección encontré el mesh del gato y recursos relacionados dentro de los datos originales del juego, así que la ausencia del archivo fuente no es por ahora la explicación principal. Eso tampoco demuestra que el juego esté cargando y enlazando esos recursos correctamente en tiempo de ejecución.
+## 3. Investigación Prioritaria: El Bloqueo de Salida Temprana
 
-## Entorno de pruebas
+El desensamblado de `PlatformCreateDynamicRHI` (`0x101a28268`) y `FMetalDynamicRHI::FMetalDynamicRHI` (`0x101219188`) ha revelado la secuencia causal de la terminación:
 
-- MacBook Air M4, 16 GB de memoria unificada.
-- iPhone 17 Pro Max.
-- Build original de Stray para macOS Apple Silicon, basada en Unreal Engine 4.
-- Metal sobre la GPU Apple del iPhone.
-- Capa de compatibilidad: [zorrobyte/macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public).
+1. **Fallback de Nivel de Características:** Sin `-metalsm5` en el parseo inicial de la línea de comandos, el nivel de características retrocede al valor predeterminado `4`.
+2. **Discrepancia de Plataforma de Shaders:** El nivel `4` provoca la selección de la plataforma de shaders 18 (`SP_METAL_MAC_ES3_1` / `"SF_METAL"`).
+3. **Validación Fatal:** `FMetalDynamicRHI` compara la plataforma 18 frente a los `TargetedRHIs` (`SF_METAL_SM5` = 16) definidos en `BaseEngine.ini`. La falta de coincidencia dispara un error fatal de bajo nivel y activa `GIsRequestingExit = 1`.
+4. **Aborto en Milestone 11:** Al no instanciarse `GDynamicRHI`, el Milestone 11 intenta cargar `GlobalShaderCache-None.bin`, falla e invoca `_Exit(1)`.
 
-Intento separar los cambios de código, compilaciones, instalaciones, experimentos de configuración y resultados que realmente observé en el teléfono. Los logs cortos, los FPS del overlay y la apertura correcta de los PAK no son prueba de renderizado completo ni de que el juego ya sea jugable.
+Consulte [docs/CURRENT_BLOCKERS.md](docs/CURRENT_BLOCKERS.md) para revisar los registros forenses completos, volcados de registros y trazas de desensamblado.
 
-## En qué me vendría bien ayuda
+---
 
-Me interesa recibir aportes de personas que conozcan el Metal RHI de Unreal Engine, el renderizado de skeletal meshes, GPU skinning, variantes de materiales/shaders, capacidades de Metal, resource streaming o el tamaño de UIKit/CAMetalLayer/viewport.
+## 4. Hoja de Ruta en Nueve Etapas
 
-En concreto, busco ideas para entender por qué se renderiza geometría estática del entorno mientras el mesh esquelético del gato y partes del escenario no aparecen. También serían útiles propuestas de pruebas pequeñas y controladas o instrumentación que ayude a acotar el problema.
+El proyecto sigue una progresión estricta de 9 etapas de ingeniería:
 
-## Notas del proyecto
+| Etapa | Objetivo | Estado |
+|---|---|---|
+| **Etapa 1** | **Arranque del Proceso y Estabilidad** | **En Progreso (Bloqueo Activo)** |
+| **Etapa 2** | **Inicialización de Unreal Engine** | **En Progreso** |
+| **Etapa 3** | **Inicialización de Metal y RHI** | **Bloqueada por Etapa 2** |
+| **Etapa 4** | **Primer Renderizado en Pantalla** | No iniciada |
+| **Etapa 5** | **Geometría del Escenario y Personaje** | No iniciada |
+| **Etapa 6** | **Materiales, Texturas e Iluminación** | No iniciada |
+| **Etapa 7** | **Recuperación del Canal de Audio** | No iniciada |
+| **Etapa 8** | **Controles de Entrada y Jugabilidad** | No iniciada |
+| **Etapa 9** | **Rendimiento, Térmica y Sesiones Prolongadas** | No iniciada |
 
-- [Historial técnico](docs/MILESTONES.md)
-- [Pruebas de renderizado](docs/RENDERING-FOLLOW-UP.md)
-- [Problemas conocidos y matriz de verificación](docs/KNOWN-ISSUES.md)
-- [Notas de compatibilidad con Metal](docs/METAL-COMPATIBILITY.md)
-- [Arquitectura](docs/ARCHITECTURE.md)
+Los criterios detallados de validación para cada etapa se encuentran en [ROADMAP.md](ROADMAP.md).
 
-## Proyecto upstream, atribución y distribución
+---
 
-Este trabajo se basa en [zorrobyte/macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public). Consulta [UPSTREAM.md](UPSTREAM.md) y la [licencia MIT original](https://github.com/zorrobyte/macos-on-ios-public/blob/main/LICENSE). No reclamo la autoría de la infraestructura de compatibilidad upstream.
+## 5. Índice de Documentación Técnica
 
-No publico el ejecutable de Stray, archivos PAK, recursos extraídos, bundles convertidos, material de firma, perfiles de aprovisionamiento, identificadores del dispositivo ni logs privados. Este es un experimento independiente y no está afiliado ni respaldado por Annapurna Interactive, BlueTwelve Studio, Apple ni el mantenedor del proyecto upstream.
+- [PROJECT_STATUS.md](PROJECT_STATUS.md) — Matriz de evidencias y registros verificados de pruebas.
+- [ROADMAP.md](ROADMAP.md) — Hoja de ruta en 9 etapas y criterios de verificación.
+- [CHANGELOG.md](CHANGELOG.md) — Registro cronológico de cambios y avances.
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — Explicación profunda de shims, modificación Mach-O y puente en tiempo de ejecución.
+- [docs/CURRENT_BLOCKERS.md](docs/CURRENT_BLOCKERS.md) — Desensamblado, análisis de slide ASLR y diagnóstico de salida.
+- [docs/INSTALLATION.md](docs/INSTALLATION.md) — Procedimiento paso a paso de conversión, firma, instalación y watchdog.
+- [docs/METAL-COMPATIBILITY.md](docs/METAL-COMPATIBILITY.md) — Modos de almacenamiento Metal, plataformas de shaders y spoofing de GPU.
+- [archive/previous-development/](archive/previous-development/) — Documentos y notas archivadas de etapas exploratorias anteriores.
+
+---
+
+## 6. Proyectos de Origen y Directrices
+
+- **Proyecto Upstream:** La base de compatibilidad procede de [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public) por Ross Fisher (Licencia MIT). Ver [UPSTREAM.md](UPSTREAM.md).
+- **Directrices de Publicación:** Consulte [PUBLISHING-SCOPE.md](PUBLISHING-SCOPE.md) para conocer las políticas de no distribución de activos.
+- **Contribuciones:** Consulte [CONTRIBUTING.md](CONTRIBUTING.md) para participar en la investigación.

@@ -1,22 +1,28 @@
-# Contributing
+# Contributing to Stray iOS Research
 
-I welcome contributions that help make this research accurate, reproducible and technically useful.
+Contributions that advance technical accuracy, engineering rigor, and reproducible findings are welcome.
 
-I currently prioritize evidence-backed documentation and reproducible observations over publishing a ready-to-install game package.
+The project prioritizes evidence-backed documentation, forensic disassembly, and reproducible observations over speculative discussions.
 
-## Contributions that help
+---
 
-- I welcome technical reviews of compatibility descriptions.
-- I welcome instrumentation suggestions for UIKit, Metal, Unreal viewport sizing and input routing.
-- I welcome help distinguishing upstream behavior from Stray-specific changes.
-- I welcome documentation corrections backed by logs, screenshots, version details or reproducible steps.
+## Areas Where Contributions Help
 
-## Material I will not accept
+1. **Unreal Engine 4 Runtime Internals:**
+   - Insights into `FEngineLoop::PreInit`, `PlatformCreateDynamicRHI`, and feature-level negotiation in UE4 custom builds.
+   - Command-line parsing and initialization order for early configuration tables (`GEngineIni`, `TargetedRHIs`).
+2. **Metal RHI & Shader Architecture:**
+   - Behavior of `FMetalDynamicRHI` on Apple Silicon iOS devices when running a macOS-compiled engine binary.
+   - Shader Model 5 (`SF_METAL_SM5`) pipeline state object (PSO) compilation and caching on iOS Metal runtimes.
+3. **Instrumentation & Shims:**
+   - Clean, reentrancy-safe POSIX / Foundation hooks for `libShim_libSystem.dylib`.
+   - Suggestions for safe memory monitoring and log flushing before process shutdown.
 
-- Stray binaries, PAK files, extracted assets, IPA files or converted application bundles.
-- Signing certificates, provisioning profiles, private keys, device identifiers or unredacted logs.
-- Code copied from other projects without clear provenance and compatible licensing.
+---
 
-## How I record a result
+## Submission Guidelines
 
-When I document a test, I include the device model and OS version, Mac and Xcode/SDK versions, the exact milestone, reproduction steps, redacted logs or screenshots, and expected versus observed behavior. I distinguish a code change, a successful build, an installation and a result verified on the physical device. I do not describe a feature as working unless I have verified it on-device.
+- All documentation and pull requests must adhere to the [Publishing Scope & Safety Checklist](PUBLISHING-SCOPE.md).
+- **Never submit proprietary assets, PAK contents, binaries, or signing certificates.**
+- Every claim of progress must be accompanied by reproducible logs, backtraces, or telemetry captured on physical hardware.
+- Adhere to the 9-stage framework defined in [ROADMAP.md](ROADMAP.md).

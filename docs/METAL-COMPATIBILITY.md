@@ -1,39 +1,64 @@
-# Metal compatibility: macOS Managed storage and GPU-family handling
+# Metal Compatibility & Graphics Architecture
 
-I document two separate Metal compatibility investigations here: the original `MTLStorageModeManaged` failure and a later GPU-family/texture-view issue. I do not treat either workaround as universally correct for every resource type or game.
+This document describes the Metal graphics runtime requirements, compatibility shims, and architectural differences between macOS and iOS when running the Unreal Engine 4 Metal RHI (`FMetalDynamicRHI`).
 
-## Failure 1 — Managed storage on iOS
+---
 
-During Phase F3, Unreal attempted to create a 3D texture while initializing system textures. The descriptor used `MTLStorageModeManaged` (numeric value 1), and the iPhone rejected that storage mode in `validateWithDevice:`. The validation message listed Shared (0), Private (2) and Memoryless (3) as accepted modes.
+## 1. Storage Mode Translation: Managed to Shared
 
-## Why my first hooks did not solve it
+In the macOS Metal runtime, applications can allocate resources with `MTLStorageModeManaged` (mode 1), where the driver manages synchronization between host (CPU) and discrete GPU memory.
 
-My earlier hooks targeted abstract descriptor types. Metal used concrete runtime implementations such as `MTLTextureDescriptorInternal`, and Unreal's mtlpp wrapper cached method implementations. I therefore had to intercept the concrete runtime classes used by the observed calls.
+On iOS (Apple Silicon unified memory architecture), `MTLStorageModeManaged` does not exist:
+- Permitted storage modes: `MTLStorageModeShared` (0), `MTLStorageModePrivate` (2), and `MTLStorageModeMemoryless` (3).
+- Any attempt to create a buffer or texture with `storageMode == 1` causes an immediate validation assertion failure in `validateWithDevice:`.
 
-## Phase-G adaptation
+### Shim Interception
+The compatibility shim intercepts concrete descriptor classes (`MTLTextureDescriptorInternal`, `MTLBufferDescriptor`) at runtime:
+```objc
+if (desc.storageMode == MTLStorageModeManaged) {
+    desc.storageMode = MTLStorageModeShared;
+}
+```
+Any subsequent calls to `synchronizeResource:` or `synchronizeTexture:` are handled as no-ops by the blit command encoder wrapper.
 
-I added targeted hooks for concrete texture and heap descriptor classes, device resource creation and relevant buffer/blit operations. For the requests I observed using Managed storage, the shim translated the mode to Shared while preserving other storage modes.
+---
 
-The Phase-G log confirms Managed-to-Shared conversions and calls to a no-op `synchronizeTexture` path, followed by continued rendering and the initial Stray interface.
+## 2. GPU Family Queries & Feature Levels
 
-## Failure 2 — GPU-family selection and texture views
+Unreal Engine's Metal RHI checks device capabilities using `[MTLDevice supportsFamily:]`.
 
-In a later Run 3 attempt, UE4 entered a fatal-error loop after Metal rejected a texture view. The source texture was reported as `RGBA8Unorm_sRGB`, while the requested view format was `R8Unorm`. I traced the investigation to UE4's `ToSRGBFormat` path and the shim's `supportsFamily:` interception.
+### GPU Family Differences
+- **macOS Metal:** Queries `MTLGPUFamilyMac1` (Apple silicon & AMD GPUs) and `MTLGPUFamilyMac2`.
+- **iOS Metal:** Queries `MTLGPUFamilyApple1` through `MTLGPUFamilyApple9`.
 
-I had tested broad Apple GPU-family suppression and forced Mac-family responses. That approach changed UE4's format-selection behavior and was not safe to treat as a proven fix.
+When the macOS Unreal binary runs on iOS, it expects Mac family indicators. If the device does not respond affirmatively to Mac queries or if broad family suppression is improperly configured, Unreal's format selection logic may choose unsupported texture view combinations (such as attempting an `R8Unorm` view of an `RGBA8Unorm_sRGB` parent texture).
 
-I then revised `ShimSupportsFamily`: I stopped force-claiming `MTLGPUFamilyMac1`, explicitly claimed `MTLGPUFamilyMac2` and allowed the real Metal implementation to answer other GPU-family queries. I compiled, signed and installed the revised `libShim_AppKit.dylib` before Run 4. Runs 4–6 progressed into the level without the same texture-view fatal error appearing in the supplied log excerpts.
+The current shim implementation explicitly affirms `MTLGPUFamilyMac2` while forwarding underlying queries to the actual physical Apple GPU.
 
-This is consistent with the revision mitigating that specific fatal path, but I have not run a controlled A/B test. It does not prove that every texture format or GPU-family feature check is correct.
+---
 
-## Important limitations
+## 3. Shader Platform Selection (`SF_METAL_SM5`)
 
-- Managed and Shared are not universally interchangeable across every resource usage pattern or platform.
-- My storage-mode result only demonstrates that the observed initialization/rendering path progressed with these adaptations.
-- I have not proven correctness for all CPU/GPU synchronization, resource heaps, readbacks, streaming or later gameplay workloads.
-- I keep the hooks narrowly scoped; I do not force every texture or buffer into Shared.
-- I keep the storage-mode adaptation separate from the GPU-family/texture-view adaptation because they address different observed failures.
+Unreal Engine 4's cooked shaders for Stray are compiled for **Shader Model 5 (`SF_METAL_SM5`)**:
+- Engine internal enum: `SP_METAL_SM5 = 16`.
+- Cache file: `GlobalShaderCache-SF_METAL_SM5.bin` (26,945,525 bytes, SHA-256 `d106cd781eff6be8c31a634495e94ad7b7ac2d04f6d1e6b142b61992b0a2a340`).
 
-## Current state
+If `PlatformCreateDynamicRHI` receives feature level fallback `4` (due to missing CLI parameters or unparsed ini tables), the engine defaults to `SP_METAL_MAC_ES3_1 = 18` (`"SF_METAL"`). 
 
-The Phase-G run no longer showed the earlier `invalid storageMode (1)` validation failure. The revised GPU-family hook was installed before Run 4, and the same texture-view fatal error does not appear in the supplied Run 4–6 excerpts. I still need broader gameplay and long-duration tests before claiming that Metal compatibility is complete.
+Because the game's PAK only contains cooked shaders for `SF_METAL_SM5`, the mismatch triggers `LowLevelFatalErrorHandler`:
+```text
+Shader platform: SF_METAL was not cooked! Please enable this shader platform in the project's target settings.
+```
+Injecting `-metalsm5` into the initial command line forces the RHI feature level to `SM5`, selecting platform 16 and properly matching the cooked shader cache.
+
+---
+
+## 4. Current Graphics Status
+
+| Component | Status | Details |
+|---|---|---|
+| **Storage Mode Translation** | Implemented | Managed -> Shared translation operational. |
+| **GPU Family Spoofing** | Implemented | Mac2 affirmed; hardware queries forwarded. |
+| **RHI Creation** | In Progress | Active debugging to ensure `GDynamicRHI` instantiates cleanly. |
+| **Global Shader Cache** | Staged | Byte-identical loose cache placed in `Mac/Contents/UE4/Engine/`. |
+| **Viewport Presentation** | Not Started | `CAMetalLayer` binding pending successful RHI initialization. |
