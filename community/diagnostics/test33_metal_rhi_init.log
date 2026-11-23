@@ -1,0 +1,46 @@
+=== STRAY iOS — TEST 33 SANITIZED LOG (FIRST SUCCESSFUL METAL SM5 RHI INIT) ===
+Date: 2026-11-23
+Device: iPhone 17 Pro Max (Apple A19 Pro GPU, iOS 27.x, 8 GB RAM)
+Target Platform: arm64-apple-ios17.0 (Simulated macOS Mach-O via compatibility shims)
+
+[SHIM_LIB] Initializing userspace dynamic library shims...
+[SHIM_IOKIT] Intercepting IOKit GPU service matching:
+[SHIM_IOKIT]   Matching service: IOAccelerator
+[SHIM_IOKIT]   Populating synthetic GPU device:
+[SHIM_IOKIT]     vendorId: 0x106b (Apple Inc.)
+[SHIM_IOKIT]     deviceId: 0x0000
+[SHIM_IOKIT]     model: Apple A19 Pro GPU
+[SHIM_IOKIT]     plugin: AGXMetalG18P
+[SHIM_SYS] Intercepting sysctlbyname:
+[SHIM_SYS]   hw.model -> "Mac16,12"
+[SHIM_SYS]   hw.machine -> "arm64"
+
+[UE4] LogInit: Initializing Unreal Engine 4.27.2-0+++UE4+Release-4.27...
+[UE4] LogInit: Device Type: Mac16,12
+[UE4] LogInit: Matched Mac as MacGame
+[UE4] LogInit: Command line: -metalsm5 -NoVerifyGC -stdout
+
+[UE4] LogRHI: Initializing Metal RHI...
+[UE4] LogMetal: Metal device: Apple A19 Pro GPU
+[UE4] LogMetal: Feature set: macOS GPUFamily2 v1 (SM5 Desktop Shader Platform)
+[UE4] LogMetal: Target RHIs: SF_METAL_SM5 (16)
+[UE4] LogMetal: Max buffer size: 4096 MB
+[UE4] LogMetal: Supports Argument Buffers: YES
+[UE4] LogMetal: Supports Indirect Draw: YES
+
+[SHIM_APPKIT] Binding UIKit UIWindow to FCocoaWindow:
+[SHIM_APPKIT]   Screen bounds: 956 x 440 pt
+[SHIM_APPKIT]   Safe insets: Top: 0, Left: 62, Bottom: 20, Right: 62 pt
+[SHIM_APPKIT]   16:9 Viewport Container: 768 x 432 pt (centered)
+[SHIM_APPKIT]   Metal Drawable Resolution: 1536 x 864 px
+
+[SHIM_METAL] Intercepting MTLTextureDescriptor allocation:
+[SHIM_METAL]   MTLStorageModeManaged (1) -> MTLStorageModeShared (0) [Sanitized for Apple Silicon iOS]
+
+[UE4] LogInit: GDynamicRHI instantiated: 0x12298af00
+[UE4] LogInit: GIsRHIInitialized: 1
+[UE4] LogInit: GIsMetalInitialized: 1
+[UE4] LogInit: GMaxRHIFeatureLevel: 3 (ERHIFeatureLevel::SM5)
+[UE4] LogInit: Display cluster / viewport successfully registered.
+[UE4] LogEngine: Slate application created. Main menu loop initialized.
+[UE4] LogSlate: Window 'Stray' presented at 60.0 FPS.

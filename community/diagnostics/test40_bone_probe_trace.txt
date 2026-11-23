@@ -1,0 +1,66 @@
+=== STRAY iOS — TEST 40 BINARY PROBE TRACE (USkinnedMeshComponent::CreateSceneProxy) ===
+Target Binary: Stray-Mac-Shipping (ARM64)
+Cave Address: 0x1005d03ec (Offset 0x5d03ec)
+Instrumentation Hook Points:
+  [E] 0x102fd67a0 — Entry of USkinnedMeshComponent::CreateSceneProxy
+  [B] 0x102fd68bc — Section Bone Limit Comparison (cmp w22, w0)
+  [X] 0x102fd6840 — Normal Function Exit (x21 = FSkeletalMeshSceneProxy* or NULL)
+  [N] 0x102fd6854 — Early Abort Exit (returns NULL)
+
+Record Format:
+  PRBE: <Component_this:16> <SkeletalMesh:16> <MeshObject:16> <RenderData:16> <Flags:16>
+  PRBB: <Component_this:16> <MaxBonesLimit:16> <SectionBoneCount:16>
+  PRBX: <Component_this:16> <CreatedSceneProxyPointer:16>
+  PRBN: <Component_this:16> <AbortReasonCode:16>
+
+================================================================================
+RAW CAPTURED EXECUTION TRACE:
+================================================================================
+PRBE000000013b6eb050000000013b2b19d0000000013b33ea20000000015047e84000000000000000001e01010300000003
+PRBB000000013b6eb0500000000000000100000000000000000e
+PRBX000000013b6eb050000000013a762c80
+
+PRBE000000013b6e9070000000013b2b19d0000000013561ace0000000015047e84000000000000000001e01010300000003
+PRBB000000013b6e90700000000000000100000000000000000e
+PRBX000000013b6e9070000000013a69d780
+
+PRBE0000000135e59070000000013b2b19d00000000136ab8760000000015047e84000000000000000001e01010300000003
+PRBB0000000135e590700000000000000100000000000000000e
+PRBX0000000135e59070000000013abf0400
+
+PRBE0000000135e58080000000013b2b19d0000000013ab3d080000000015047e84000000000000000001e01010300000003
+PRBB0000000135e580800000000000000100000000000000000e
+PRBX0000000135e58080000000013b08c580
+
+PRBE0000000135e820e0000000013b2b19d00000000142a21820000000015047e84000000000000000001e01010300000003
+PRBB0000000135e820e00000000000000100000000000000000e
+PRBX0000000135e820e0000000013b085e00
+
+PRBE0000000135e5e020000000013b2b19d00000000142a20100000000015047e84000000000000000001e01010300000003
+PRBB0000000135e5e0200000000000000100000000000000000e
+PRBX0000000135e5e020000000013b813580
+
+================================================================================
+FORENSIC ANALYSIS & DECODING:
+================================================================================
+1. Inspection of the first invocation:
+   - Component Pointer: 0x13b6eb050
+   - Skeletal Mesh Pointer: 0x13b2b19d0
+   - Mesh Object Pointer: 0x13b33ea20 (Valid FSkeletalMeshObjectGPUSkin)
+   - Render Data Pointer: 0x15047e840 (Valid FSkeletalMeshRenderData)
+
+2. Bone Limit Check (PRBB):
+   - Max Bones Limit (w0): 0x00000100 = 256 bones
+   - Section Bone Count (w22): 0x0000000e = 14 bones
+   - Condition: 14 <= 256. The branch `b.gt 0x102fd6840` is NOT taken!
+
+3. Exit Value (PRBX):
+   - Result: 0x13a762c80.
+   - A non-null FSkeletalMeshSceneProxy instance is created and returned!
+
+CONCLUSION:
+The skeletal mesh scene proxy is NOT aborted by the bone limit check.
+The bone limit hypothesis is conclusively refuted. The failure to see the
+cat in-game is caused by downstream rasterization/shading factors (material
+shading model MSM_SubsurfaceProfile without post-process bilateral blur,
+zero-lumen indirect lighting without Volumetric Lightmaps, or GFur suppression).

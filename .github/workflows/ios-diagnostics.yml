@@ -1,0 +1,29 @@
+name: Configuration & Static Diagnostics
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - 'publication/**'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate-diagnostics:
+    name: Validate Configs, INIs & Repository Cleanliness
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Make Scripts Executable
+        run: chmod +x scripts/*.py scripts/*.sh
+
+      - name: Run Static & Diagnostic Validation
+        run: python3 scripts/validate_diagnostics.py

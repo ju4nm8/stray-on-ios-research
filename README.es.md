@@ -1,103 +1,112 @@
 # Stray en iOS — Investigación de Compatibilidad Técnica
 
-> ¿Puede la versión original de **Stray** para macOS Apple Silicon ejecutarse en un iPhone físico?
+> [!CAUTION]
+> **ESTADO HONESTO DEL PROYECTO (NOVIEMBRE 2026):**
+> **Stray NO ha sido portado con éxito a iOS todavía. NO es completamente jugable.**
 > 
-> *Stray iOS inicia un nuevo ciclo de desarrollo. El proyecto establece una línea base técnica limpia y reorganiza su hoja de ruta pública en torno a los objetivos actuales de implementación.*
+> Aunque hemos conseguido la ejecución nativa del binario macOS ARM64 original sin recompilar en un iPhone 17 Pro Max físico, con inicialización completa de Metal SM5 Desktop RHI y renderizado del escenario 3D a 25–33 FPS, la salida visual es incompleta: el gato protagonista solo se dibuja como una silueta negra, falta el pelaje procedural, las texturas se mantienen en baja resolución y el fondo 3D del menú aparece en negro.
+> 
+> Este repositorio documenta la investigación técnica e ingeniería inversa en curso. No se distribuyen binarios propietarios ni assets con derechos de autor.
 
-[Read in English](README.md) · [Estado del Proyecto](PROJECT_STATUS.md) · [Hoja de Ruta](ROADMAP.md) · [Arquitectura](docs/ARCHITECTURE.md) · [Bloqueos Actuales](docs/CURRENT_BLOCKERS.md)
-
----
-
-## 1. Resumen y Alcance del Proyecto
-
-Este repositorio documenta un experimento técnico independiente para evaluar si la versión compilada para macOS ARM64 de **Stray** (desarrollada sobre Unreal Engine 4) puede ejecutarse dentro del contenedor de una aplicación de iOS en un iPhone 17 Pro Max físico, utilizando shims de compatibilidad en espacio de usuario derivados de [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public).
-
-El ejecutable del juego (`Stray-Mac-Shipping`) se mantiene como el binario Mach-O original de macOS. El trabajo utiliza adaptación de cabeceras de plataforma, reescritura de rutas de carga dinámica (RPATHs) y shims en tiempo de ejecución (puente AppKit -> UIKit, descubrimiento de GPU en IOKit, traducción de modos de almacenamiento Metal) para salvar las diferencias entre plataformas.
-
-> [!IMPORTANT]
-> **Investigación Exclusiva — Sin Distribución de Archivos del Juego:** Este repositorio contiene únicamente documentación, análisis de diagnóstico y código de shims. **No** distribuye ejecutables del juego, archivos PAK, texturas con derechos de autor, modelos 3D, pistas de audio ni certificados de firma.
+[In English](README.md) · [Estado del Proyecto](PROJECT_STATUS.md) · [Hoja de Ruta](ROADMAP.md) · [Ayuda Técnica y Reddit](community/REDDIT_TECHNICAL_HELP.md) · [Arquitectura](docs/ARCHITECTURE.md)
 
 ---
 
-## 2. Estado Técnico Actual
+## 1. Alcance y Visión General
+
+Este repositorio documenta un experimento técnico independiente que investiga si el ejecutable comercial ARM64 para macOS de **Stray** (desarrollado en Unreal Engine 4.27.2) puede ejecutarse dentro del sandbox de una aplicación iOS en hardware físico Apple Silicon (iPhone 17 Pro Max), utilizando capas de compatibilidad en espacio de usuario derivadas de [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public) por Ross Fisher.
+
+El binario del juego (`Stray-Mac-Shipping`) se mantiene como el ejecutable Mach-O original de macOS. El experimento utiliza adaptación de cabeceras de plataforma Mach-O (`LC_BUILD_VERSION`), ajuste de rutas de carga dinámica (RPATHs) y shims en tiempo de ejecución (`AppKit` -> `UIKit`, registro sintético de GPU en `IOKit` y traducción de modos de memoria Metal).
 
 ```mermaid
-flowchart LR
-    A["Etapa 1: Arranque y Estabilidad"] --> B["Etapa 2: Init de UE4"]
-    B --> C["Etapa 3: RHI Metal"]
-    C --> D["Etapa 4: Primer Render"]
-    D --> E["Etapas 5-9: Gameplay y Ajustes"]
+flowchart TD
+    subgraph MachO["Binario macOS Original (Stray-Mac-Shipping)"]
+        UE4["Unreal Engine 4.27 Core"]
+        RHI["Metal SM5 Dynamic RHI (SF_METAL_SM5)"]
+        PhysX["NVIDIA PhysX 3.4 Runtime"]
+        Game["Hk_project Blueprints (ARM64 Nativos)"]
+    end
 
-    style A fill:#ff9966,stroke:#333,stroke-width:2px
-    style B fill:#ffff99,stroke:#333,stroke-width:2px
-    style C fill:#eeeeee,stroke:#333
-    style D fill:#eeeeee,stroke:#333
-    style E fill:#eeeeee,stroke:#333
+    subgraph Shims["Shims de Compatibilidad en Espacio de Usuario"]
+        AppKit["libShim_AppKit.dylib<br/>(NSWindow -> UIWindow, Viewport 16:9, Texture Views)"]
+        IOKit["libShim_IOKit.dylib<br/>(Registro sintético GPU Apple A19 Pro)"]
+        LibSys["libShim_libSystem.dylib<br/>(Case Folding VFS, Redirección ICU)"]
+    end
+
+    subgraph iOS["Frameworks del Sistema iOS (Darwin / iOS 17+)"]
+        Metal["Metal.framework (Apple Silicon A19 Pro GPU)"]
+        UIKit["UIKit & CAMetalLayer"]
+        GC["GameController.framework (DualShock 4 y Táctil)"]
+    end
+
+    UE4 --> Shims
+    RHI --> Metal
+    AppKit --> UIKit
+    IOKit --> Metal
+    LibSys --> iOS
+    Game --> GC
 ```
 
-### Hechos Verificados (Confirmados en Dispositivo Físico)
-- **Dispositivo Objetivo:** iPhone 17 Pro Max, iOS 27.3, Apple Silicon.
-- **Conversión del Binario:** Comando de carga Mach-O adaptado a la plataforma iOS mediante `vtool`; firmado con perfil Personal Team e instalado mediante `devicectl` (Código de Salida 0).
-- **Sensibilidad a Mayúsculas/Minúsculas:** El cuadro de alerta modal bloqueante (*Unreal Engine does not support running from case-sensitive file systems*) queda neutralizado mediante un hook en `NSURL` que devuelve `NO` para `NSURLVolumeSupportsCaseSensitiveNamesKey`.
-- **Descubrimiento de Recursos ICU:** El fallo fatal `ICU data directory was not discovered` queda resuelto extrayendo los datos de recursos ICU (3.463 archivos) a `Documents/stray/StrayICU` junto con una redirección en el shim.
-- **Reconocimiento del Hardware:** Los hooks de `sysctl` que reportan `hw.model` como `Mac16,12` permiten a Unreal Engine reconocer la plataforma como `Device Type: Mac16,12` / `Matched Mac as MacGame`.
-- **Captura de Salida:** El hook interceptor de `_Exit` captura trazas de llamadas (backtrace) y estado global del motor antes de la salida del proceso.
+---
 
-### Aspectos que Aún No Funcionan (Control de Realidad)
-- **Terminación Temprana:** El proceso finaliza ~3 segundos después del lanzamiento con código de salida 1 (`_Exit(1)` invocado desde `-[UE4AppDelegate runGameThread:]`).
-- **Sin Renderizado:** No se muestra ningún gráfico ni interfaz en la pantalla del dispositivo. El estado del motor al salir confirma `GDynamicRHI == 0x0`, `GIsRHIInitialized == 0` y `GIsMetalInitialized == 0`.
-- **Controles y Audio:** Los sistemas de audio y de entrada táctil/mando no se han inicializado ni alcanzado en esta fase.
+## 2. Estado Actual de la Ingeniería (Tests 1 a 41)
+
+### Lo que Funciona (Verificado en iPhone 17 Pro Max Físico)
+- **Conversión de Mach-O y Firma:** Cabeceras adaptadas a plataforma iOS (`minos 17.0`, `sdk 27.1`) mediante `vtool`; firmado con perfil Apple Developer Personal Team e instalado mediante `devicectl` (Código de Salida 0).
+- **Bypass de Sensibilidad a Mayúsculas:** El diálogo bloqueante (*Unreal Engine does not support running from case-sensitive file systems*) se elude mediante un hook en `NSURL` que retorna `NO` para `NSURLVolumeSupportsCaseSensitiveNamesKey`.
+- **Internacionalización ICU:** Error fatal de recursos ICU resuelto extrayendo 3.463 archivos ICU (22 MB) de `pakchunk0-MacNoEditor.pak` y redirigiéndolos mediante shim VFS.
+- **Identificación de Hardware y GPU:** Sysctl interceptado (`Mac16,12` / `arm64`) y registro sintético en `IOKit` con `Apple A19 Pro GPU` (`vendorId=0x106b`, `plugin=AGXMetalG18P`), eliminando totalmente los cuelgues SIGSEGV de inicio.
+- **Inicialización de Metal SM5 RHI:** Desktop Shader Model 5 Metal RHI (`SF_METAL_SM5`) completamente operativo: `GDynamicRHI = 0x12298af00`, `GIsRHIInitialized = 1`, `GIsMetalInitialized = 1`.
+- **Modos de Almacenamiento Metal y Texture Views:** `MTLStorageModeManaged` se traduce a `MTLStorageModeShared`. Interposición en `-[MTLTexture newTextureViewWithPixelFormat:]` evita cuelgues al crear vistas depth (`260 -> 252`) y stencil (`260 -> 261`).
+- **Renderizado de Geometría 3D:** El escenario del nivel (túneles, tuberías metálicas, válvulas circulares y conductos) se renderiza en pantalla en tiempo real.
+- **Tasa de Cuadros y Estabilidad:** **25–33 FPS sostenidos** en el nivel 3D; 60 FPS en menús Slate UI. Consumo de 2.65 GB RAM sin alertas de presión térmica o de memoria.
+- **Controles e Input:** Superposición táctil virtual funcional. Controladores DualShock 4 conectados ocultan automáticamente la interfaz táctil y asumen el control.
+
+### Lo que NO Funciona (Bloqueadores Activos)
+- **Sombreado del Gato Protagonista:** La malla del gato se rasteriza físicamente y ocluye las tuberías/válvulas del fondo, pero aparece como una **silueta negra**. Causas raíz aisladas:
+  1. El material utiliza `MSM_SubsurfaceProfile` (`/Game/Character/Cat/Material/SSS_profil_cat`), que requiere un pase de post-procesado de desenfoque bilateral en espacio de pantalla (`FPostProcessSubsurface`) que falla en iOS Metal.
+  2. Mallas esqueléticas móviles dinámicas en niveles con iluminación estática horneada dependen del muestreo de Volumetric Lightmap (VLM), el cual evalúa a 0.0 lúmenes en túneles interiores oscuros.
+- **Pelaje Procedural (GFur PRO):** El plugin GFur oculta la malla base (`bHideSkin=1`, `bVisible=0`) esperando dibujar capas de pelo con compute shaders. En iOS Metal, estos shaders no se ejecutan.
+- **Fondo 3D del Menú Principal:** La pantalla de título muestra fondo negro; solo los widgets táctiles Slate/UMG se dibujan.
+- **Streaming de Texturas de Escritorio:** Las texturas utilizan compresión BC1–BC7 de escritorio. El streaming de mips desde `.ubulk` requiere ajuste de memoria.
+- **Orientación de Cámara:** La orientación horizontal y el giro de cámara táctil requieren ajuste fino adicional.
 
 ---
 
-## 3. Investigación Prioritaria: El Bloqueo de Salida Temprana
+## 3. Matriz de Fases de Desarrollo (9 Etapas)
 
-El desensamblado de `PlatformCreateDynamicRHI` (`0x101a28268`) y `FMetalDynamicRHI::FMetalDynamicRHI` (`0x101219188`) ha revelado la secuencia causal de la terminación:
-
-1. **Fallback de Nivel de Características:** Sin `-metalsm5` en el parseo inicial de la línea de comandos, el nivel de características retrocede al valor predeterminado `4`.
-2. **Discrepancia de Plataforma de Shaders:** El nivel `4` provoca la selección de la plataforma de shaders 18 (`SP_METAL_MAC_ES3_1` / `"SF_METAL"`).
-3. **Validación Fatal:** `FMetalDynamicRHI` compara la plataforma 18 frente a los `TargetedRHIs` (`SF_METAL_SM5` = 16) definidos en `BaseEngine.ini`. La falta de coincidencia dispara un error fatal de bajo nivel y activa `GIsRequestingExit = 1`.
-4. **Aborto en Milestone 11:** Al no instanciarse `GDynamicRHI`, el Milestone 11 intenta cargar `GlobalShaderCache-None.bin`, falla e invoca `_Exit(1)`.
-
-Consulte [docs/CURRENT_BLOCKERS.md](docs/CURRENT_BLOCKERS.md) para revisar los registros forenses completos, volcados de registros y trazas de desensamblado.
-
----
-
-## 4. Hoja de Ruta en Nueve Etapas
-
-El proyecto sigue una progresión estricta de 9 etapas de ingeniería:
-
-| Etapa | Objetivo | Estado |
-|---|---|---|
-| **Etapa 1** | **Arranque del Proceso y Estabilidad** | **En Progreso (Bloqueo Activo)** |
-| **Etapa 2** | **Inicialización de Unreal Engine** | **En Progreso** |
-| **Etapa 3** | **Inicialización de Metal y RHI** | **Bloqueada por Etapa 2** |
-| **Etapa 4** | **Primer Renderizado en Pantalla** | No iniciada |
-| **Etapa 5** | **Geometría del Escenario y Personaje** | No iniciada |
-| **Etapa 6** | **Materiales, Texturas e Iluminación** | No iniciada |
-| **Etapa 7** | **Recuperación del Canal de Audio** | No iniciada |
-| **Etapa 8** | **Controles de Entrada y Jugabilidad** | No iniciada |
-| **Etapa 9** | **Rendimiento, Térmica y Sesiones Prolongadas** | No iniciada |
-
-Los criterios detallados de validación para cada etapa se encuentran en [ROADMAP.md](ROADMAP.md).
+| Etapa | Hito | Estado | Evidencia Verificada |
+|---|---|---|---|
+| **Etapa 1** | **Estabilidad de Proceso y Lanzamiento** | **SUPERADA** | Watchdog automatizado, cero cierres abruptos al arrancar. |
+| **Etapa 2** | **Inicialización de Unreal Engine** | **SUPERADA** | `FEngineLoop::AppInit` completado; tablas ICU cargadas. |
+| **Etapa 3** | **Inicialización de Metal y RHI** | **SUPERADA** | `GDynamicRHI` vivo; `SF_METAL_SM5` activo. |
+| **Etapa 4** | **Primera Salida Visual en Pantalla** | **SUPERADA** | Presentación 16:9 centrada en `CAMetalLayer` a 60 FPS. |
+| **Etapa 5** | **Geometría del Escenario y Personaje** | **EN PROGRESO** | Escenario 3D a 25-33 FPS. Silueta del gato presente; sombreado incompleto. |
+| **Etapa 6** | **Materiales, Texturas e Iluminación** | **EN PROGRESO** | Bloqueado por `MSM_SubsurfaceProfile` e iluminación VLM. |
+| **Etapa 7** | **Recuperación del Pipeline de Audio** | **EN PROGRESO** | Hilo de audio activo; streaming Wwise pendiente de validación. |
+| **Etapa 8** | **Controles de Entrada y Jugabilidad** | **EN PROGRESO** | Superposición táctil y DualShock 4 operativos. |
+| **Etapa 9** | **Rendimiento, Térmica y Estabilidad** | **EN PROGRESO** | 25-33 FPS, 2.65 GB RAM, estado térmico nominal. |
 
 ---
 
-## 5. Índice de Documentación Técnica
+## 4. Paquete Comunitario y Ayuda Técnica
 
-- [PROJECT_STATUS.md](PROJECT_STATUS.md) — Matriz de evidencias y registros verificados de pruebas.
-- [ROADMAP.md](ROADMAP.md) — Hoja de ruta en 9 etapas y criterios de verificación.
-- [CHANGELOG.md](CHANGELOG.md) — Registro cronológico de cambios y avances.
-- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — Explicación profunda de shims, modificación Mach-O y puente en tiempo de ejecución.
-- [docs/CURRENT_BLOCKERS.md](docs/CURRENT_BLOCKERS.md) — Desensamblado, análisis de slide ASLR y diagnóstico de salida.
-- [docs/INSTALLATION.md](docs/INSTALLATION.md) — Procedimiento paso a paso de conversión, firma, instalación y watchdog.
-- [docs/METAL-COMPATIBILITY.md](docs/METAL-COMPATIBILITY.md) — Modos de almacenamiento Metal, plataformas de shaders y spoofing de GPU.
-- [archive/previous-development/](archive/previous-development/) — Documentos y notas archivadas de etapas exploratorias anteriores.
+Buscamos activamente recomendaciones de programadores gráficos y especialistas en ingeniería inversa de **UE4 Metal RHI** y **modelos de sombreado diferido**:
+- 📖 **Informe Técnico Detallado:** [community/REDDIT_TECHNICAL_HELP.md](community/REDDIT_TECHNICAL_HELP.md)
+- 💬 **Borrador para Reddit:** [community/REDDIT_POST.md](community/REDDIT_POST.md)
+- 🔬 **Diagnósticos y Trazas Binarias:** [community/diagnostics/](community/diagnostics/)
 
 ---
 
-## 6. Proyectos de Origen y Directrices
+## 5. Compilación de los Shims
 
-- **Proyecto Upstream:** La base de compatibilidad procede de [macos-on-ios-public](https://github.com/zorrobyte/macos-on-ios-public) por Ross Fisher (Licencia MIT). Ver [UPSTREAM.md](UPSTREAM.md).
-- **Directrices de Publicación:** Consulte [PUBLISHING-SCOPE.md](PUBLISHING-SCOPE.md) para conocer las políticas de no distribución de activos.
-- **Contribuciones:** Consulte [CONTRIBUTING.md](CONTRIBUTING.md) para participar en la investigación.
+Para compilar las librerías dinámicas de compatibilidad en macOS con Xcode:
+
+```bash
+# Compilar shims para arm64-apple-ios17.0
+./scripts/compile_shims.sh build/shims
+```
+
+O revise los flujos automatizados de GitHub Actions:
+- `.github/workflows/ios-build.yml` — Compilación y validación de símbolos en runners `macos-14`.
+- `.github/workflows/ios-diagnostics.yml` — Validación estática de configuraciones y limpieza del repositorio.

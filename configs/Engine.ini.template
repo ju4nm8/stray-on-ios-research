@@ -1,0 +1,52 @@
+; ==============================================================================
+; Engine.ini.template — Verified Baseline Configuration for Stray iOS Port
+; ==============================================================================
+
+[Core.System]
+Paths=../../../Engine/Content
+Paths=%GAMEDIR%Content
+Paths=../../../Engine/Plugins/2D/Paper2D/Content
+Paths=../../../Hk_project/Plugins/GFur/Content
+Paths=../../../Hk_project/Plugins/BlueManVehicles/Content
+Paths=../../../Hk_project/Plugins/GamepadUMGPlugin/Content
+Paths=../../../Hk_project/Plugins/SimpleHMD/Content
+Paths=../../../Hk_project/Plugins/AnimationBudgetAllocator/Content
+Paths=../../../Hk_project/Plugins/ApexDestruction/Content
+Paths=../../../Hk_project/Plugins/SignificanceManager/Content
+Paths=../../../Hk_project/Plugins/HkInput/Content
+Paths=../../../Hk_project/Plugins/OnlineSubsystem/Content
+Paths=../../../Hk_project/Plugins/OnlineSubsystemUtils/Content
+Paths=../../../Hk_project/Plugins/OnlineSubsystemSteam/Content
+Paths=../../../Hk_project/Plugins/Wwise/Content
+Paths=../../../Engine/Plugins/Developer/Concert/ConcertSync/ConcertSyncClient/Content
+Paths=../../../Engine/Plugins/Enterprise/DatasmithContent/Content
+Paths=../../../Engine/Plugins/MagicLeap/MagicLeap/Content
+Paths=../../../Engine/Plugins/Media/MediaCompositing/Content
+Paths=../../../Engine/Plugins/Editor/SpeedTreeImporter/Content
+Paths=../../../Hk_project/Plugins/AutoSettings/Content
+Paths=../../../Hk_project/Plugins/FSR/Content
+Paths=../../../Hk_project/Plugins/HkPlatformTools/Content
+Paths=../../../Hk_project/Plugins/BinkMedia/Content
+
+[SystemSettings]
+; Disable hardware occlusion queries and HZB occlusion to avoid GPU synchronization stall
+r.HZBOcclusion=0
+r.AllowOcclusionQueries=0
+
+; Render scene early depth pass
+r.EarlyZPass=1
+
+; Exposure bias settings (compensates for dynamic exposure stalls)
+r.EyeAdaptation.ExposureBias=1.6
+DefaultFeatureAutoExposureBias=1.6
+
+; Texture streaming pool configuration (2 GB on Apple Silicon unified memory)
+r.TextureStreaming=1
+r.Streaming.PoolSize=2048
+r.Streaming.FullyLoadUsedTextures=1
+
+; Force fallback from SubsurfaceProfile to Lambertian DefaultLit for troubleshooting
+r.SubsurfaceScattering=0
+
+[PlatformCrypto]
+PlatformRequiresCrypto=False

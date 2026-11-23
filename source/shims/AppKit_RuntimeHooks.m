@@ -320,17 +320,76 @@ static id ShimFnDesc(id self, SEL _cmd, id desc, NSError **error) {
 }
 
 // Mac games pick shader sets and pixel formats by Mac GPU family (Mac1 = Intel/AMD, Mac2 = Apple Silicon).
-// In UE4's ToSRGBFormat, if the device returns YES for MTLGPUFamilyApple1..3, UE4 routes desktop BC textures into ASTC tables.
-// Returning NO for Apple1..Apple3 forces desktop BC formats, while allowing real Metal for Apple4+.
+// In UE4's ToSRGBFormat, claiming MTLGPUFamilyMac2 allows desktop Apple Silicon Metal shader paths.
+// We must NOT return NO for MTLGPUFamilyApple1 (nor claim Mac1), which caused UE4 to assume legacy Intel/AMD
+// and convert R8Unorm into RGBA8Unorm_sRGB, violating Metal's texture view compatibility rules.
 static IMP gSupportsFamily;
 static BOOL ShimSupportsFamily(id self, SEL _cmd, MTLGPUFamily family) {
-    if (family == MTLGPUFamilyApple1 || family == MTLGPUFamilyApple2 || family == MTLGPUFamilyApple3) {
-        return NO;
-    }
-    if (family == MTLGPUFamilyMac1 || family == MTLGPUFamilyMac2) {
+    if (family == MTLGPUFamilyMac2) {
         return YES;
     }
     return ((BOOL (*)(id, SEL, MTLGPUFamily))gSupportsFamily)(self, _cmd, family);
+}
+
+static IMP gTexNewView1, gTexNewView2;
+static BOOL ShimIsPixelFormatViewCompatible(MTLPixelFormat a, MTLPixelFormat b) {
+    if (a == b) return YES;
+    // 8-bit color sRGB / linear
+    if ((a == MTLPixelFormatRGBA8Unorm && b == MTLPixelFormatRGBA8Unorm_sRGB) ||
+        (a == MTLPixelFormatRGBA8Unorm_sRGB && b == MTLPixelFormatRGBA8Unorm)) return YES;
+    if ((a == MTLPixelFormatBGRA8Unorm && b == MTLPixelFormatBGRA8Unorm_sRGB) ||
+        (a == MTLPixelFormatBGRA8Unorm_sRGB && b == MTLPixelFormatBGRA8Unorm)) return YES;
+    if ((a == MTLPixelFormatR8Unorm && b == MTLPixelFormatR8Unorm_sRGB) ||
+        (a == MTLPixelFormatR8Unorm_sRGB && b == MTLPixelFormatR8Unorm)) return YES;
+    if ((a == MTLPixelFormatRG8Unorm && b == MTLPixelFormatRG8Unorm_sRGB) ||
+        (a == MTLPixelFormatRG8Unorm_sRGB && b == MTLPixelFormatRG8Unorm)) return YES;
+
+    // Depth / Stencil views: Depth32Float_Stencil8 (260) can be viewed as X32_Stencil8 (261) or Depth32Float (252)
+    if (a == 260 && (b == 261 || b == 252)) return YES;
+
+    // Block-Compressed (BC) formats sRGB / linear
+    if ((a == 130 && b == 131) || (a == 131 && b == 130)) return YES; // BC1
+    if ((a == 132 && b == 133) || (a == 133 && b == 132)) return YES; // BC2
+    if ((a == 134 && b == 135) || (a == 135 && b == 134)) return YES; // BC3
+    if ((a == 152 && b == 153) || (a == 153 && b == 152)) return YES; // BC7
+
+    // ASTC formats: sRGB (186..200) vs LDR (204..218), offset is 18
+    if ((a >= 186 && a <= 200 && b == a + 18) ||
+        (b >= 186 && b <= 200 && a == b + 18)) return YES;
+
+    return NO;
+}
+
+static id ShimTexNewView1(id self, SEL _cmd, MTLPixelFormat format) {
+    id<MTLTexture> tex = (id<MTLTexture>)self;
+    MTLPixelFormat srcFmt = tex.pixelFormat;
+    MTLPixelFormat reqFmt = format;
+    if (!ShimIsPixelFormatViewCompatible(srcFmt, format)) {
+        NSLog(@"SHIM TextureView format mismatch guarded: src=%lu requested=%lu -> fallback to src format", (unsigned long)srcFmt, (unsigned long)format);
+        format = srcFmt;
+    }
+    id view = ((id (*)(id, SEL, MTLPixelFormat))gTexNewView1)(self, _cmd, format);
+    static int sViewCount = 0;
+    if (sViewCount++ < 30 || view == nil) {
+        NSLog(@"SHIM TextureView: src=%lu req=%lu final=%lu -> %@", (unsigned long)srcFmt, (unsigned long)reqFmt, (unsigned long)format, view ? @"OK" : @"FAILED(nil)");
+    }
+    return view;
+}
+
+static id ShimTexNewView2(id self, SEL _cmd, MTLPixelFormat format, MTLTextureType type, NSRange levels, NSRange slices) {
+    id<MTLTexture> tex = (id<MTLTexture>)self;
+    MTLPixelFormat srcFmt = tex.pixelFormat;
+    MTLPixelFormat reqFmt = format;
+    if (!ShimIsPixelFormatViewCompatible(srcFmt, format)) {
+        NSLog(@"SHIM TextureView (ext) format mismatch guarded: src=%lu requested=%lu -> fallback to src format", (unsigned long)srcFmt, (unsigned long)format);
+        format = srcFmt;
+    }
+    id view = ((id (*)(id, SEL, MTLPixelFormat, MTLTextureType, NSRange, NSRange))gTexNewView2)(self, _cmd, format, type, levels, slices);
+    static int sView2Count = 0;
+    if (sView2Count++ < 30 || view == nil) {
+        NSLog(@"SHIM TextureView (ext): src=%lu req=%lu final=%lu type=%lu -> %@", (unsigned long)srcFmt, (unsigned long)reqFmt, (unsigned long)format, (unsigned long)type, view ? @"OK" : @"FAILED(nil)");
+    }
+    return view;
 }
 
 static IMP gLibFile, gLibSource, gC4Lib;
@@ -395,6 +454,33 @@ static void ShimLogTexManagedFix(MTLTextureDescriptor *desc, const char *where, 
     }
 }
 
+static void ShimLogTextureCreation(MTLTextureDescriptor *desc, id<MTLTexture> tex, const char *where) {
+    if (!desc) return;
+    static int sLoggedCount = 0;
+    static NSMutableSet *sSeenFormats = nil;
+    if (!sSeenFormats) sSeenFormats = [NSMutableSet new];
+
+    MTLPixelFormat fmt = desc.pixelFormat;
+    NSNumber *fmtNum = @(fmt);
+    BOOL isNewFormat = ![sSeenFormats containsObject:fmtNum];
+    if (isNewFormat) [sSeenFormats addObject:fmtNum];
+
+    // Log first 30 textures, plus any newly encountered format, plus any failed creations
+    if (sLoggedCount < 30 || isNewFormat || tex == nil) {
+        sLoggedCount++;
+        NSLog(@"SHIM TEX [%s] fmt=%lu %lux%lux%lu mips=%lu usage=0x%lx mode=%lu -> %@",
+              where,
+              (unsigned long)fmt,
+              (unsigned long)desc.width,
+              (unsigned long)desc.height,
+              (unsigned long)desc.depth,
+              (unsigned long)desc.mipmapLevelCount,
+              (unsigned long)desc.usage,
+              (unsigned long)desc.storageMode,
+              tex ? [NSString stringWithFormat:@"OK(%p)", tex] : @"FAILED(nil)");
+    }
+}
+
 static void ShimSanitizeTexDesc(MTLTextureDescriptor *desc, const char *where) {
     if (!desc) return;
     if ([desc storageMode] == 1) { // MTLStorageModeManaged
@@ -405,6 +491,8 @@ static void ShimSanitizeTexDesc(MTLTextureDescriptor *desc, const char *where) {
     if ((opts & MTLResourceStorageModeMask) == kManagedOption) {
         [desc setResourceOptions:(opts & ~MTLResourceStorageModeMask) | MTLResourceStorageModeShared];
     }
+    // Ensure MTLTextureUsagePixelFormatView is enabled so views (e.g. sRGB/linear, stencil) can legally be created
+    desc.usage |= MTLTextureUsagePixelFormatView;
 }
 
 static IMP gBufLen, gBufBytes, gBufNoCopy, gHeapBufSizeAlign;
@@ -446,11 +534,15 @@ static MTLSizeAndAlign ShimDevHeapTexSizeAlign(id self, SEL _cmd, MTLTextureDesc
 }
 static id ShimDevNewTex(id self, SEL _cmd, MTLTextureDescriptor *desc) {
     ShimSanitizeTexDesc(desc, "newTextureWithDescriptor");
-    return ((id (*)(id, SEL, MTLTextureDescriptor *))gDevNewTex)(self, _cmd, desc);
+    id tex = ((id (*)(id, SEL, MTLTextureDescriptor *))gDevNewTex)(self, _cmd, desc);
+    ShimLogTextureCreation(desc, tex, "device");
+    return tex;
 }
 static id ShimDevNewTexIOSurface(id self, SEL _cmd, MTLTextureDescriptor *desc, IOSurfaceRef surf, NSUInteger plane) {
     ShimSanitizeTexDesc(desc, "newTextureWithDescriptor:iosurface:plane:");
-    return ((id (*)(id, SEL, MTLTextureDescriptor *, IOSurfaceRef, NSUInteger))gDevNewTexIOSurface)(self, _cmd, desc, surf, plane);
+    id tex = ((id (*)(id, SEL, MTLTextureDescriptor *, IOSurfaceRef, NSUInteger))gDevNewTexIOSurface)(self, _cmd, desc, surf, plane);
+    ShimLogTextureCreation(desc, tex, "iosurface");
+    return tex;
 }
 static void ShimHeapSetMode(id self, SEL _cmd, NSUInteger mode) {
     if (mode == 1) { ShimFixOptions(kManagedOption, "heap setStorageMode"); mode = MTLStorageModeShared; }
@@ -474,11 +566,15 @@ static id ShimHeapNewBufOffset(id self, SEL _cmd, NSUInteger len, NSUInteger opt
 }
 static id ShimHeapNewTex(id self, SEL _cmd, MTLTextureDescriptor *desc) {
     ShimSanitizeTexDesc(desc, "heap newTextureWithDescriptor");
-    return ((id (*)(id, SEL, MTLTextureDescriptor *))gHeapNewTex)(self, _cmd, desc);
+    id tex = ((id (*)(id, SEL, MTLTextureDescriptor *))gHeapNewTex)(self, _cmd, desc);
+    ShimLogTextureCreation(desc, tex, "heap");
+    return tex;
 }
 static id ShimHeapNewTexOffset(id self, SEL _cmd, MTLTextureDescriptor *desc, NSUInteger offset) {
     ShimSanitizeTexDesc(desc, "heap newTextureWithDescriptor:offset:");
-    return ((id (*)(id, SEL, MTLTextureDescriptor *, NSUInteger))gHeapNewTexOffset)(self, _cmd, desc, offset);
+    id tex = ((id (*)(id, SEL, MTLTextureDescriptor *, NSUInteger))gHeapNewTexOffset)(self, _cmd, desc, offset);
+    ShimLogTextureCreation(desc, tex, "heap_offset");
+    return tex;
 }
 
 static BOOL ShimTexValidateWithDevice(id self, SEL _cmd, id device) {
@@ -549,6 +645,26 @@ __attribute__((constructor)) static void ShimAbsorbInit(void) {
     Swap(MTLTextureDescriptor.class, @selector(setResourceOptions:), (IMP)ShimTexSetOpts);
     Method mVal = class_getInstanceMethod(texDescCls, @selector(validateWithDevice:));
     if (mVal) gTexValidateWithDevice = method_setImplementation(mVal, (IMP)ShimTexValidateWithDevice);
+
+    MTLTextureDescriptor *probeTexDesc2 = [MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatRGBA8Unorm width:16 height:16 mipmapped:NO];
+    probeTexDesc2.storageMode = MTLStorageModePrivate;
+    id<MTLTexture> probeTex = [device newTextureWithDescriptor:probeTexDesc2];
+    if (probeTex) {
+        Class texCls = object_getClass(probeTex);
+        ShimAbsorbMissing(texCls);
+        Class cur = texCls;
+        while (cur && cur != [NSObject class]) {
+            Method m1 = class_getInstanceMethod(cur, @selector(newTextureViewWithPixelFormat:));
+            if (m1) { gTexNewView1 = method_setImplementation(m1, (IMP)ShimTexNewView1); break; }
+            cur = class_getSuperclass(cur);
+        }
+        cur = texCls;
+        while (cur && cur != [NSObject class]) {
+            Method m2 = class_getInstanceMethod(cur, @selector(newTextureViewWithPixelFormat:textureType:levels:slices:));
+            if (m2) { gTexNewView2 = method_setImplementation(m2, (IMP)ShimTexNewView2); break; }
+            cur = class_getSuperclass(cur);
+        }
+    }
 
     MTLHeapDescriptor *probeHeapDesc = [MTLHeapDescriptor new];
     Class heapDescCls = object_getClass(probeHeapDesc);

@@ -1,0 +1,73 @@
+name: iOS Shims CI Build
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - 'publication/**'
+    paths:
+      - 'source/shims/**'
+      - 'scripts/compile_shims.sh'
+      - '.github/workflows/ios-build.yml'
+  pull_request:
+    paths:
+      - 'source/shims/**'
+      - 'scripts/compile_shims.sh'
+      - '.github/workflows/ios-build.yml'
+  workflow_dispatch:
+
+jobs:
+  build-shims:
+    name: Build & Verify iOS Dynamic Library Shims
+    runs-on: macos-14
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Inspect Xcode Environment
+        run: |
+          xcode-select -p
+          xcrun --sdk iphoneos --show-sdk-path
+          xcrun --sdk iphoneos --show-sdk-version
+          clang --version
+
+      - name: Make Scripts Executable
+        run: chmod +x scripts/compile_shims.sh
+
+      - name: Compile Compatibility Shims
+        run: ./scripts/compile_shims.sh build/shims
+
+      - name: Inspect Mach-O Headers & Architectures
+        run: |
+          echo "=== Mach-O Architecture Verification ==="
+          file build/shims/*.dylib
+          
+          echo "=== Platform Load Commands (vtool) ==="
+          for dylib in build/shims/*.dylib; do
+            echo "--- $(basename "$dylib") ---"
+            xcrun vtool -show-build "$dylib"
+          done
+
+      - name: Inspect Dynamic Library Dependencies
+        run: |
+          echo "=== Shared Library Dependencies (otool -L) ==="
+          for dylib in build/shims/*.dylib; do
+            echo "--- $(basename "$dylib") ---"
+            otool -L "$dylib"
+          done
+
+      - name: Verify Exported Symbols
+        run: |
+          echo "=== Exported Symbols Summary ==="
+          for dylib in build/shims/*.dylib; do
+            echo "--- $(basename "$dylib"): $(nm -gU "$dylib" | wc -l) exported symbols ---"
+          done
+
+      - name: Upload Compiled Dylib Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: stray-ios-compatibility-shims-arm64
+          path: build/shims/*.dylib
+          if-no-files-found: error
+          retention-days: 14

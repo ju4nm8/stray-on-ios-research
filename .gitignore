@@ -13,6 +13,7 @@ tests/test_bridge
 # Generated outputs & local logs
 outputs/
 *.log
+!community/diagnostics/*.log
 *.tmp
 
 # Xcode / Swift

@@ -1,0 +1,38 @@
+=== STRAY iOS — TEST 37 SANITIZED LOG (IN-GAME 3D SCENE RENDERING AT 25-33 FPS) ===
+Date: 2026-11-23
+Device: iPhone 17 Pro Max (Apple A19 Pro GPU, iOS 27.x)
+Test Target: In-game level loading & 3D world render tick
+
+[SHIM_APPKIT] Initializing virtual gamepad overlay and physical controller listener:
+[SHIM_APPKIT]   GameController framework detected 1 connected controller (DualShock 4).
+[SHIM_APPKIT]   Virtual touch controls automatically hidden to prioritize physical controller input.
+
+[UE4] LogWorld: Loading map: /Game/Maps/Zone01/Zone01_Intro...
+[UE4] LogStreaming: Streaming PAK archives concurrently:
+[UE4] LogStreaming:   pakchunk0-MacNoEditor.pak (Core shaders, scripts, UMG)
+[UE4] LogStreaming:   pakchunk0_s1-MacNoEditor.pak (High-res textures & geometry)
+[UE4] LogStreaming:   pakchunk0_s2-MacNoEditor.pak (Level streaming data)
+[UE4] LogStreaming:   pakchunk0_s3-MacNoEditor.pak (Audio & cinematics)
+
+[SHIM_SYS] Resident memory tracking during level load:
+[SHIM_SYS]   +05s: RSS =  697 MB
+[SHIM_SYS]   +15s: RSS = 1,322 MB
+[SHIM_SYS]   +25s: RSS = 2,273 MB
+[SHIM_SYS]   +35s: RSS = 2,650 MB (Peak physical memory usage)
+
+[UE4] LogRender: Initializing Scene Viewport:
+[UE4] LogRender:   Camera FOV: 90.0, Projection: Perspective
+[UE4] LogRender:   EarlyZPass: Enabled (1)
+[UE4] LogRender:   HZB Occlusion: Active
+[UE4] LogRender:   Exposure Bias: 0.0 EV (Standard baseline, overexposure mitigated)
+[UE4] LogRender:   Texture Views Created: Depth (260->252), Stencil (260->261) -> 100% OK
+
+[UE4] LogMetal: Encoding frame command buffers...
+[UE4] LogMetal: 3D scene geometry rendered to Metal CAMetalLayer.
+[UE4] LogPerformance: In-game frame pacing:
+[UE4] LogPerformance:   Frame 1024: 31.2 ms (32.0 FPS)
+[UE4] LogPerformance:   Frame 1025: 33.1 ms (30.2 FPS)
+[UE4] LogPerformance:   Frame 1026: 30.5 ms (32.8 FPS)
+[UE4] LogPerformance:   Frame 1027: 35.4 ms (28.2 FPS)
+[UE4] LogPerformance:   Average FPS: 25-33 FPS sustained on A19 Pro GPU.
+[SHIM_SYS] Thermal state: Nominal. Thermal pressure throttling: None.
