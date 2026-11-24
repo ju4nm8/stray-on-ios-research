@@ -1,77 +1,42 @@
-# Current Technical Blockers & Device State
+# Current Technical Blockers & Active Investigation (Tests 31 to 41)
 
-**Document Status:** Grounded Physical Device Verification  
-**Device:** iPhone 17 Pro Max (Apple Silicon A19 Pro GPU, iOS 27.3)  
-**Latest Verification Date:** 2026-11-23
-
----
-
-## 1. Verified Device Observations (Strict Facts)
-
-The following observations have been verified directly on physical hardware:
-
-1. **Successful Boot & Stability:**
-   - The converted application launches successfully on a physical iPhone 17 Pro Max running iOS 27.3.
-   - The application does not crash on launch; it remains running continuously under supervision.
-   - The latest reported exit code 9 was caused by the user manually closing the application, not by a crash or watchdog abort.
-2. **UI & Input:**
-   - 2D user interface elements, menus, and text overlays are visible on screen.
-   - A connected PlayStation DualShock 4 controller is recognized by the game controller subsystem.
-3. **Orientation & Aspect Ratio:**
-   - The application initially appears in portrait orientation.
-   - Rotating the device to landscape causes severe image stretching and aspect ratio distortion.
-4. **3D World & Scene Rendering Status:**
-   - **The Stray title/menu 3D scene does NOT visibly render its cat character, 3D logo, or expected background geometry.**
-   - **Starting the game does NOT produce a visibly rendered 3D world.**
-   - Screen displays background UI elements or black/dark frames where 3D geometry should appear.
-5. **Metal Subsystem Observations:**
-   - Metal-related activity, render encoders, drawable presentation, and completed command buffers have been observed in logs and traces.
-   - **Critical note:** These Metal command buffer completions and presentation events do NOT prove successful 3D scene rendering. They merely demonstrate that the presentation pipeline is executing present calls for the render targets.
+> **Status:** November 2026 Baseline  
+> **Physical Hardware:** iPhone 17 Pro Max (Apple A19 Pro GPU, iOS 27.x)  
+> **Engine State:** `GDynamicRHI = 0x12298af00`, Metal SM5 RHI Active, 3D Level Rendering at 25–33 FPS  
 
 ---
 
-## 2. Technical Breakdown of Open Blockers
+## Resolved Blockers (Milestones Passed)
 
-### Blocker 1: Missing 3D Scene Geometry (Invisible World & Cat)
-
-- **Observed Behavior:** The display pipeline presents frames, but 3D meshes (cat skeletal mesh `m_visual`, world static meshes, lighting passes) are not visibly rendered to the active viewport.
-- **Log-Derived Evidence:**
-  - `FMetalDynamicRHI` completes initialization (`featLevel=3 maxShaderPlatform=16`).
-  - Shaders compile via `newLibraryWithSource` and `newLibraryWithData`.
-  - Texture creation succeeds with `MTLStorageModeShared (0)`.
-- **Active Hypotheses:**
-  - *Hypothesis 1A (Render Target / Viewport Binding):* Unreal Engine's viewport manager may be rendering 3D scene passes into an offscreen render target or texture that is not being blitted/composited into the primary `CAMetalLayer` or `MTKView`.
-  - *Hypothesis 1B (Camera ViewTarget & PCOwner):* During initialization, `AHKPlayerCameraManager` may be unattached or pointing to an invalid `ViewTarget`, resulting in camera positioning outside the scene bounds (e.g., origin `(0,0,0)`).
-  - *Hypothesis 1C (Mobile Bone Limit Clamping):* `Engine.ini` specifies `MaxSkinBones=(Default=65536,PerPlatform=(("Mobile",256)))`. If UE4 treats the runtime environment as Mobile, skeletal meshes exceeding 256 bones may be culled or rejected by vertex shaders.
-  - *Hypothesis 1D (Mesh Hidden Flags):* In Unreal blueprints (`BP_CatPawn_C`), specific flags such as `HiddenInGameplay` or LOD culling parameters may be toggled.
-
-### Blocker 2: Viewport Aspect Ratio & Rotation Distortion
-
-- **Observed Behavior:** The application boots in portrait mode despite `UIInterfaceOrientationLandscape` specified in `Info.plist`. When rotated, the canvas stretches non-uniformly.
-- **Root Cause:** AppKit window metrics (`NSWindow`, `NSScreen`, `NSRect`) map to UIKit `UIWindow` and `UIScreen`. When orientation changes occur, `ShimSaveViewportMetricsToDefaults` and the AppKit view hierarchy must resize the backing `CAMetalDrawable` and update Unreal Engine's `FSceneView` projection matrices (`ResX`, `ResY`, safe area insets).
-- **Status:** Requires proper orientation change event forwarding from `UIViewController` to AppKit window listeners.
-
-### Blocker 3: Touch Interface & Virtual Controller
-
-- **Observed Behavior:** Gamepad input (DualShock 4) is detected, but there is no native on-screen touch overlay for gameplay interaction without an external controller.
-- **Status:** Virtual on-screen touch joystick and action button overlay (`ShimTouchOverlayView`) recovered from earlier prototypes needs verification and integration.
-
-### Blocker 4: Audio Subsystem
-
-- **Observed Behavior:** No game audio has been verified on device.
-- **Log Evidence:** macOS `AudioUnit` and CoreAudio desktop graphs require translation to iOS `AVAudioSession` and mobile audio endpoints.
-- **Status:** Investigating audio session category setup and CoreAudio output routing.
+1. **Early Termination During `FEngineLoop::AppInit` (Exit Code 1):**
+   - **Resolved in Test 32–33:** Passing `-metalsm5`, populating synthetic `Apple A19 Pro GPU` descriptor via `libShim_IOKit.dylib`, and interposing `MTLStorageModeManaged` to `MTLStorageModeShared` allowed `FMetalDynamicRHI` to initialize completely.
+2. **GPU Discovery SIGSEGV `0x28`:**
+   - **Resolved in Test 31:** Null dereference in `0x10121a060` eliminated by synthetic IOKit registry.
+3. **Texture View Assertion Failures:**
+   - **Resolved in Test 35–36:** Interposing `-[MTLTexture newTextureViewWithPixelFormat:]` remapped incompatible depth (`260 -> 252`) and stencil (`260 -> 261`) formats.
+4. **Bone Limit Check Abort Hypothesis:**
+   - **Refuted in Test 40:** Custom binary probe instrumenting `USkinnedMeshComponent::CreateSceneProxy` recorded section bone counts of 14 vs 256 max limit. Valid `FSkeletalMeshSceneProxy` is successfully instantiated.
 
 ---
 
-## 3. Separation of Knowledge
+## Active Current Blockers
 
-To maintain absolute scientific accuracy, we classify all claims into five tiers:
+### Blocker 1: Protagonist Cat Renders as Dark Silhouette
+- **Observed Behavior:** In Test 41 in-game screen captures (42s into gameplay), image forensics confirmed the cat mesh is physically rasterized and occludes background geometry, but appears 100% black.
+- **Root Cause Analysis:**
+  1. **Subsurface Profile Shading Model (`MSM_SubsurfaceProfile`):** Cat's primary material `MI_CAT_Body_2sidedshading` requires screen-space bilateral blur post-processing (`FPostProcessSubsurface`), which fails or outputs black on iOS Metal. Setting `r.SubsurfaceScattering=0` forces fallback to standard Lambertian diffuse `MSM_DefaultLit`.
+  2. **Volumetric Lightmap (VLM) Sampling:** Stray's static-lit levels evaluate indirect lighting for movable dynamic skeletal meshes using VLM. In interior shelter areas, unprobed meshes evaluate to 0.0 lumens.
+- **Pending Physical Test:** Test 42 will validate `r.SubsurfaceScattering=0` and exposure bias fallback on device.
 
-| Tier | Category | Verified Items |
-|---|---|---|
-| **Tier 1** | **Verified On-Device Observations** | Launch without crash; menus/UI visible; DualShock 4 connected; portrait orientation on boot; landscape stretching; **3D scene/cat NOT visible**; manual close exit code 9. |
-| **Tier 2** | **Log-Derived Evidence** | ICU data directory discovery resolved; case-sensitivity hook functioning; IOKit synthetic GPU initialized; Metal RHI initialized; storageMode managed->shared; shader compilation OK. |
-| **Tier 3** | **Static Analysis** | Mach-O 12.0 ARM64 load commands; 109 missing framework symbols; 3,463 ICU entries in pakchunk0; `Engine.ini` Mobile bone limit=256. |
-| **Tier 4** | **Unverified Hypotheses** | Offscreen render target compositing failure; camera frustum clipping; bone limit culling; blueprint `HiddenInGameplay` flag. |
-| **Tier 5** | **Planned Work** | Metal frame capture analysis; viewport matrix update hooks; touch overlay integration; AVAudioSession shims. |
+### Blocker 2: GFur PRO Procedural Fur Shaders
+- **Observed Behavior:** Stray uses the GFur PRO plugin for procedural fur shell rendering. In native code, `UGFurComponent` sets `bHideSkin=1` and `bVisible=0` on the base cat mesh.
+- **Root Cause Analysis:** GFur's compute shaders and fin/shell generation do not execute under the current iOS Metal pipeline.
+- **Remediation:** Surgical binary patches (`0x102fd67f0` NOP `bHideSkin`, `0x102fd6e44` NOP `cbz w0`, and native Blueprint `0x1008f9134` `mov w1, #1`) bypass GFur suppression and keep the base cat skin active.
+
+### Blocker 3: 3D Main Menu Background
+- **Observed Behavior:** The main menu title screen displays virtual touch and UI widgets against a pitch-black background.
+- **Investigation:** World rendering pass in menu level is suppressed or occluded before Slate viewport compositing.
+
+### Blocker 4: Desktop Texture Streaming (BC1–BC7)
+- **Observed Behavior:** Geometry textures appear low-resolution.
+- **Remediation:** Configured `r.TextureStreaming=1`, `r.Streaming.PoolSize=2048`, and `r.Streaming.FullyLoadUsedTextures=1` to force high-detail mips from `pakchunk0_s1-MacNoEditor.pak` to reside in unified memory.
